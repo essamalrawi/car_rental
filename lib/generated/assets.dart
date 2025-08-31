@@ -11,10 +11,51 @@ class Assets {
   static const String fontsTajawalLight = 'assets/fonts/Tajawal-Light.ttf';
   static const String fontsTajawalMedium = 'assets/fonts/Tajawal-Medium.ttf';
   static const String fontsTajawalRegular = 'assets/fonts/Tajawal-Regular.ttf';
+  static const String generatedAssets = 'lib/generated/assets.dart';
+  static const String helperFunctionsOnGenerateRoute =
+      'lib/core/helper_functions/on_generate_route.dart';
+  static const String iconIcon = 'assets/icon/icon.png';
+  static const String imagesAppleLogo = 'assets/images/apple_logo.svg';
+  static const String imagesAuthViewLogo = 'assets/images/auth_view_logo.svg';
+  static const String imagesCheck = 'assets/images/check.svg';
+  static const String imagesGoogleLogo = 'assets/images/google_logo.svg';
   static const String imagesLogo = 'assets/images/logo.png';
   static const String imagesOnBoardingPageOne =
       'assets/images/on_boarding_page_one.png';
   static const String imagesOnBoardingPageTwo =
       'assets/images/on_boarding_page_two.png';
+  static const String imagesRemoveEye = 'assets/images/remove_eye.svg';
   static const String imagesSplash = 'assets/images/splash.png';
+  static const String imagesSplashForModernAndroid =
+      'assets/images/splash_for_modern_android.png';
+  static const String libMain = 'lib/main.dart';
+  static const String utilsAppTextStyles =
+      'lib/core/utils/app_text_styles.dart';
+  static const String viewsOnBoardingView =
+      'lib/features/on_boarding/presentation/views/on_boarding_view.dart';
+  static const String viewsSignInView =
+      'lib/features/auth/presentation/views/sign_in_view.dart';
+  static const String widgetsCustomButton =
+      'lib/core/widgets/custom_button.dart';
+  static const String widgetsCustomCheckBox =
+      'lib/features/auth/presentation/views/widgets/custom_check_box.dart';
+  static const String widgetsCustomTextFormField =
+      'lib/core/widgets/custom_text_form_field.dart';
+  static const String widgetsDontHaveAnAccount =
+      'lib/features/auth/presentation/views/widgets/dont_have_an_account.dart';
+  static const String widgetsForgotPassword =
+      'lib/core/widgets/forgot_password.dart';
+  static const String widgetsOnBoardingPageView =
+      'lib/features/on_boarding/presentation/views/widgets/on_boarding_page_view.dart';
+  static const String widgetsOnBoardingViewBody =
+      'lib/features/on_boarding/presentation/views/widgets/on_boarding_view_body.dart';
+  static const String widgetsOrDivider = 'lib/core/widgets/or_divider.dart';
+  static const String widgetsPageViewItem =
+      'lib/features/on_boarding/presentation/views/widgets/page_view_item.dart';
+  static const String widgetsPasswordField =
+      'lib/core/widgets/password_field.dart';
+  static const String widgetsSignInViewBody =
+      'lib/features/auth/presentation/views/widgets/sign_in_view_body.dart';
+  static const String widgetsSocialLoginButton =
+      'lib/core/widgets/social_login_button.dart';
 }

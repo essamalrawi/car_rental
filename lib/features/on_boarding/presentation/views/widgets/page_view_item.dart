@@ -79,7 +79,12 @@ class PageViewItem extends StatelessWidget {
                 maintainSize: true,
                 maintainAnimation: true,
                 maintainState: true,
-                child: Column(children: [CustomButton(), SizedBox(height: 55)]),
+                child: Column(
+                  children: [
+                    CustomButton(text: "Get Started"),
+                    SizedBox(height: 55),
+                  ],
+                ),
               ),
             ],
           ),

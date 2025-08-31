@@ -1,4 +1,4 @@
-import 'package:car_rental/features/splash/presentation/views/splash_view.dart';
+import 'package:car_rental/features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:flutter/material.dart';
 
 import 'core/helper_functions/on_generate_route.dart';
@@ -18,7 +18,7 @@ class CarRental extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: SplashView.routeName,
+      initialRoute: OnBoardingView.routeName,
       onGenerateRoute: onGenerateRoute,
     );
   }
