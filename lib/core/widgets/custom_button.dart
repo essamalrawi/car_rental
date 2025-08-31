@@ -24,7 +24,7 @@ class CustomButton extends StatelessWidget {
       child: TextButton(
         style: TextButton.styleFrom(
           shape: RoundedRectangleBorder(
-            side: BorderSide(
+            side: const BorderSide(
               color: Color(0xFF21292B), // border color
               width: 1, // border width
             ),

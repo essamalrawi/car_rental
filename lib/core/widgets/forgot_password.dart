@@ -24,7 +24,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             setState(() {});
           },
         ),
-        SizedBox(width: 10),
+        const SizedBox(width: 10),
         Text(
           'Remember Me',
 
@@ -33,7 +33,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             color: const Color(0xFF7F7F7F),
           ),
         ),
-        Spacer(),
+        const Spacer(),
         Text(
           'Forgot Password',
           style: TextStyles.regular14.copyWith(

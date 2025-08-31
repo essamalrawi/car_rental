@@ -38,7 +38,7 @@ class SignInViewBody extends StatelessWidget {
                   textInputType: TextInputType.emailAddress,
                 ),
                 const SizedBox(height: 18),
-                PasswordField(),
+                const PasswordField(),
                 const SizedBox(height: 28),
                 const ForgotPassword(),
                 const SizedBox(height: 28),

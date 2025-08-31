@@ -35,6 +35,8 @@ class Assets {
       'lib/features/on_boarding/presentation/views/on_boarding_view.dart';
   static const String viewsSignInView =
       'lib/features/auth/presentation/views/sign_in_view.dart';
+  static const String viewsSignUpView =
+      'lib/features/auth/presentation/views/sign_up_view.dart';
   static const String widgetsCustomButton =
       'lib/core/widgets/custom_button.dart';
   static const String widgetsCustomCheckBox =
@@ -56,6 +58,8 @@ class Assets {
       'lib/core/widgets/password_field.dart';
   static const String widgetsSignInViewBody =
       'lib/features/auth/presentation/views/widgets/sign_in_view_body.dart';
+  static const String widgetsSignUpViewBody =
+      'lib/features/auth/presentation/views/widgets/sign_up_view_body.dart';
   static const String widgetsSocialLoginButton =
       'lib/core/widgets/social_login_button.dart';
 }

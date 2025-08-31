@@ -23,7 +23,7 @@ class SocialLoginButton extends StatelessWidget {
       child: TextButton(
         style: TextButton.styleFrom(
           shape: RoundedRectangleBorder(
-            side: BorderSide(
+            side: const BorderSide(
               color: Color(0XFFD7D7D7), // border color
               width: 1, // border width
             ),

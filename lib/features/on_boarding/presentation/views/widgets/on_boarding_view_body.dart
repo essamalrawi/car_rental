@@ -64,11 +64,11 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
                   position: pageController.hasClients
                       ? pageController.page ?? currentPage.toDouble()
                       : currentPage.toDouble(),
-                  decorator: DotsDecorator(
-                    size: const Size.square(9.0),
-                    activeSize: const Size(18.0, 9.0),
-                    spacing: const EdgeInsets.symmetric(horizontal: 4),
-                    activeShape: const StadiumBorder(),
+                  decorator: const DotsDecorator(
+                    size: Size.square(9.0),
+                    activeSize: Size(18.0, 9.0),
+                    spacing: EdgeInsets.symmetric(horizontal: 4),
+                    activeShape: StadiumBorder(),
                     color: Colors.white,
                     activeColor: Color(0xff9CA3AF),
                   ),

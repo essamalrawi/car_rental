@@ -1,3 +1,5 @@
+import 'package:car_rental/features/auth/presentation/views/sign_up_view.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/app_text_styles.dart';
@@ -15,15 +17,26 @@ class DontHaveAccount extends StatelessWidget {
             children: [
               TextSpan(
                 text: "Don't have an account?",
-                style: TextStyles.regular14.copyWith(color: Color(0xFF7F7F7F)),
+                style: TextStyles.regular14.copyWith(
+                  color: const Color(0xFF7F7F7F),
+                ),
               ),
               TextSpan(
                 text: " ",
-                style: TextStyles.regular14.copyWith(color: Color(0xFF7F7F7F)),
+                style: TextStyles.regular14.copyWith(
+                  color: const Color(0xFF7F7F7F),
+                ),
               ),
+
               TextSpan(
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () {
+                    Navigator.pushNamed(context, SignUpView.routeName);
+                  },
                 text: "Sign Up.",
-                style: TextStyles.regular14.copyWith(color: Color(0xFF454545)),
+                style: TextStyles.regular14.copyWith(
+                  color: const Color(0xFF454545),
+                ),
               ),
             ],
           ),
