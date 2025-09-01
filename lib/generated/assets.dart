@@ -37,6 +37,10 @@ class Assets {
       'lib/features/auth/presentation/views/sign_in_view.dart';
   static const String viewsSignUpView =
       'lib/features/auth/presentation/views/sign_up_view.dart';
+  static const String viewsVerifyYourPhoneNumberView =
+      'lib/features/auth/presentation/views/verify_your_phone_number_view.dart';
+  static const String widgetsCountryDropDownPage =
+      'lib/features/auth/presentation/views/widgets/country_drop_down_page.dart';
   static const String widgetsCustomButton =
       'lib/core/widgets/custom_button.dart';
   static const String widgetsCustomCheckBox =
@@ -47,6 +51,8 @@ class Assets {
       'lib/features/auth/presentation/views/widgets/dont_have_an_account.dart';
   static const String widgetsForgotPassword =
       'lib/core/widgets/forgot_password.dart';
+  static const String widgetsHaveAnAccount =
+      'lib/features/auth/presentation/views/widgets/have_an_account.dart';
   static const String widgetsOnBoardingPageView =
       'lib/features/on_boarding/presentation/views/widgets/on_boarding_page_view.dart';
   static const String widgetsOnBoardingViewBody =
@@ -62,4 +68,6 @@ class Assets {
       'lib/features/auth/presentation/views/widgets/sign_up_view_body.dart';
   static const String widgetsSocialLoginButton =
       'lib/core/widgets/social_login_button.dart';
+  static const String widgetsVerifyYourPhoneNumberViewBody =
+      'lib/features/auth/presentation/views/widgets/verify_your_phone_number_view_body.dart';
 }
