@@ -33,10 +33,14 @@ class Assets {
       'lib/core/utils/app_text_styles.dart';
   static const String viewsOnBoardingView =
       'lib/features/on_boarding/presentation/views/on_boarding_view.dart';
+  static const String viewsResetYourPasswordView =
+      'lib/features/auth/presentation/views/reset_your_password_view.dart';
   static const String viewsSignInView =
       'lib/features/auth/presentation/views/sign_in_view.dart';
   static const String viewsSignUpView =
       'lib/features/auth/presentation/views/sign_up_view.dart';
+  static const String viewsVerificationCodeView =
+      'lib/features/auth/presentation/views/verification_code_view.dart';
   static const String viewsVerifyYourPhoneNumberView =
       'lib/features/auth/presentation/views/verify_your_phone_number_view.dart';
   static const String widgetsCountryDropDownPage =
@@ -45,6 +49,8 @@ class Assets {
       'lib/core/widgets/custom_button.dart';
   static const String widgetsCustomCheckBox =
       'lib/features/auth/presentation/views/widgets/custom_check_box.dart';
+  static const String widgetsCustomOtpTextFormField =
+      'lib/features/auth/presentation/views/widgets/CustomOtpTextFormField.dart';
   static const String widgetsCustomTextFormField =
       'lib/core/widgets/custom_text_form_field.dart';
   static const String widgetsDontHaveAnAccount =
@@ -58,16 +64,22 @@ class Assets {
   static const String widgetsOnBoardingViewBody =
       'lib/features/on_boarding/presentation/views/widgets/on_boarding_view_body.dart';
   static const String widgetsOrDivider = 'lib/core/widgets/or_divider.dart';
+  static const String widgetsOtpForm =
+      'lib/features/auth/presentation/views/widgets/otp_form.dart';
   static const String widgetsPageViewItem =
       'lib/features/on_boarding/presentation/views/widgets/page_view_item.dart';
   static const String widgetsPasswordField =
       'lib/core/widgets/password_field.dart';
+  static const String widgetsResetYourPasswordViewBody =
+      'lib/features/auth/presentation/views/widgets/reset_your_password_view_body.dart';
   static const String widgetsSignInViewBody =
       'lib/features/auth/presentation/views/widgets/sign_in_view_body.dart';
   static const String widgetsSignUpViewBody =
       'lib/features/auth/presentation/views/widgets/sign_up_view_body.dart';
   static const String widgetsSocialLoginButton =
       'lib/core/widgets/social_login_button.dart';
+  static const String widgetsVerificationCodeViewBody =
+      'lib/features/auth/presentation/views/widgets/verification_code_view_body.dart';
   static const String widgetsVerifyYourPhoneNumberViewBody =
       'lib/features/auth/presentation/views/widgets/verify_your_phone_number_view_body.dart';
 }

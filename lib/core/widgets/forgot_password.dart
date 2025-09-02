@@ -1,3 +1,4 @@
+import 'package:car_rental/features/auth/presentation/views/reset_your_password_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../features/auth/presentation/views/widgets/custom_check_box.dart';
@@ -34,11 +35,16 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           ),
         ),
         const Spacer(),
-        Text(
-          'Forgot Password',
-          style: TextStyles.regular14.copyWith(
-            color: const Color(0xFF454545),
-            letterSpacing: -0.14,
+        GestureDetector(
+          onTap: () {
+            Navigator.pushNamed(context, ResetYourPasswordView.routeName);
+          },
+          child: Text(
+            'Forgot Password',
+            style: TextStyles.regular14.copyWith(
+              color: const Color(0xFF454545),
+              letterSpacing: -0.14,
+            ),
           ),
         ),
       ],
