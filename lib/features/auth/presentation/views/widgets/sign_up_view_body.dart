@@ -1,6 +1,8 @@
 import 'package:car_rental/core/widgets/custom_text_form_field.dart';
 import 'package:car_rental/core/widgets/password_field.dart';
 import 'package:car_rental/features/auth/presentation/views/verify_your_phone_number_view.dart';
+import 'package:car_rental/features/auth/presentation/views/widgets/custom_pick_country.dart';
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -45,19 +47,25 @@ class SignUpViewBody extends StatelessWidget {
                 ),
                 const SizedBox(height: 18),
                 const PasswordField(),
-                const SizedBox(height: 28),
-                CustomButton(onPressed: () {
-
-                  Navigator.pushReplacementNamed(
-                    context,
-                    VerifyYourPhoneNumberView.routeName,
-                  );
-
-                }, text: "Sign Up"),
                 const SizedBox(height: 18),
-                const CustomButton(
-                  fontColor: Color(0xFF21292B),
-                  backgroundColor: Color(0xFFEDEDED),
+                const CustomPickCountry(),
+                const SizedBox(height: 28),
+                CustomButton(
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      VerifyYourPhoneNumberView.routeName,
+                    );
+                  },
+                  text: "Sign Up",
+                ),
+                const SizedBox(height: 18),
+                CustomButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  fontColor: const Color(0xFF21292B),
+                  backgroundColor: const Color(0xFFEDEDED),
                   text: "Login",
                 ),
                 const SizedBox(height: 28),

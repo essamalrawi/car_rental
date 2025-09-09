@@ -2,13 +2,13 @@ import 'package:car_rental/core/widgets/custom_button.dart';
 import 'package:car_rental/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../../../../core/utils/app_text_styles.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 import '../../../../../core/widgets/forgot_password.dart';
 import '../../../../../core/widgets/or_divider.dart';
 import '../../../../../core/widgets/password_field.dart';
 import '../../../../../core/widgets/social_login_button.dart';
+import '../sign_up_view.dart';
 import 'dont_have_an_account.dart';
 
 class SignInViewBody extends StatelessWidget {
@@ -44,10 +44,13 @@ class SignInViewBody extends StatelessWidget {
                 const SizedBox(height: 28),
                 const CustomButton(text: "Login"),
                 const SizedBox(height: 18),
-                const CustomButton(
-                  fontColor: Color(0xFF21292B),
-                  backgroundColor: Color(0xFFEDEDED),
-                  text: "Sing up",
+                CustomButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, SignUpView.routeName);
+                  },
+                  fontColor: const Color(0xFF21292B),
+                  backgroundColor: const Color(0xFFEDEDED),
+                  text: "Sign up",
                 ),
                 const SizedBox(height: 28),
                 const OrDivider(),

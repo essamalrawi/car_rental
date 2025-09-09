@@ -29,6 +29,10 @@ class Assets {
   static const String imagesSplashForModernAndroid =
       'assets/images/splash_for_modern_android.png';
   static const String libMain = 'lib/main.dart';
+  static const String servicesDataService =
+      'lib/core/services/data_service.dart';
+  static const String servicesQuentAuthService =
+      'lib/core/services/quent_auth_service.dart';
   static const String utilsAppTextStyles =
       'lib/core/utils/app_text_styles.dart';
   static const String viewsOnBoardingView =
@@ -51,6 +55,8 @@ class Assets {
       'lib/features/auth/presentation/views/widgets/custom_check_box.dart';
   static const String widgetsCustomOtpTextFormField =
       'lib/features/auth/presentation/views/widgets/CustomOtpTextFormField.dart';
+  static const String widgetsCustomPickCountry =
+      'lib/features/auth/presentation/views/widgets/custom_pick_country.dart';
   static const String widgetsCustomTextFormField =
       'lib/core/widgets/custom_text_form_field.dart';
   static const String widgetsDontHaveAnAccount =
