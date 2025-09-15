@@ -1,20 +1,32 @@
 import 'package:car_rental/core/widgets/custom_text_form_field.dart';
 import 'package:car_rental/core/widgets/password_field.dart';
+import 'package:car_rental/features/auth/cubits/sign_up/sign_up_cubit.dart';
 import 'package:car_rental/features/auth/presentation/views/verify_your_phone_number_view.dart';
 import 'package:car_rental/features/auth/presentation/views/widgets/custom_pick_country.dart';
-import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../../../../core/utils/app_text_styles.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/or_divider.dart';
 import '../../../../../core/widgets/social_login_button.dart';
 import '../../../../../generated/assets.dart';
 import 'have_an_account.dart';
+import '../../../../../core/countries.dart';
 
-class SignUpViewBody extends StatelessWidget {
+class SignUpViewBody extends StatefulWidget {
   const SignUpViewBody({super.key});
+
+  @override
+  State<SignUpViewBody> createState() => _SignUpViewBodyState();
+}
+
+class _SignUpViewBodyState extends State<SignUpViewBody> {
+  final _formKey = GlobalKey<FormState>();
+  AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
+
+  late String fullName, email, password, phone;
+  late int countryId;
 
   @override
   Widget build(BuildContext context) {
@@ -23,67 +35,107 @@ class SignUpViewBody extends StatelessWidget {
         SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 20),
-                SvgPicture.asset(Assets.imagesAuthViewLogo),
-                const SizedBox(height: 50),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [Text('Sign Up', style: TextStyles.semibold30)],
-                ),
-                const SizedBox(height: 40),
-                const CustomTextFormField(
-                  hintText: "Full Name",
-                  textInputType: TextInputType.text,
-                  obscureText: false,
-                ),
-                const SizedBox(height: 18),
-                const CustomTextFormField(
-                  hintText: "Email Address",
-                  textInputType: TextInputType.emailAddress,
-                  obscureText: false,
-                ),
-                const SizedBox(height: 18),
-                const PasswordField(),
-                const SizedBox(height: 18),
-                const CustomPickCountry(),
-                const SizedBox(height: 28),
-                CustomButton(
-                  onPressed: () {
-                    Navigator.pushNamed(
-                      context,
-                      VerifyYourPhoneNumberView.routeName,
-                    );
-                  },
-                  text: "Sign Up",
-                ),
-                const SizedBox(height: 18),
-                CustomButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  fontColor: const Color(0xFF21292B),
-                  backgroundColor: const Color(0xFFEDEDED),
-                  text: "Login",
-                ),
-                const SizedBox(height: 28),
-                const OrDivider(),
-                const SizedBox(height: 28),
-                const SocialLoginButton(
-                  text: "Apple pay",
-                  imagePath: Assets.imagesAppleLogo,
-                ),
-                const SizedBox(height: 18),
-                const SocialLoginButton(
-                  text: "Google pay",
-                  imagePath: Assets.imagesGoogleLogo,
-                ),
-                const SizedBox(height: 57),
-                const HaveAnAccount(),
-                const SizedBox(height: 57),
-              ],
+            child: Form(
+              key: _formKey,
+              autovalidateMode: autoValidateMode,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 20),
+                  SvgPicture.asset(Assets.imagesAuthViewLogo),
+                  const SizedBox(height: 50),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [Text('Sign Up', style: TextStyles.semibold30)],
+                  ),
+                  const SizedBox(height: 40),
+                  CustomTextFormField(
+                    onSaved: (value) {
+                      fullName = value!;
+                    },
+                    hintText: "Full Name",
+                    textInputType: TextInputType.text,
+                    obscureText: false,
+                  ),
+                  const SizedBox(height: 18),
+                  CustomTextFormField(
+                    hintText: "Email Address",
+                    onSaved: (value) {
+                      email = value!;
+                    },
+                    textInputType: TextInputType.emailAddress,
+                    obscureText: false,
+                  ),
+                  const SizedBox(height: 18),
+                  CustomTextFormField(
+                    onSaved: (value) {
+                      phone = value!;
+                    },
+                    hintText: "Phone number",
+                    textInputType: TextInputType.number,
+                    obscureText: false,
+                  ),
+                  const SizedBox(height: 18),
+                  PasswordField(
+                    onSaved: (value) {
+                      password = value!;
+                    },
+                  ),
+                  const SizedBox(height: 18),
+                  CustomPickCountry(
+                    onChanged: (value) {
+                      countryId = countryIds[value]!;
+                    },
+                  ),
+                  const SizedBox(height: 28),
+                  CustomButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        _formKey.currentState!.save();
+                        context.read<SignUpCubit>().signUp(
+                          fullName: fullName,
+                          email: email,
+                          password: password,
+                          countryId: countryId,
+                          phone: phone,
+                        );
+                      } else {
+                        setState(() {
+                          autoValidateMode = AutovalidateMode.always;
+                        });
+                      } // Navigator.pushNamed(
+                      //   context,
+                      //   VerifyYourPhoneNumberView.routeName,
+                      // );
+                    },
+                    text: "Sign Up",
+                  ),
+                  const SizedBox(height: 18),
+                  CustomButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    fontColor: const Color(0xFF21292B),
+                    backgroundColor: const Color(0xFFEDEDED),
+                    text: "Login",
+                  ),
+                  const SizedBox(height: 28),
+                  const OrDivider(),
+                  const SizedBox(height: 28),
+                  const SocialLoginButton(
+                    text: "Apple pay",
+                    imagePath: Assets.imagesAppleLogo,
+                  ),
+                  const SizedBox(height: 18),
+                  const SocialLoginButton(
+                    text: "Google pay",
+                    imagePath: Assets.imagesGoogleLogo,
+                  ),
+                  const SizedBox(height: 57),
+                  const HaveAnAccount(),
+                  const SizedBox(height: 57),
+                ],
+              ),
             ),
           ),
         ),

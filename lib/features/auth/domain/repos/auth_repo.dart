@@ -1,0 +1,21 @@
+import 'package:car_rental/features/auth/domain/entities/user_entity.dart';
+import '../../../../core/errors/failure.dart';
+import 'package:dartz/dartz.dart';
+import '../entities/country_entity.dart';
+
+abstract class AuthRepo {
+  Future<Either<Failure, UserEntity>> signUp({
+    required String fullName,
+    required String email,
+    required String password,
+    required int countryId,
+    required String phone,
+  });
+
+  Future<Either<Failure, UserEntity>> signIn({
+    required String email,
+    required String password,
+  });
+
+  Future<Either<Failure, CountryEntity>> getCountryId();
+}

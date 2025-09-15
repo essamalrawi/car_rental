@@ -1,4 +1,6 @@
+import 'package:car_rental/generated/assets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'custom_text_form_field.dart';
 
@@ -18,17 +20,22 @@ class _PasswordFieldState extends State<PasswordField> {
   Widget build(BuildContext context) {
     return CustomTextFormField(
       obscureText: obscureText,
-      // onSaved: widget.onSaved,
+      onSaved: widget.onSaved,
       suffixIcon: GestureDetector(
         onTap: () {
           obscureText = !obscureText;
           // print(obscureText);
           setState(() {});
         },
-        child: Icon(
-          obscureText ? Icons.remove_red_eye : Icons.visibility_off,
-          color: const Color(0xffC9CECF),
-        ),
+        child: obscureText
+            ? SizedBox(
+                width: 20,
+                height: 20,
+                child: Center(
+                  child: SvgPicture.asset(Assets.imagesShowPasswordIcon),
+                ),
+              )
+            : const Icon(Icons.visibility_off, color: Color(0xffC9CECF)),
       ),
       hintText: 'Password',
       textInputType: TextInputType.visiblePassword,

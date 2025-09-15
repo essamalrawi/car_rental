@@ -39,6 +39,11 @@ dependencies:
   flutter_svg: ^2.2.0
   high_q_paginated_drop_down: ^2.1.3
   country_picker: ^2.0.27
+  dio: ^5.9.0
+  get_it: ^8.2.0
+  flutter_bloc: ^9.1.1
+  dartz: ^0.10.1
+  modal_progress_hud_nsn: ^0.5.1
 dev_dependencies:
   flutter_launcher_icons: ^0.14.4
   flutter_test:

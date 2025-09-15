@@ -1,12 +1,14 @@
+import 'package:car_rental/generated/assets.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../../core/utils/app_text_styles.dart';
 
 class CustomPickCountry extends StatefulWidget {
-  const CustomPickCountry({super.key, this.showCode = false});
+  const CustomPickCountry({super.key, this.showCode = false, this.onChanged});
 
   final bool? showCode;
+  final void Function(String?)? onChanged;
 
   @override
   State<CustomPickCountry> createState() => _CustomPickCountryState();
@@ -18,20 +20,31 @@ class _CustomPickCountryState extends State<CustomPickCountry> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: (value) {
+        if (countryName == "Country" || countryName.isEmpty) {
+          return 'This field is required';
+        }
+      },
       onTap: () {
         showCountryPicker(
           context: context,
-
           onSelect: (Country country) {
             countryName = widget.showCode!
                 ? "${countryCodeToEmoji(country.countryCode)} ${country.displayName}"
                 : country.name;
+            widget.onChanged?.call(country.countryCode);
             setState(() {});
           },
         );
       },
       readOnly: true,
       decoration: InputDecoration(
+        suffixIcon: SizedBox(
+          width: 20,
+          height: 20,
+          child: Center(child: SvgPicture.asset(Assets.imagesSwitcherIcon)),
+        ),
+
         hintStyle: TextStyles.regular16.copyWith(
           fontSize: widget.showCode == false ? 14 : 16,
           color: const Color(0xFF7F7F7F),

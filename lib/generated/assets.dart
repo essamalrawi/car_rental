@@ -2,6 +2,12 @@
 class Assets {
   Assets._();
 
+  static const String coreCountries = 'lib/core/countries.dart';
+  static const String entitiesCountryEntity =
+      'lib/features/auth/domain/entities/country_entity.dart';
+  static const String entitiesUserEntity =
+      'lib/features/auth/domain/entities/user_entity.dart';
+  static const String errorsFailure = 'lib/core/errors/failure.dart';
   static const String fontsTajawalBlack = 'assets/fonts/Tajawal-Black.ttf';
   static const String fontsTajawalBold = 'assets/fonts/Tajawal-Bold.ttf';
   static const String fontsTajawalExtraBold =
@@ -14,6 +20,8 @@ class Assets {
   static const String generatedAssets = 'lib/generated/assets.dart';
   static const String helperFunctionsOnGenerateRoute =
       'lib/core/helper_functions/on_generate_route.dart';
+  static const String helperFunctionsShowBars =
+      'lib/core/helper_functions/show_bars.dart';
   static const String iconIcon = 'assets/icon/icon.png';
   static const String imagesAppleLogo = 'assets/images/apple_logo.svg';
   static const String imagesAuthViewLogo = 'assets/images/auth_view_logo.svg';
@@ -25,16 +33,40 @@ class Assets {
   static const String imagesOnBoardingPageTwo =
       'assets/images/on_boarding_page_two.png';
   static const String imagesRemoveEye = 'assets/images/remove_eye.svg';
+  static const String imagesShowPasswordIcon =
+      'assets/images/show_password_icon.svg';
   static const String imagesSplash = 'assets/images/splash.png';
   static const String imagesSplashForModernAndroid =
       'assets/images/splash_for_modern_android.png';
+  static const String imagesSwitcherIcon = 'assets/images/switcher_icon.svg';
+  static const String libConstants = 'lib/constants.dart';
   static const String libMain = 'lib/main.dart';
+  static const String modelsAuthResponseModel =
+      'lib/core/models/auth_response_model.dart';
+  static const String reposAuthRepo =
+      'lib/features/auth/domain/repos/auth_repo.dart';
+  static const String reposAuthRepoImpl =
+      'lib/features/auth/domain/data/repos/auth_repo_impl.dart';
+  static const String servicesCustomBlocObserver =
+      'lib/core/services/custom_bloc_observer.dart';
   static const String servicesDataService =
       'lib/core/services/data_service.dart';
+  static const String servicesGetItService =
+      'lib/core/services/get_it_service.dart';
   static const String servicesQuentAuthService =
       'lib/core/services/quent_auth_service.dart';
+  static const String signInSignInCubit =
+      'lib/features/auth/cubits/sign_in/sign_in_cubit.dart';
+  static const String signInSignInState =
+      'lib/features/auth/cubits/sign_in/sign_in_state.dart';
+  static const String signUpSignUpCubit =
+      'lib/features/auth/cubits/sign_up/sign_up_cubit.dart';
+  static const String signUpSignUpState =
+      'lib/features/auth/cubits/sign_up/sign_up_state.dart';
   static const String utilsAppTextStyles =
       'lib/core/utils/app_text_styles.dart';
+  static const String viewsHomeView =
+      'lib/features/home/presentation/views/home_view.dart';
   static const String viewsOnBoardingView =
       'lib/features/on_boarding/presentation/views/on_boarding_view.dart';
   static const String viewsResetYourPasswordView =
@@ -65,6 +97,8 @@ class Assets {
       'lib/core/widgets/forgot_password.dart';
   static const String widgetsHaveAnAccount =
       'lib/features/auth/presentation/views/widgets/have_an_account.dart';
+  static const String widgetsHomeViewBody =
+      'lib/features/home/presentation/views/widgets/home_view_body.dart';
   static const String widgetsOnBoardingPageView =
       'lib/features/on_boarding/presentation/views/widgets/on_boarding_page_view.dart';
   static const String widgetsOnBoardingViewBody =
@@ -80,8 +114,12 @@ class Assets {
       'lib/features/auth/presentation/views/widgets/reset_your_password_view_body.dart';
   static const String widgetsSignInViewBody =
       'lib/features/auth/presentation/views/widgets/sign_in_view_body.dart';
+  static const String widgetsSignInViewBodyBlocConsumer =
+      'lib/features/auth/presentation/views/widgets/sign_in_view_body_bloc_consumer.dart';
   static const String widgetsSignUpViewBody =
       'lib/features/auth/presentation/views/widgets/sign_up_view_body.dart';
+  static const String widgetsSignUpViewBodyBlocConsumer =
+      'lib/features/auth/presentation/views/widgets/sign_up_view_body_bloc_consumer.dart';
   static const String widgetsSocialLoginButton =
       'lib/core/widgets/social_login_button.dart';
   static const String widgetsVerificationCodeViewBody =

@@ -9,18 +9,27 @@ class CustomTextFormField extends StatelessWidget {
     this.suffixIcon,
     required this.textInputType,
     required this.obscureText,
+    this.onSaved,
   });
 
   final TextInputType textInputType;
   final String hintText;
   final Widget? suffixIcon;
   final bool obscureText;
+  final void Function(String?)? onSaved;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onSaved: onSaved,
       obscureText: obscureText,
       keyboardType: textInputType,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'This field is required';
+        }
+        return null;
+      },
       decoration: InputDecoration(
         suffixIcon: suffixIcon,
         hintStyle: TextStyles.regular14.copyWith(
