@@ -17,5 +17,5 @@ abstract class AuthRepo {
     required String password,
   });
 
-  Future<Either<Failure, CountryEntity>> getCountryId();
+  Future<Either<Failure, List<CountryEntity>>> getCountries();
 }

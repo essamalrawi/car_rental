@@ -18,6 +18,10 @@ class Assets {
   static const String fontsTajawalMedium = 'assets/fonts/Tajawal-Medium.ttf';
   static const String fontsTajawalRegular = 'assets/fonts/Tajawal-Regular.ttf';
   static const String generatedAssets = 'lib/generated/assets.dart';
+  static const String getCountriesGetCountriesCubit =
+      'lib/features/auth/cubits/get_countries/get_countries_cubit.dart';
+  static const String getCountriesGetCountriesState =
+      'lib/features/auth/cubits/get_countries/get_countries_state.dart';
   static const String helperFunctionsOnGenerateRoute =
       'lib/core/helper_functions/on_generate_route.dart';
   static const String helperFunctionsShowBars =
@@ -112,6 +116,8 @@ class Assets {
       'lib/core/widgets/password_field.dart';
   static const String widgetsResetYourPasswordViewBody =
       'lib/features/auth/presentation/views/widgets/reset_your_password_view_body.dart';
+  static const String widgetsSearchBarSuggestions =
+      'lib/features/auth/presentation/views/widgets/search_bar_suggestions.dart';
   static const String widgetsSignInViewBody =
       'lib/features/auth/presentation/views/widgets/sign_in_view_body.dart';
   static const String widgetsSignInViewBodyBlocConsumer =

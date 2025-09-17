@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
+import '../../../cubits/get_countries/get_countries_cubit.dart';
+
 class SignUpViewBodyBlocConsumer extends StatelessWidget {
   const SignUpViewBodyBlocConsumer({super.key});
 
@@ -20,6 +22,7 @@ class SignUpViewBodyBlocConsumer extends StatelessWidget {
         }
       },
       builder: (context, state) {
+        context.read<GetCountriesCubit>().getCountries();
         return ModalProgressHUD(
           inAsyncCall: state is SignUpLoading ? true : false,
           child: const SignUpViewBody(),

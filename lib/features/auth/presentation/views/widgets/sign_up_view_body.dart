@@ -1,8 +1,7 @@
 import 'package:car_rental/core/widgets/custom_text_form_field.dart';
 import 'package:car_rental/core/widgets/password_field.dart';
 import 'package:car_rental/features/auth/cubits/sign_up/sign_up_cubit.dart';
-import 'package:car_rental/features/auth/presentation/views/verify_your_phone_number_view.dart';
-import 'package:car_rental/features/auth/presentation/views/widgets/custom_pick_country.dart';
+import 'package:car_rental/features/auth/presentation/views/widgets/search_bar_suggestions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -81,12 +80,14 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                       password = value!;
                     },
                   ),
+                  // const SizedBox(height: 18),
+                  // CustomPickCountry(
+                  //   onChanged: (value) {
+                  //     countryId = countryIds[value]!;
+                  //   },
+                  // ),
                   const SizedBox(height: 18),
-                  CustomPickCountry(
-                    onChanged: (value) {
-                      countryId = countryIds[value]!;
-                    },
-                  ),
+                  const SearchBarSuggestions(),
                   const SizedBox(height: 28),
                   CustomButton(
                     onPressed: () {

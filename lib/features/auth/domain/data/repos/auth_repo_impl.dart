@@ -52,8 +52,13 @@ class AuthRepoImpl extends AuthRepo {
   }
 
   @override
-  Future<Either<Failure, CountryEntity>> getCountryId() {
-    // TODO: implement getCountryId
-    throw UnimplementedError();
+  Future<Either<Failure, List<CountryEntity>>> getCountries() async {
+    try {
+      final result = await quentAuthService.getCountries();
+
+      return Right(result);
+    } catch (e) {
+      return Left(ServerFailure("there was an error: ${e.toString()}"));
+    }
   }
 }
