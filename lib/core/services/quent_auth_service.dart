@@ -1,6 +1,7 @@
 import 'package:car_rental/core/errors/failure.dart';
 import 'package:car_rental/core/models/auth_response_model.dart';
 import 'package:car_rental/features/auth/domain/entities/country_entity.dart';
+import 'package:car_rental/features/auth/domain/entities/request_password_reset_code_entity.dart';
 import 'package:dio/dio.dart';
 
 import '../../constants.dart';
@@ -76,6 +77,21 @@ class QuentAuthService {
           .toList();
 
       return countries;
+    } catch (e) {
+      if (e is DioException) {
+        return ServerFailure.fromDiorError(e);
+      }
+      return ServerFailure(e.toString());
+    }
+  }
+
+  Future<dynamic> requestPasswordResetCode({required String email}) async {
+    try {
+      final response = await dio.post(
+        "$baseUrl/api/forgot_password/",
+        data: {"email": email},
+      );
+      return RequestPasswordResetCodeEntity.fromJson(response.data);
     } catch (e) {
       if (e is DioException) {
         return ServerFailure.fromDiorError(e);

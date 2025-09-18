@@ -5,6 +5,10 @@ class Assets {
   static const String coreCountries = 'lib/core/countries.dart';
   static const String entitiesCountryEntity =
       'lib/features/auth/domain/entities/country_entity.dart';
+  static const String entitiesRequestPasswordResetCodeEntity =
+      'lib/features/auth/domain/entities/request_password_reset_code_entity.dart';
+  static const String entitiesResetPasswordEntity =
+      'lib/features/auth/domain/entities/reset_password_entity.dart';
   static const String entitiesUserEntity =
       'lib/features/auth/domain/entities/user_entity.dart';
   static const String errorsFailure = 'lib/core/errors/failure.dart';

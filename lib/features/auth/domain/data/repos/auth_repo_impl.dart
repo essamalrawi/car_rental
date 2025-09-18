@@ -1,5 +1,6 @@
 import 'package:car_rental/core/errors/failure.dart';
 import 'package:car_rental/features/auth/domain/entities/country_entity.dart';
+import 'package:car_rental/features/auth/domain/entities/request_password_reset_code_entity.dart';
 import 'package:car_rental/features/auth/domain/entities/user_entity.dart';
 import 'package:car_rental/features/auth/domain/repos/auth_repo.dart';
 import 'package:dartz/dartz.dart';
@@ -60,5 +61,12 @@ class AuthRepoImpl extends AuthRepo {
     } catch (e) {
       return Left(ServerFailure("there was an error: ${e.toString()}"));
     }
+  }
+
+  @override
+  Future<Either<Failure, RequestPasswordResetCodeEntity>>
+  requestPasswordResetCode({required String email}) {
+    // TODO: implement requestPasswordResetCode
+    throw UnimplementedError();
   }
 }
