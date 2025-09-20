@@ -5,8 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SearchBarSuggestions extends StatefulWidget {
-  const SearchBarSuggestions({super.key});
-
+  const SearchBarSuggestions({super.key, this.onSaved});
+  final void Function(int?)? onSaved;
   @override
   State<SearchBarSuggestions> createState() => _SearchBarSuggestionsState();
 }
@@ -69,6 +69,7 @@ class _SearchBarSuggestionsState extends State<SearchBarSuggestions> {
                       ),
                       onTap: () {
                         _controller.text = suggestion.country;
+                        widget.onSaved?.call(suggestion.id);
                         _query = "";
                         _removeOverlay();
                         setState(() {});
@@ -111,7 +112,7 @@ class _SearchBarSuggestionsState extends State<SearchBarSuggestions> {
         children: [
           CompositedTransformTarget(
             link: _layerLink,
-            child: TextField(
+            child: TextFormField(
               controller: _controller,
               decoration: InputDecoration(
                 suffixIcon: SizedBox(

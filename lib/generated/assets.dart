@@ -55,6 +55,10 @@ class Assets {
       'lib/features/auth/domain/repos/auth_repo.dart';
   static const String reposAuthRepoImpl =
       'lib/features/auth/domain/data/repos/auth_repo_impl.dart';
+  static const String resetPasswordResetPasswordCubit =
+      'lib/features/auth/cubits/reset_password/reset_password_cubit.dart';
+  static const String resetPasswordResetPasswordState =
+      'lib/features/auth/cubits/reset_password/reset_password_state.dart';
   static const String servicesCustomBlocObserver =
       'lib/core/services/custom_bloc_observer.dart';
   static const String servicesDataService =
@@ -118,6 +122,8 @@ class Assets {
       'lib/features/on_boarding/presentation/views/widgets/page_view_item.dart';
   static const String widgetsPasswordField =
       'lib/core/widgets/password_field.dart';
+  static const String widgetsResetYourPasswordBlocCosumerBody =
+      'lib/features/auth/presentation/views/widgets/reset_your_password_bloc_view_body_bloc_consumer.dart';
   static const String widgetsResetYourPasswordViewBody =
       'lib/features/auth/presentation/views/widgets/reset_your_password_view_body.dart';
   static const String widgetsSearchBarSuggestions =

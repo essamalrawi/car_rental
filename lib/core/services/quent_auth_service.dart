@@ -5,6 +5,7 @@ import 'package:car_rental/features/auth/domain/entities/request_password_reset_
 import 'package:dio/dio.dart';
 
 import '../../constants.dart';
+import '../../features/auth/domain/entities/reset_password_entity.dart';
 
 class QuentAuthService {
   final Dio dio;
@@ -88,10 +89,39 @@ class QuentAuthService {
   Future<dynamic> requestPasswordResetCode({required String email}) async {
     try {
       final response = await dio.post(
-        "$baseUrl/api/forgot_password/",
+        "$baseUrl/api/auth/forgot_password/",
         data: {"email": email},
       );
+
       return RequestPasswordResetCodeEntity.fromJson(response.data);
+    } catch (e) {
+      if (e is DioException) {
+        return ServerFailure.fromDiorError(e);
+      }
+      return ServerFailure(e.toString());
+    }
+  }
+
+  Future<dynamic> resetPassword({
+    required String resetToken,
+    required String code,
+    required String password,
+    required String confirmPassword,
+  }) async {
+    try {
+      final response = await dio.post(
+        "$baseUrl/api/reset_password/",
+        data: {
+          "reset_token": resetToken,
+          "code": code,
+          "password": password,
+          "confirm_password": confirmPassword,
+        },
+      );
+
+      print(response);
+
+      return ResetPasswordEntity.fromJson(response.data);
     } catch (e) {
       if (e is DioException) {
         return ServerFailure.fromDiorError(e);

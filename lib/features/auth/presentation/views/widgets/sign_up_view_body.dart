@@ -11,7 +11,6 @@ import '../../../../../core/widgets/or_divider.dart';
 import '../../../../../core/widgets/social_login_button.dart';
 import '../../../../../generated/assets.dart';
 import 'have_an_account.dart';
-import '../../../../../core/countries.dart';
 
 class SignUpViewBody extends StatefulWidget {
   const SignUpViewBody({super.key});
@@ -80,14 +79,13 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                       password = value!;
                     },
                   ),
-                  // const SizedBox(height: 18),
-                  // CustomPickCountry(
-                  //   onChanged: (value) {
-                  //     countryId = countryIds[value]!;
-                  //   },
-                  // ),
+
                   const SizedBox(height: 18),
-                  const SearchBarSuggestions(),
+                  SearchBarSuggestions(
+                    onSaved: (value) {
+                      countryId = value!;
+                    },
+                  ),
                   const SizedBox(height: 28),
                   CustomButton(
                     onPressed: () {

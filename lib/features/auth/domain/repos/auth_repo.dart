@@ -3,6 +3,7 @@ import '../../../../core/errors/failure.dart';
 import 'package:dartz/dartz.dart';
 import '../entities/country_entity.dart';
 import '../entities/request_password_reset_code_entity.dart';
+import '../entities/reset_password_entity.dart';
 
 abstract class AuthRepo {
   Future<Either<Failure, UserEntity>> signUp({
@@ -22,4 +23,11 @@ abstract class AuthRepo {
 
   Future<Either<Failure, RequestPasswordResetCodeEntity>>
   requestPasswordResetCode({required String email});
+
+  Future<Either<Failure, ResetPasswordEntity>> resetPassword({
+    required String resetToken,
+    required String code,
+    required String password,
+    required String confirmPassword,
+  });
 }

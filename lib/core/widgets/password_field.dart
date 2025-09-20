@@ -5,10 +5,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'custom_text_form_field.dart';
 
 class PasswordField extends StatefulWidget {
-  const PasswordField({super.key, this.onSaved});
+  const PasswordField({super.key, this.onSaved, this.hintText = "Password"});
 
   final void Function(String?)? onSaved;
-
+  final String? hintText;
   @override
   State<PasswordField> createState() => _PasswordFieldState();
 }
@@ -37,7 +37,7 @@ class _PasswordFieldState extends State<PasswordField> {
               )
             : const Icon(Icons.visibility_off, color: Color(0xffC9CECF)),
       ),
-      hintText: 'Password',
+      hintText: widget.hintText!,
       textInputType: TextInputType.visiblePassword,
     );
   }

@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../../../../core/utils/app_text_styles.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../generated/assets.dart';
-import 'CustomOtpTextFormField.dart';
 import 'otp_form.dart';
 
 class VerificationCodeViewBody extends StatelessWidget {

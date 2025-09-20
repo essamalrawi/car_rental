@@ -1,10 +1,9 @@
 class ResetPasswordEntity {
-  final String resetToken, code, password, confirmPassword;
+  final String message;
 
-  ResetPasswordEntity({
-    required this.resetToken,
-    required this.code,
-    required this.password,
-    required this.confirmPassword,
-  });
+  ResetPasswordEntity({required this.message});
+
+  factory ResetPasswordEntity.fromJson(Map<String, dynamic> json) {
+    return ResetPasswordEntity(message: json['message']);
+  }
 }

@@ -1,7 +1,6 @@
 import 'package:car_rental/core/widgets/custom_button.dart';
 import 'package:car_rental/core/widgets/custom_text_form_field.dart';
 import 'package:car_rental/features/auth/presentation/views/verification_code_view.dart';
-import 'package:car_rental/features/auth/presentation/views/widgets/country_drop_down_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
