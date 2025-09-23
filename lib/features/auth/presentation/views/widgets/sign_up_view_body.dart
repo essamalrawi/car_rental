@@ -1,7 +1,9 @@
 import 'package:car_rental/core/widgets/custom_text_form_field.dart';
 import 'package:car_rental/core/widgets/password_field.dart';
-import 'package:car_rental/features/auth/cubits/sign_up/sign_up_cubit.dart';
-import 'package:car_rental/features/auth/presentation/views/widgets/search_bar_suggestions.dart';
+import 'package:car_rental/features/auth/presentation/cubits/sign_up/sign_up_cubit.dart';
+import 'package:car_rental/features/auth/presentation/views/widgets/location_search_bar_suggetions.dart';
+import 'package:car_rental/features/auth/presentation/views/widgets/country_search_bar_suggestions.dart';
+import 'package:car_rental/features/auth/presentation/views/widgets/yes_no_choice.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -24,8 +26,8 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
 
   late String fullName, email, password, phone;
-  late int countryId;
-
+  late int countryId, locationId;
+  bool createCar = false;
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -81,10 +83,36 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                   ),
 
                   const SizedBox(height: 18),
-                  SearchBarSuggestions(
+                  CountrySearchBarSuggestions(
                     onSaved: (value) {
                       countryId = value!;
                     },
+                  ),
+
+                  const SizedBox(height: 18),
+                  LocationSearchBarSuggetions(
+                    onSaved: (value) {
+                      locationId = value!;
+                    },
+                  ),
+
+                  const SizedBox(height: 28),
+                  YesNoChoice(
+                    question: "Available to create a car?",
+                    yesLabel: "Yes",
+                    noLabel: "No",
+                    yesIcon: Icons.check,
+                    noIcon: Icons.close,
+                    initialValue: 0,
+                    onChanged: (c) {
+                      createCar = c == 1;
+                    },
+                    enabled: true,
+                    yesColor: const Color(0xFF21292B),
+                    noColor: const Color(0xFF21292B),
+                    selectedTextColor: const Color(0xFFEDEDED),
+                    unselectedTextColor: const Color(0xFF21292B),
+                    disabledColor: Colors.grey,
                   ),
                   const SizedBox(height: 28),
                   CustomButton(
@@ -97,6 +125,8 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                           password: password,
                           countryId: countryId,
                           phone: phone,
+                          createCar: createCar,
+                          locationId: locationId,
                         );
                       } else {
                         setState(() {

@@ -1,12 +1,14 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:car_rental/core/widgets/custom_button.dart';
 import 'package:car_rental/core/widgets/custom_text_form_field.dart';
 import 'package:car_rental/features/auth/presentation/views/verification_code_view.dart';
+import 'package:car_rental/features/auth/presentation/views/widgets/country_search_bar_suggestions.dart';
+import 'package:car_rental/features/home/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../../core/utils/app_text_styles.dart';
 import '../../../../../generated/assets.dart';
-import 'custom_pick_country.dart';
 
 class VerifyYourPhoneNumberViewBody extends StatelessWidget {
   const VerifyYourPhoneNumberViewBody({super.key});
@@ -23,7 +25,28 @@ class VerifyYourPhoneNumberViewBody extends StatelessWidget {
 
               children: [
                 const SizedBox(height: 20),
-                SvgPicture.asset(Assets.imagesAuthViewLogo),
+                Row(
+                  children: [
+                    SvgPicture.asset(Assets.imagesAuthViewLogo),
+                    const Spacer(),
+
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushReplacementNamed(
+                          context,
+                          HomeView.routeName,
+                        );
+                      },
+
+                      child: Text(
+                        "Skip",
+                        style: TextStyles.regular14.copyWith(
+                          color: const Color(0xFF232323),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
@@ -48,7 +71,7 @@ class VerifyYourPhoneNumberViewBody extends StatelessWidget {
                 ),
                 const SizedBox(height: 40),
 
-                const CustomPickCountry(showCode: true),
+                CountrySearchBarSuggestions(onSaved: (value) {}),
                 const SizedBox(height: 18),
                 const CustomTextFormField(
                   hintText: "Phone number",

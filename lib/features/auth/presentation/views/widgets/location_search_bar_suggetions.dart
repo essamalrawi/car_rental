@@ -1,18 +1,20 @@
-import 'package:car_rental/features/auth/cubits/get_countries/get_countries_cubit.dart';
-import 'package:car_rental/features/auth/domain/entities/country_entity.dart';
+import 'package:car_rental/features/auth/presentation/cubits/cubit/get_locations_cubit.dart';
+import 'package:car_rental/features/auth/domain/entities/location_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class SearchBarSuggestions extends StatefulWidget {
-  const SearchBarSuggestions({super.key, this.onSaved});
+class LocationSearchBarSuggetions extends StatefulWidget {
+  const LocationSearchBarSuggetions({super.key, this.onSaved});
   final void Function(int?)? onSaved;
   @override
-  State<SearchBarSuggestions> createState() => _SearchBarSuggestionsState();
+  State<LocationSearchBarSuggetions> createState() =>
+      _LocationSearchBarSuggetionsState();
 }
 
-class _SearchBarSuggestionsState extends State<SearchBarSuggestions> {
-  List<CountryEntity> _data = [];
+class _LocationSearchBarSuggetionsState
+    extends State<LocationSearchBarSuggetions> {
+  List<LocationEntity> _data = [];
 
   @override
   void initState() {
@@ -30,8 +32,7 @@ class _SearchBarSuggestionsState extends State<SearchBarSuggestions> {
       builder: (context) {
         final filtered = _data
             .where(
-              (item) =>
-                  item.country.toLowerCase().contains(_query.toLowerCase()),
+              (item) => item.name.toLowerCase().contains(_query.toLowerCase()),
             )
             .toList();
 
@@ -61,14 +62,14 @@ class _SearchBarSuggestionsState extends State<SearchBarSuggestions> {
                     return ListTile(
                       dense: true,
                       title: Text(
-                        "${countryCodeToEmoji(suggestion.abbreviation)} ${suggestion.country} ",
+                        "${suggestion.name} ",
                         style: const TextStyle(
                           fontSize: 14,
                           color: Color(0xFF333333),
                         ),
                       ),
                       onTap: () {
-                        _controller.text = suggestion.country;
+                        _controller.text = suggestion.name;
                         widget.onSaved?.call(suggestion.id);
                         _query = "";
                         _removeOverlay();
@@ -101,10 +102,10 @@ class _SearchBarSuggestionsState extends State<SearchBarSuggestions> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<GetCountriesCubit, GetCountriesState>(
+    return BlocListener<GetLocationsCubit, GetLocationsState>(
       listener: (context, state) {
-        if (state is GetCountriesSuccess) {
-          _data = state.countries;
+        if (state is GetLocationsSuccess) {
+          _data = state.locations;
           print(_data.length);
         }
       },
@@ -127,7 +128,7 @@ class _SearchBarSuggestionsState extends State<SearchBarSuggestions> {
                   color: Color(0xFF7F7F7F),
                   letterSpacing: -0.14,
                 ),
-                hintText: "Country",
+                hintText: "Location",
                 filled: true,
                 fillColor: Colors.white,
                 border: buildBorder(),
@@ -153,12 +154,5 @@ class _SearchBarSuggestionsState extends State<SearchBarSuggestions> {
       borderRadius: BorderRadius.circular(10),
       borderSide: const BorderSide(width: 1, color: Color(0xFFD7D7D7)),
     );
-  }
-
-  String countryCodeToEmoji(String countryCode) {
-    final code = countryCode.toUpperCase();
-    return code.runes.map((int rune) {
-      return String.fromCharCode(rune + 127397);
-    }).join();
   }
 }

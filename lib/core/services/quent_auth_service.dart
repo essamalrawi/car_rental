@@ -1,7 +1,9 @@
 import 'package:car_rental/core/errors/failure.dart';
 import 'package:car_rental/core/models/auth_response_model.dart';
 import 'package:car_rental/features/auth/domain/entities/country_entity.dart';
+import 'package:car_rental/features/auth/domain/entities/location_entity.dart';
 import 'package:car_rental/features/auth/domain/entities/request_password_reset_code_entity.dart';
+import 'package:car_rental/features/auth/domain/entities/request_reset_phone_entity.dart';
 import 'package:dio/dio.dart';
 
 import '../../constants.dart';
@@ -18,6 +20,8 @@ class QuentAuthService {
     required String password,
     required int countryId,
     required String phone,
+    required bool createCar,
+    required int locationId,
   }) async {
     try {
       final formData = FormData.fromMap({
@@ -26,6 +30,8 @@ class QuentAuthService {
         "password": password,
         "country_id": countryId,
         "full_name": fullName,
+        "location_id": locationId,
+        "available_to_create_car": createCar,
       });
       final response = await dio.post(
         "$baseUrl/api/auth/register/",
@@ -110,7 +116,7 @@ class QuentAuthService {
   }) async {
     try {
       final response = await dio.post(
-        "$baseUrl/api/reset_password/",
+        "$baseUrl/api/auth/reset_password/",
         data: {
           "reset_token": resetToken,
           "code": code,
@@ -122,6 +128,70 @@ class QuentAuthService {
       print(response);
 
       return ResetPasswordEntity.fromJson(response.data);
+    } catch (e) {
+      if (e is DioException) {
+        return ServerFailure.fromDiorError(e);
+      }
+      return ServerFailure(e.toString());
+    }
+  }
+
+  Future<dynamic> getLocations() async {
+    try {
+      final response = await dio.get("$baseUrl/api/public/register_locations");
+
+      print(response);
+
+      final List<dynamic> data = response.data['data'];
+
+      final locations = data
+          .map((e) => LocationEntity.fromJson(e as Map<String, dynamic>))
+          .toList();
+
+      return locations;
+    } catch (e) {
+      if (e is DioException) {
+        return ServerFailure.fromDiorError(e);
+      }
+      return ServerFailure(e.toString());
+    }
+  }
+
+  Future<dynamic> requestVeifyCode({required String phoneNumber}) async {
+    try {
+      final response = await dio.post(
+        "$baseUrl/api/auth/phone/request_verify_code/",
+
+        data: {"phone": phoneNumber},
+      );
+
+      print(response);
+
+      return RequestVeifyPhoneEntity.fromJson(response.data);
+    } catch (e) {
+      if (e is DioException) {
+        return ServerFailure.fromDiorError(e);
+      }
+      return ServerFailure(e.toString());
+    }
+  }
+
+  Future<dynamic> confirmVeifyCode({
+    required String code,
+    required String verifyToken,
+  }) async {
+    try {
+      final response = await dio.post(
+        "$baseUrl/api/auth/phone/request_verify_code/",
+
+        data: {"code": code, "verify_token": verifyToken},
+      );
+
+      print(response);
+
+      // To Do
+
+      return User.fromJson(response.data);
     } catch (e) {
       if (e is DioException) {
         return ServerFailure.fromDiorError(e);

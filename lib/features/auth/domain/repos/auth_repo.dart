@@ -1,3 +1,5 @@
+import 'package:car_rental/features/auth/domain/entities/location_entity.dart';
+import 'package:car_rental/features/auth/domain/entities/request_reset_phone_entity.dart';
 import 'package:car_rental/features/auth/domain/entities/user_entity.dart';
 import '../../../../core/errors/failure.dart';
 import 'package:dartz/dartz.dart';
@@ -12,6 +14,8 @@ abstract class AuthRepo {
     required String password,
     required int countryId,
     required String phone,
+    required bool createCar,
+    required int locationId,
   });
 
   Future<Either<Failure, UserEntity>> signIn({
@@ -21,6 +25,8 @@ abstract class AuthRepo {
 
   Future<Either<Failure, List<CountryEntity>>> getCountries();
 
+  Future<Either<Failure, List<LocationEntity>>> getLocations();
+
   Future<Either<Failure, RequestPasswordResetCodeEntity>>
   requestPasswordResetCode({required String email});
 
@@ -29,5 +35,9 @@ abstract class AuthRepo {
     required String code,
     required String password,
     required String confirmPassword,
+  });
+
+  Future<Either<Failure, RequestVeifyPhoneEntity>> requestVeifyPhoneCode({
+    required String phone,
   });
 }

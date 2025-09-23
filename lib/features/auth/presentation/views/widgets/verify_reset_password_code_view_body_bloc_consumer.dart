@@ -1,4 +1,4 @@
-import 'package:car_rental/features/auth/cubits/reset_password/reset_password_cubit.dart';
+import 'package:car_rental/features/auth/presentation/cubits/reset_password/reset_password_cubit.dart';
 import 'package:car_rental/features/auth/presentation/views/widgets/verify_reset_password_code_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

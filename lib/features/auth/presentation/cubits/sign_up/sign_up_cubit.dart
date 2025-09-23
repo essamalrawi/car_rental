@@ -16,6 +16,8 @@ class SignUpCubit extends Cubit<SignUpState> {
     required String password,
     required int countryId,
     required String phone,
+    required bool createCar,
+    required int locationId,
   }) async {
     emit(SignUpLoading());
 
@@ -25,6 +27,8 @@ class SignUpCubit extends Cubit<SignUpState> {
       password: password,
       countryId: countryId,
       phone: phone,
+      createCar: createCar,
+      locationId: locationId,
     );
 
     result.fold(

@@ -49,7 +49,7 @@ class User {
   final String phone;
   final bool phoneVerified;
   final Country country;
-
+  final Location location;
   User({
     required this.id,
     required this.fullName,
@@ -57,6 +57,7 @@ class User {
     required this.phone,
     required this.phoneVerified,
     required this.country,
+    required this.location,
   });
 
   factory User.fromJson(Map<String, dynamic> json) {
@@ -67,6 +68,7 @@ class User {
       phone: json['phone'],
       phoneVerified: json['phone_is_verified'],
       country: Country.fromJson(json['country']),
+      location: Location.fromJson(json['location']),
     );
   }
 
@@ -76,6 +78,7 @@ class User {
       'full_name': fullName,
       'email': email,
       "country": country.toJson(),
+      "location": location.toJson(),
     };
   }
 }
@@ -101,6 +104,33 @@ class Country {
 
   Map<String, dynamic> toJson() {
     return {'id': id, 'country': country, 'abbreviation': abbreviation};
+  }
+}
+
+class Location {
+  final int id;
+  final String name;
+  final double lat;
+  final double lng;
+
+  Location({
+    required this.id,
+    required this.name,
+    required this.lat,
+    required this.lng,
+  });
+
+  factory Location.fromJson(Map<String, dynamic> json) {
+    return Location(
+      id: json['id'] as int,
+      name: json['name'] as String,
+      lat: (json['lat'] as num).toDouble(),
+      lng: (json['lng'] as num).toDouble(),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {'id': id, 'name': name, 'lat': lat, "lng": lng};
   }
 }
 

@@ -9,7 +9,7 @@ import '../../../../../core/widgets/forgot_password.dart';
 import '../../../../../core/widgets/or_divider.dart';
 import '../../../../../core/widgets/password_field.dart';
 import '../../../../../core/widgets/social_login_button.dart';
-import '../../../cubits/sign_in/sign_in_cubit.dart';
+import '../../cubits/sign_in/sign_in_cubit.dart';
 import '../sign_up_view.dart';
 import 'dont_have_an_account.dart';
 

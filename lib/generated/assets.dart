@@ -79,6 +79,8 @@ class Assets {
       'lib/core/utils/app_text_styles.dart';
   static const String viewsHomeView =
       'lib/features/home/presentation/views/home_view.dart';
+  static const String viewsNewPasswrodView =
+      'lib/features/auth/presentation/views/new_passwrod_view.dart';
   static const String viewsOnBoardingView =
       'lib/features/on_boarding/presentation/views/on_boarding_view.dart';
   static const String viewsResetYourPasswordView =
@@ -89,6 +91,8 @@ class Assets {
       'lib/features/auth/presentation/views/sign_up_view.dart';
   static const String viewsVerificationCodeView =
       'lib/features/auth/presentation/views/verification_code_view.dart';
+  static const String viewsVerifyResetPasswordCodeView =
+      'lib/features/auth/presentation/views/verify_reset_password_code_view.dart';
   static const String viewsVerifyYourPhoneNumberView =
       'lib/features/auth/presentation/views/verify_your_phone_number_view.dart';
   static const String widgetsCountryDropDownPage =
@@ -111,6 +115,8 @@ class Assets {
       'lib/features/auth/presentation/views/widgets/have_an_account.dart';
   static const String widgetsHomeViewBody =
       'lib/features/home/presentation/views/widgets/home_view_body.dart';
+  static const String widgetsNewPasswordViewBody =
+      'lib/features/auth/presentation/views/widgets/new_password_view_body.dart';
   static const String widgetsOnBoardingPageView =
       'lib/features/on_boarding/presentation/views/widgets/on_boarding_page_view.dart';
   static const String widgetsOnBoardingViewBody =
@@ -122,7 +128,7 @@ class Assets {
       'lib/features/on_boarding/presentation/views/widgets/page_view_item.dart';
   static const String widgetsPasswordField =
       'lib/core/widgets/password_field.dart';
-  static const String widgetsResetYourPasswordBlocCosumerBody =
+  static const String widgetsResetYourPasswordBlocViewBodyBlocConsumer =
       'lib/features/auth/presentation/views/widgets/reset_your_password_bloc_view_body_bloc_consumer.dart';
   static const String widgetsResetYourPasswordViewBody =
       'lib/features/auth/presentation/views/widgets/reset_your_password_view_body.dart';
@@ -140,6 +146,10 @@ class Assets {
       'lib/core/widgets/social_login_button.dart';
   static const String widgetsVerificationCodeViewBody =
       'lib/features/auth/presentation/views/widgets/verification_code_view_body.dart';
+  static const String widgetsVerifyResetPasswordCodeViewBody =
+      'lib/features/auth/presentation/views/widgets/verify_reset_password_code_view_body.dart';
+  static const String widgetsVerifyResetPasswordCodeViewBodyBlocConsumer =
+      'lib/features/auth/presentation/views/widgets/verify_reset_password_code_view_body_bloc_consumer.dart';
   static const String widgetsVerifyYourPhoneNumberViewBody =
       'lib/features/auth/presentation/views/widgets/verify_your_phone_number_view_body.dart';
 }

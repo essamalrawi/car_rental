@@ -1,4 +1,4 @@
-import 'package:car_rental/features/auth/presentation/views/widgets/new_password_view_body.dart';
+import 'package:car_rental/features/auth/presentation/views/widgets/new_password_body_bloc_consumer.dart';
 import 'package:flutter/material.dart';
 
 class NewPasswordView extends StatelessWidget {
@@ -6,6 +6,6 @@ class NewPasswordView extends StatelessWidget {
   static const routeName = "new_password";
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: NewPasswordViewBody());
+    return const Scaffold(body: NewPasswordBodyBlocConsumer());
   }
 }
