@@ -3,7 +3,7 @@ import 'package:car_rental/core/models/auth_response_model.dart';
 import 'package:car_rental/features/auth/domain/entities/country_entity.dart';
 import 'package:car_rental/features/auth/domain/entities/location_entity.dart';
 import 'package:car_rental/features/auth/domain/entities/request_password_reset_code_entity.dart';
-import 'package:car_rental/features/auth/domain/entities/request_reset_phone_entity.dart';
+import 'package:car_rental/features/auth/domain/entities/request_verify_phone_entity.dart';
 import 'package:dio/dio.dart';
 
 import '../../constants.dart';

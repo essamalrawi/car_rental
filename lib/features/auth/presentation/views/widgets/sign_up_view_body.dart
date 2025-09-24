@@ -1,6 +1,6 @@
 import 'package:car_rental/core/widgets/custom_text_form_field.dart';
 import 'package:car_rental/core/widgets/password_field.dart';
-import 'package:car_rental/features/auth/presentation/cubits/sign_up/sign_up_cubit.dart';
+import 'package:car_rental/features/auth/presentation/manager/cubits/sign_up/sign_up_cubit.dart';
 import 'package:car_rental/features/auth/presentation/views/widgets/location_search_bar_suggetions.dart';
 import 'package:car_rental/features/auth/presentation/views/widgets/country_search_bar_suggestions.dart';
 import 'package:car_rental/features/auth/presentation/views/widgets/yes_no_choice.dart';

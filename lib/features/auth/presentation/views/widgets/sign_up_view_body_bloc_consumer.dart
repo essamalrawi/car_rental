@@ -1,14 +1,14 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:car_rental/core/helper_functions/show_bars.dart';
-import 'package:car_rental/features/auth/presentation/cubits/cubit/get_locations_cubit.dart';
-import 'package:car_rental/features/auth/presentation/cubits/sign_up/sign_up_cubit.dart';
+import 'package:car_rental/features/auth/presentation/manager/cubits/get_locations/get_locations_cubit.dart';
+import 'package:car_rental/features/auth/presentation/manager/cubits/sign_up/sign_up_cubit.dart';
 import 'package:car_rental/features/auth/presentation/views/verify_your_phone_number_view.dart';
 import 'package:car_rental/features/auth/presentation/views/widgets/sign_up_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-import '../../cubits/get_countries/get_countries_cubit.dart';
+import '../../manager/cubits/get_countries/get_countries_cubit.dart';
 
 class SignUpViewBodyBlocConsumer extends StatelessWidget {
   const SignUpViewBodyBlocConsumer({super.key});

@@ -1,5 +1,5 @@
 import 'package:another_flushbar/flushbar.dart';
-import 'package:car_rental/features/auth/presentation/cubits/reset_password/reset_password_cubit.dart';
+import 'package:car_rental/features/auth/presentation/manager/cubits/reset_password/reset_password_cubit.dart';
 import 'package:car_rental/features/auth/presentation/views/widgets/new_password_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,7 +13,6 @@ class NewPasswordBodyBlocConsumer extends StatelessWidget {
       listener: (context, state) {
         if (state is ResetPasswordSuccess) {
           Navigator.popUntil(context, (route) => route.isFirst);
-
           Flushbar(
             title: "Password Changed",
             message: "Your password has been updated successfully.",

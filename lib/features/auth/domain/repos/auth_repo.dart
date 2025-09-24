@@ -1,5 +1,5 @@
 import 'package:car_rental/features/auth/domain/entities/location_entity.dart';
-import 'package:car_rental/features/auth/domain/entities/request_reset_phone_entity.dart';
+import 'package:car_rental/features/auth/domain/entities/request_verify_phone_entity.dart';
 import 'package:car_rental/features/auth/domain/entities/user_entity.dart';
 import '../../../../core/errors/failure.dart';
 import 'package:dartz/dartz.dart';
@@ -39,5 +39,9 @@ abstract class AuthRepo {
 
   Future<Either<Failure, RequestVeifyPhoneEntity>> requestVeifyPhoneCode({
     required String phone,
+  });
+  Future<Either<Failure, String>> confirmVeifyCode({
+    required String code,
+    required String verifyToken,
   });
 }

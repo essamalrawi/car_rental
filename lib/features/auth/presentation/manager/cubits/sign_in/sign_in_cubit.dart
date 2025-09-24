@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:car_rental/features/auth/domain/repos/auth_repo.dart';
 
-import '../../../domain/entities/user_entity.dart';
+import '../../../../domain/entities/user_entity.dart';
 
 part 'sign_in_state.dart';
 

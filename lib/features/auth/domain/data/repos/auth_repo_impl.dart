@@ -2,7 +2,7 @@ import 'package:car_rental/core/errors/failure.dart';
 import 'package:car_rental/features/auth/domain/entities/country_entity.dart';
 import 'package:car_rental/features/auth/domain/entities/location_entity.dart';
 import 'package:car_rental/features/auth/domain/entities/request_password_reset_code_entity.dart';
-import 'package:car_rental/features/auth/domain/entities/request_reset_phone_entity.dart';
+import 'package:car_rental/features/auth/domain/entities/request_verify_phone_entity.dart';
 import 'package:car_rental/features/auth/domain/entities/reset_password_entity.dart';
 import 'package:car_rental/features/auth/domain/entities/user_entity.dart';
 import 'package:car_rental/features/auth/domain/repos/auth_repo.dart';
@@ -122,6 +122,23 @@ class AuthRepoImpl extends AuthRepo {
     try {
       final result = await quentAuthService.requestVeifyCode(
         phoneNumber: phone,
+      );
+
+      return Right(result);
+    } catch (e) {
+      return Left(ServerFailure("there was an error: ${e.toString()}"));
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> confirmVeifyCode({
+    required String code,
+    required String verifyToken,
+  }) async {
+    try {
+      final result = await quentAuthService.confirmVeifyCode(
+        code: code,
+        verifyToken: verifyToken,
       );
 
       return Right(result);

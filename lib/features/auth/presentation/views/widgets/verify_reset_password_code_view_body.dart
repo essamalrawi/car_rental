@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:another_flushbar/flushbar.dart';
 import 'package:car_rental/core/utils/app_text_styles.dart';
 import 'package:car_rental/core/widgets/custom_button.dart';
-import 'package:car_rental/features/auth/presentation/cubits/reset_password/reset_password_cubit.dart';
+import 'package:car_rental/features/auth/presentation/manager/cubits/reset_password/reset_password_cubit.dart';
 import 'package:car_rental/features/auth/presentation/views/new_passwrod_view.dart';
 import 'package:car_rental/features/auth/presentation/views/widgets/otp_form.dart';
 import 'package:car_rental/generated/assets.dart';

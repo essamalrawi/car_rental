@@ -1,4 +1,5 @@
-import 'package:car_rental/features/auth/presentation/cubits/reset_password/reset_password_cubit.dart';
+import 'package:car_rental/features/auth/presentation/manager/cubits/reset_password/reset_password_cubit.dart';
+import 'package:car_rental/features/auth/presentation/manager/cubits/verify_phone_number/verify_phone_number_cubit.dart';
 import 'package:car_rental/features/auth/presentation/views/new_passwrod_view.dart';
 import 'package:car_rental/features/auth/presentation/views/verify_reset_password_code_view.dart';
 import 'package:flutter/material.dart';
@@ -24,8 +25,12 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
         builder: (context) => const VerifyYourPhoneNumberView(),
       );
     case VerificationCodeView.routeName:
+      final cubit = settings.arguments as VerifyPhoneNumberCubit;
       return MaterialPageRoute(
-        builder: (context) => const VerificationCodeView(),
+        builder: (context) => BlocProvider.value(
+          value: cubit,
+          child: const VerificationCodeView(),
+        ),
       );
     case HomeView.routeName:
       return MaterialPageRoute(builder: (context) => const HomeView());
