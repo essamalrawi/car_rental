@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:car_rental/core/helper_functions/show_bars.dart';
 import 'package:car_rental/features/auth/presentation/cubits/cubit/get_locations_cubit.dart';
 import 'package:car_rental/features/auth/presentation/cubits/sign_up/sign_up_cubit.dart';
@@ -22,7 +23,24 @@ class SignUpViewBodyBlocConsumer extends StatelessWidget {
             VerifyYourPhoneNumberView.routeName,
           );
         } else if (state is SignUpFailure) {
-          showBar(context, state.errorMessage);
+          Flushbar(
+            title: "Validation Error",
+            message: "Please ensure all required fields are filled correctly.",
+            duration: const Duration(seconds: 5),
+            backgroundColor: const Color(0xFFE53935), // nice red for errors
+            icon: const Icon(Icons.error_outline, color: Colors.white),
+            flushbarPosition: FlushbarPosition.TOP,
+            borderRadius: BorderRadius.circular(8),
+            margin: const EdgeInsets.all(12),
+            padding: const EdgeInsets.all(16),
+            boxShadows: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.2),
+                blurRadius: 6,
+                offset: const Offset(0, 3),
+              ),
+            ],
+          ).show(context);
         }
       },
       builder: (context, state) {
