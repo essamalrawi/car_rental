@@ -33,14 +33,34 @@ class ServerFailure extends Failure {
         return ServerFailure('Opps There was an Error, Please try again');
     }
   }
-
   factory ServerFailure.fromResponse(int statusCode, dynamic response) {
     if (statusCode == 404) {
       return ServerFailure('Your request was not found, please try later');
     } else if (statusCode == 500) {
       return ServerFailure('There is a problem with server, please try later');
     } else if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
-      return ServerFailure(response['error']['message']);
+      if (response is Map<String, dynamic>) {
+        final generalMessage = response['message'];
+
+        // معالجة errors
+        String? detailedMessage;
+        if (response['errors'] is Map<String, dynamic>) {
+          final errors = response['errors'] as Map<String, dynamic>;
+          detailedMessage = errors.values
+              .expand((v) => v is List ? v : [v])
+              .join(" , ");
+        }
+
+        final combinedMessage = [
+          if (generalMessage != null) generalMessage,
+          if (detailedMessage != null) detailedMessage,
+        ].join(" - ");
+
+        return ServerFailure(
+          combinedMessage.isNotEmpty ? combinedMessage : 'Unknown error',
+        );
+      }
+      return ServerFailure('Unknown error');
     } else {
       return ServerFailure('There was an error , please try again');
     }

@@ -23,8 +23,8 @@ class SignUpViewBodyBlocConsumer extends StatelessWidget {
           );
         } else if (state is SignUpFailure) {
           Flushbar(
-            title: "Validation Error",
-            message: "Please ensure all required fields are filled correctly.",
+            title: "Error",
+            message: state.errorMessage,
             duration: const Duration(seconds: 5),
             backgroundColor: const Color(0xFFE53935), // nice red for errors
             icon: const Icon(Icons.error_outline, color: Colors.white),

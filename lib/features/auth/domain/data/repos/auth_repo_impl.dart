@@ -28,10 +28,11 @@ class AuthRepoImpl extends AuthRepo {
         email: email,
         password: password,
       );
-
       return Right(result.toEntity());
+    } on DioException catch (e) {
+      return Left(ServerFailure.fromDiorError(e));
     } catch (e) {
-      return Left(ServerFailure("there was an error"));
+      return Left(ServerFailure("Unexpected error: ${e.toString()}"));
     }
   }
 
@@ -57,8 +58,10 @@ class AuthRepoImpl extends AuthRepo {
       );
 
       return Right(result.toEntity());
+    } on ServerFailure catch (failure) {
+      return Left(failure);
     } catch (e) {
-      return Left(ServerFailure("there was an error"));
+      return Left(ServerFailure("Unexpected error: ${e.toString()}"));
     }
   }
 
@@ -68,8 +71,10 @@ class AuthRepoImpl extends AuthRepo {
       final result = await quentAuthService.getCountries();
 
       return Right(result);
+    } on ServerFailure catch (failure) {
+      return Left(failure);
     } catch (e) {
-      return Left(ServerFailure("there was an error: ${e.toString()}"));
+      return Left(ServerFailure("Unexpected error: ${e.toString()}"));
     }
   }
 
@@ -79,8 +84,10 @@ class AuthRepoImpl extends AuthRepo {
       final result = await quentAuthService.getLocations();
 
       return Right(result);
+    } on ServerFailure catch (failure) {
+      return Left(failure);
     } catch (e) {
-      return Left(ServerFailure("there was an error: ${e.toString()}"));
+      return Left(ServerFailure("Unexpected error: ${e.toString()}"));
     }
   }
 
@@ -92,8 +99,10 @@ class AuthRepoImpl extends AuthRepo {
         email: email,
       );
       return Right(result);
+    } on ServerFailure catch (failure) {
+      return Left(failure);
     } catch (e) {
-      return Left(ServerFailure("Invalid email or something wrong happen"));
+      return Left(ServerFailure("Unexpected error: ${e.toString()}"));
     }
   }
 
@@ -113,8 +122,10 @@ class AuthRepoImpl extends AuthRepo {
       );
 
       return Right(result);
+    } on ServerFailure catch (failure) {
+      return Left(failure);
     } catch (e) {
-      return Left(ServerFailure("there was an error: ${e.toString()}"));
+      return Left(ServerFailure("Unexpected error: ${e.toString()}"));
     }
   }
 
@@ -130,8 +141,10 @@ class AuthRepoImpl extends AuthRepo {
       );
 
       return Right(result);
+    } on ServerFailure catch (failure) {
+      return Left(failure);
     } catch (e) {
-      return Left(ServerFailure("there was an error: ${e.toString()}"));
+      return Left(ServerFailure("Unexpected error: ${e.toString()}"));
     }
   }
 
@@ -149,8 +162,10 @@ class AuthRepoImpl extends AuthRepo {
       );
       print(result);
       return Right(result);
+    } on ServerFailure catch (failure) {
+      return Left(failure);
     } catch (e) {
-      return Left(ServerFailure("there was an error: ${e.toString()}"));
+      return Left(ServerFailure("Unexpected error: ${e.toString()}"));
     }
   }
 }

@@ -4,6 +4,7 @@ import 'package:car_rental/features/auth/domain/entities/country_entity.dart';
 import 'package:car_rental/features/auth/domain/entities/location_entity.dart';
 import 'package:car_rental/features/auth/domain/entities/request_password_reset_code_entity.dart';
 import 'package:car_rental/features/auth/domain/entities/request_verify_phone_entity.dart';
+import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
 import '../../constants.dart';
@@ -14,7 +15,7 @@ class QuentAuthService {
 
   QuentAuthService(this.dio);
 
-  Future<dynamic> signUp({
+  Future<AuthResponseModel> signUp({
     required String fullName,
     required String email,
     required String password,
@@ -41,20 +42,20 @@ class QuentAuthService {
       print(response.data);
 
       return AuthResponseModel.fromJson(response.data);
+    } on DioException catch (e) {
+      throw ServerFailure.fromDiorError(e);
     } catch (e) {
-      if (e is DioException) {
-        return ServerFailure.fromDiorError(e);
-      }
-      return ServerFailure(e.toString());
+      throw ServerFailure("Unexpected error: ${e.toString()}");
     }
   }
 
-  Future<dynamic> signIn({
+  Future<AuthResponseModel> signIn({
     required String email,
     required String password,
   }) async {
     try {
       final formData = FormData.fromMap({"email": email, "password": password});
+
       final response = await dio.post(
         "$baseUrl/api/auth/login/",
         data: formData,
@@ -63,15 +64,14 @@ class QuentAuthService {
       print(response.data);
 
       return AuthResponseModel.fromJson(response.data);
+    } on DioException catch (e) {
+      throw e;
     } catch (e) {
-      if (e is DioException) {
-        return ServerFailure.fromDiorError(e);
-      }
-      return ServerFailure(e.toString());
+      throw Exception("Unexpected error: ${e.toString()}");
     }
   }
 
-  Future<dynamic> getCountries() async {
+  Future<List<CountryEntity>> getCountries() async {
     try {
       final response = await dio.get(
         "$baseUrl/api/public/countries/?page_size=245",
@@ -84,15 +84,16 @@ class QuentAuthService {
           .toList();
 
       return countries;
+    } on DioException catch (e) {
+      throw ServerFailure.fromDiorError(e);
     } catch (e) {
-      if (e is DioException) {
-        return ServerFailure.fromDiorError(e);
-      }
-      return ServerFailure(e.toString());
+      throw ServerFailure("Unexpected error: ${e.toString()}");
     }
   }
 
-  Future<dynamic> requestPasswordResetCode({required String email}) async {
+  Future<RequestPasswordResetCodeEntity> requestPasswordResetCode({
+    required String email,
+  }) async {
     try {
       final response = await dio.post(
         "$baseUrl/api/auth/forgot_password/",
@@ -100,17 +101,14 @@ class QuentAuthService {
       );
 
       return RequestPasswordResetCodeEntity.fromJson(response.data);
+    } on DioException catch (e) {
+      throw ServerFailure.fromDiorError(e);
     } catch (e) {
-      if (e is DioException) {
-        print("Response data: ${e.response?.data}");
-
-        return ServerFailure.fromDiorError(e);
-      }
-      return ServerFailure(e.toString());
+      throw ServerFailure("Unexpected error: ${e.toString()}");
     }
   }
 
-  Future<dynamic> resetPassword({
+  Future<ResetPasswordEntity> resetPassword({
     required String resetToken,
     required String code,
     required String password,
@@ -130,15 +128,14 @@ class QuentAuthService {
       print(response);
 
       return ResetPasswordEntity.fromJson(response.data);
+    } on DioException catch (e) {
+      throw ServerFailure.fromDiorError(e);
     } catch (e) {
-      if (e is DioException) {
-        return ServerFailure.fromDiorError(e);
-      }
-      return ServerFailure(e.toString());
+      throw ServerFailure("Unexpected error: ${e.toString()}");
     }
   }
 
-  Future<dynamic> getLocations() async {
+  Future<List<LocationEntity>> getLocations() async {
     try {
       final response = await dio.get("$baseUrl/api/public/register_locations");
 
@@ -151,15 +148,14 @@ class QuentAuthService {
           .toList();
 
       return locations;
+    } on DioException catch (e) {
+      throw ServerFailure.fromDiorError(e);
     } catch (e) {
-      if (e is DioException) {
-        return ServerFailure.fromDiorError(e);
-      }
-      return ServerFailure(e.toString());
+      throw ServerFailure("Unexpected error: ${e.toString()}");
     }
   }
 
-  Future<dynamic> requestVeifyCode({
+  Future<RequestVeifyPhoneEntity> requestVeifyCode({
     required String phoneNumber,
     required String accessToken,
   }) async {
@@ -175,15 +171,14 @@ class QuentAuthService {
       print(response.data);
 
       return RequestVeifyPhoneEntity.fromJson(response.data);
+    } on DioException catch (e) {
+      throw ServerFailure.fromDiorError(e);
     } catch (e) {
-      if (e is DioException) {
-        return ServerFailure.fromDiorError(e);
-      }
-      return ServerFailure(e.toString());
+      throw ServerFailure("Unexpected error: ${e.toString()}");
     }
   }
 
-  Future<dynamic> confirmVeifyCode({
+  Future<String> confirmVeifyCode({
     required String code,
     required String verifyToken,
     required String accessToken,
@@ -197,14 +192,10 @@ class QuentAuthService {
       );
 
       return response.data['message'];
+    } on DioException catch (e) {
+      throw ServerFailure.fromDiorError(e);
     } catch (e) {
-      if (e is DioException) {
-        print("Response data: ${e.response?.data}");
-        return ServerFailure.fromDiorError(
-          e.response?.data['errors']['message'],
-        );
-      }
-      return ServerFailure(e.toString());
+      throw ServerFailure("Unexpected error: ${e.toString()}");
     }
   }
 }

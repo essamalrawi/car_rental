@@ -1,9 +1,8 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:car_rental/features/auth/presentation/views/widgets/sign_in_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-
-import '../../../../../core/helper_functions/show_bars.dart';
 import '../../../../home/presentation/views/home_view.dart';
 import '../../manager/cubits/sign_in/sign_in_cubit.dart';
 
@@ -17,7 +16,24 @@ class SignInViewBodyBlocConsumer extends StatelessWidget {
         if (state is SignInSuccess) {
           Navigator.pushReplacementNamed(context, HomeView.routeName);
         } else if (state is SignInFailure) {
-          showBar(context, state.errorMessage);
+          Flushbar(
+            title: "Error",
+            message: state.errorMessage,
+            duration: const Duration(seconds: 5),
+            backgroundColor: const Color(0xFFE53935), // nice red for errors
+            icon: const Icon(Icons.error_outline, color: Colors.white),
+            flushbarPosition: FlushbarPosition.TOP,
+            borderRadius: BorderRadius.circular(8),
+            margin: const EdgeInsets.all(12),
+            padding: const EdgeInsets.all(16),
+            boxShadows: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.2),
+                blurRadius: 6,
+                offset: const Offset(0, 3),
+              ),
+            ],
+          ).show(context);
         }
       },
       builder: (context, state) {

@@ -38,6 +38,7 @@ class ResetYourPasswordBlocViewBodyBlocConsumer extends StatelessWidget {
 
         if (state is ResetPasswordFailure) {
           context.read<ResetPasswordCubit>().code = "";
+
           Flushbar(
             title: "Error",
             message: state.errorMessage,
