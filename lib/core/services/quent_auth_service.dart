@@ -35,7 +35,7 @@ class QuentAuthService {
         "available_to_create_car": createCar,
       });
       final response = await dio.post(
-        "$baseUrl/api/auth/register/",
+        "$kBaseUrl/api/auth/register/",
         data: formData,
       );
 
@@ -57,7 +57,7 @@ class QuentAuthService {
       final formData = FormData.fromMap({"email": email, "password": password});
 
       final response = await dio.post(
-        "$baseUrl/api/auth/login/",
+        "$kBaseUrl/api/auth/login/",
         data: formData,
       );
 
@@ -74,7 +74,7 @@ class QuentAuthService {
   Future<List<CountryEntity>> getCountries() async {
     try {
       final response = await dio.get(
-        "$baseUrl/api/public/countries/?page_size=245",
+        "$kBaseUrl/api/public/countries/?page_size=245",
       );
       final List<dynamic> data = response.data['data'];
 
@@ -96,7 +96,7 @@ class QuentAuthService {
   }) async {
     try {
       final response = await dio.post(
-        "$baseUrl/api/auth/forgot_password/",
+        "$kBaseUrl/api/auth/forgot_password/",
         data: {"email": email},
       );
 
@@ -116,7 +116,7 @@ class QuentAuthService {
   }) async {
     try {
       final response = await dio.post(
-        "$baseUrl/api/auth/reset_password/",
+        "$kBaseUrl/api/auth/reset_password/",
         data: {
           "reset_token": resetToken,
           "code": code,
@@ -137,7 +137,7 @@ class QuentAuthService {
 
   Future<List<LocationEntity>> getLocations() async {
     try {
-      final response = await dio.get("$baseUrl/api/public/register_locations");
+      final response = await dio.get("$kBaseUrl/api/public/register_locations");
 
       print(response);
 
@@ -161,7 +161,7 @@ class QuentAuthService {
   }) async {
     try {
       final response = await dio.post(
-        "$baseUrl/api/auth/phone/request_verify_code/",
+        "$kBaseUrl/api/auth/phone/request_verify_code/",
 
         data: {"phone": phoneNumber},
 
@@ -185,7 +185,7 @@ class QuentAuthService {
   }) async {
     try {
       final response = await dio.post(
-        "$baseUrl/api/auth/phone/confirm_verify_code/",
+        "$kBaseUrl/api/auth/phone/confirm_verify_code/",
 
         data: {"code": code, "verify_token": verifyToken},
         options: Options(headers: {"Authorization": "Bearer $accessToken"}),

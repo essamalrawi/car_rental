@@ -103,7 +103,7 @@ class _VerifyYourPhoneNumberViewBodyState
                       if (formKey.currentState!.validate()) {
                         formKey.currentState!.save();
 
-                        String accesToken = Prefs.getString(kaccessToken);
+                        String accesToken = Prefs.getString(kAccessToken);
 
                         context
                             .read<VerifyPhoneNumberCubit>()

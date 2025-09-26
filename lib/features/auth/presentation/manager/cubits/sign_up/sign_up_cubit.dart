@@ -38,7 +38,7 @@ class SignUpCubit extends Cubit<SignUpState> {
         emit(SignUpFailure(errorMessage: failure.message));
       },
       (userEntity) {
-        Prefs.setString(kaccessToken, userEntity.tokens.access);
+        Prefs.setString(kAccessToken, userEntity.tokens.access);
 
         emit(SignUpSuccess(userEntity: userEntity));
       },

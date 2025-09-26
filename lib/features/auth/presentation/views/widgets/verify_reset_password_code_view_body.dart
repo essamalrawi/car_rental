@@ -98,7 +98,7 @@ class _VerifyResetPasswordCodeViewBodyState
                         ).show(context);
                       }
 
-                      Prefs.setString(kcode, "");
+                      Prefs.setString(kAuthCode, "");
                     }
                   },
                 ),
