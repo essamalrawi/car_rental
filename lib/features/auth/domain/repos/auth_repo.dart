@@ -39,9 +39,11 @@ abstract class AuthRepo {
 
   Future<Either<Failure, RequestVeifyPhoneEntity>> requestVeifyPhoneCode({
     required String phone,
+    required String accessToken,
   });
   Future<Either<Failure, String>> confirmVeifyCode({
     required String code,
     required String verifyToken,
+    required String accessToken,
   });
 }

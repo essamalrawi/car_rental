@@ -1,6 +1,13 @@
+import 'dart:developer';
+
+import 'package:car_rental/constants.dart';
+import 'package:car_rental/core/services/shared_preferences_singleton.dart';
+import 'package:car_rental/features/auth/presentation/manager/cubits/otp_cubit/otp_cubit.dart';
+import 'package:car_rental/features/auth/presentation/manager/cubits/verify_phone_number/verify_phone_number_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../../core/utils/app_text_styles.dart';
 import '../../../../../core/widgets/custom_button.dart';
@@ -42,7 +49,23 @@ class VerificationCodeViewBody extends StatelessWidget {
                 const SizedBox(height: 40),
                 const OtpForm(),
                 const SizedBox(height: 24),
-                const CustomButton(text: "Continue"),
+                CustomButton(
+                  onPressed: () {
+                    String code = context.read<OtpCubit>().code;
+
+                    // log(
+                    //   "The code is $code and verifyToken is ${Prefs.getString(kverifyToken)} \n ${Prefs.getString(kaccessToken)}",
+                    // );
+
+                    context.read<VerifyPhoneNumberCubit>().verifyPhoneNumber(
+                      code: code,
+                      verifyCode: Prefs.getString(kverifyToken),
+                      accessToken: Prefs.getString(kaccessToken),
+                    );
+                  },
+
+                  text: "Continue",
+                ),
                 const Spacer(flex: 3),
               ],
             ),

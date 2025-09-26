@@ -1,5 +1,4 @@
 import 'package:another_flushbar/flushbar.dart';
-import 'package:car_rental/core/helper_functions/show_bars.dart';
 import 'package:car_rental/features/auth/presentation/manager/cubits/get_locations/get_locations_cubit.dart';
 import 'package:car_rental/features/auth/presentation/manager/cubits/sign_up/sign_up_cubit.dart';
 import 'package:car_rental/features/auth/presentation/views/verify_your_phone_number_view.dart';

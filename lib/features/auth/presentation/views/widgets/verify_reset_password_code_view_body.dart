@@ -1,8 +1,10 @@
 import 'dart:developer';
-
 import 'package:another_flushbar/flushbar.dart';
+import 'package:car_rental/constants.dart';
+import 'package:car_rental/core/services/shared_preferences_singleton.dart';
 import 'package:car_rental/core/utils/app_text_styles.dart';
 import 'package:car_rental/core/widgets/custom_button.dart';
+import 'package:car_rental/features/auth/presentation/manager/cubits/otp_cubit/otp_cubit.dart';
 import 'package:car_rental/features/auth/presentation/manager/cubits/reset_password/reset_password_cubit.dart';
 import 'package:car_rental/features/auth/presentation/views/new_passwrod_view.dart';
 import 'package:car_rental/features/auth/presentation/views/widgets/otp_form.dart';
@@ -60,7 +62,7 @@ class _VerifyResetPasswordCodeViewBodyState
                 CustomButton(
                   text: "Continue",
                   onPressed: () {
-                    final userCode = context.read<ResetPasswordCubit>().code;
+                    final userCode = context.read<OtpCubit>().code;
                     log(userCode);
                     if (correctCode == userCode) {
                       Navigator.pushReplacementNamed(
@@ -96,7 +98,7 @@ class _VerifyResetPasswordCodeViewBodyState
                         ).show(context);
                       }
 
-                      context.read<ResetPasswordCubit>().resetCode();
+                      Prefs.setString(kcode, "");
                     }
                   },
                 ),

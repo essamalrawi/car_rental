@@ -1,4 +1,4 @@
-import 'package:car_rental/features/auth/presentation/manager/cubits/reset_password/reset_password_cubit.dart';
+import 'package:car_rental/features/auth/presentation/manager/cubits/otp_cubit/otp_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,13 +14,13 @@ class CustomOtpTextFormField extends StatelessWidget {
   final void Function(String?)? onSaved;
   final void Function(String)? onChanged2;
   final TextEditingController controller;
-
   @override
   Widget build(BuildContext context) {
-    return BlocListener<ResetPasswordCubit, ResetPasswordState>(
+    return BlocListener<OtpCubit, OtpState>(
       listener: (context, state) {
-        if (state is CodeChanged || state is ResetPasswordFailure) {
+        if (state is OtpClear) {
           controller.clear();
+          context.read<OtpCubit>().clear();
         }
       },
       child: SizedBox(

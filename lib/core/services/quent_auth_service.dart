@@ -102,6 +102,8 @@ class QuentAuthService {
       return RequestPasswordResetCodeEntity.fromJson(response.data);
     } catch (e) {
       if (e is DioException) {
+        print("Response data: ${e.response?.data}");
+
         return ServerFailure.fromDiorError(e);
       }
       return ServerFailure(e.toString());
@@ -157,15 +159,20 @@ class QuentAuthService {
     }
   }
 
-  Future<dynamic> requestVeifyCode({required String phoneNumber}) async {
+  Future<dynamic> requestVeifyCode({
+    required String phoneNumber,
+    required String accessToken,
+  }) async {
     try {
       final response = await dio.post(
         "$baseUrl/api/auth/phone/request_verify_code/",
 
         data: {"phone": phoneNumber},
+
+        options: Options(headers: {"Authorization": "Bearer $accessToken"}),
       );
 
-      print(response);
+      print(response.data);
 
       return RequestVeifyPhoneEntity.fromJson(response.data);
     } catch (e) {
@@ -179,22 +186,23 @@ class QuentAuthService {
   Future<dynamic> confirmVeifyCode({
     required String code,
     required String verifyToken,
+    required String accessToken,
   }) async {
     try {
       final response = await dio.post(
-        "$baseUrl/api/auth/phone/request_verify_code/",
+        "$baseUrl/api/auth/phone/confirm_verify_code/",
 
         data: {"code": code, "verify_token": verifyToken},
+        options: Options(headers: {"Authorization": "Bearer $accessToken"}),
       );
 
-      print(response);
-
-      // To Do
-
-      return User.fromJson(response.data);
+      return response.data['message'];
     } catch (e) {
       if (e is DioException) {
-        return ServerFailure.fromDiorError(e);
+        print("Response data: ${e.response?.data}");
+        return ServerFailure.fromDiorError(
+          e.response?.data['errors']['message'],
+        );
       }
       return ServerFailure(e.toString());
     }

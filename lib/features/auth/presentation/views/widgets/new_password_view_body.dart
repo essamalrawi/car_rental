@@ -77,13 +77,13 @@ class _NewPasswordViewBodyState extends State<NewPasswordViewBody> {
                               .requestPasswordResetCodeEntity;
 
                           log(
-                            "${data.code} ${data.resetToken} $password $confirmPassword",
+                            "${data.code} ${data.verifyToken} $password $confirmPassword",
                           );
 
                           context
                               .read<ResetPasswordCubit>()
                               .resetPasswordResetCode(
-                                resetToken: data.resetToken,
+                                resetToken: data.verifyToken,
                                 code: data.code,
                                 password: password,
                                 confirmPassword: confirmPassword,

@@ -1,3 +1,7 @@
+import 'dart:developer';
+
+import 'package:car_rental/constants.dart';
+import 'package:car_rental/core/services/shared_preferences_singleton.dart';
 import 'package:car_rental/core/widgets/custom_button.dart';
 import 'package:car_rental/core/widgets/custom_text_form_field.dart';
 import 'package:car_rental/features/auth/presentation/manager/cubits/verify_phone_number/verify_phone_number_cubit.dart';
@@ -94,14 +98,19 @@ class _VerifyYourPhoneNumberViewBodyState
                     obscureText: false,
                   ),
                   const SizedBox(height: 28),
-
                   CustomButton(
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
                         formKey.currentState!.save();
+
+                        String accesToken = Prefs.getString(kaccessToken);
+
                         context
                             .read<VerifyPhoneNumberCubit>()
-                            .requestVerifyPhoneNumber(phone: phone);
+                            .requestVerifyPhoneNumber(
+                              phone: phone,
+                              accessToken: accesToken,
+                            );
                       } else {
                         autoValidateMode = AutovalidateMode.always;
                       }
