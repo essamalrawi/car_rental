@@ -1,0 +1,14 @@
+"filename", "language", "Dart", "comment", "blank", "total"
+"/home/essam/Dev/car_rental/lib/constants.dart", "Dart", 3, 2, 0, 5
+"/home/essam/Dev/car_rental/lib/core/errors/failure.dart", "Dart", 17, 1, 2, 20
+"/home/essam/Dev/car_rental/lib/core/helper_functions/on_generate_route.dart", "Dart", 3, 0, 0, 3
+"/home/essam/Dev/car_rental/lib/core/models/error_model.dart", "Dart", 0, 0, 2, 2
+"/home/essam/Dev/car_rental/lib/core/services/quent_auth_service.dart", "Dart", -14, 0, -5, -19
+"/home/essam/Dev/car_rental/lib/features/auth/domain/data/repos/auth_repo_impl.dart", "Dart", 16, 0, -1, 15
+"/home/essam/Dev/car_rental/lib/features/auth/presentation/manager/cubits/sign_up/sign_up_cubit.dart", "Dart", -3, 0, -1, -4
+"/home/essam/Dev/car_rental/lib/features/auth/presentation/views/widgets/reset_your_password_bloc_view_body_bloc_consumer.dart", "Dart", 0, 0, 1, 1
+"/home/essam/Dev/car_rental/lib/features/auth/presentation/views/widgets/sign_in_view_body_bloc_consumer.dart", "Dart", 20, 0, -1, 19
+"/home/essam/Dev/car_rental/lib/features/auth/presentation/views/widgets/sign_up_view_body_bloc_consumer.dart", "Dart", 3, 0, 1, 4
+"/home/essam/Dev/car_rental/lib/features/on_boarding/presentation/views/startup_view.dart", "Dart", 39, 0, 6, 45
+"/home/essam/Dev/car_rental/lib/features/on_boarding/presentation/views/widgets/on_boarding_view_body.dart", "Dart", 3, 0, 0, 3
+"Total", "-", 87, 3, 4, 94

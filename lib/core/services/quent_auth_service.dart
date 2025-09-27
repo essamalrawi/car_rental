@@ -1,10 +1,10 @@
 import 'package:car_rental/core/errors/failure.dart';
 import 'package:car_rental/core/models/auth_response_model.dart';
+import 'package:car_rental/core/models/refresh_model.dart';
 import 'package:car_rental/features/auth/domain/entities/country_entity.dart';
 import 'package:car_rental/features/auth/domain/entities/location_entity.dart';
 import 'package:car_rental/features/auth/domain/entities/request_password_reset_code_entity.dart';
 import 'package:car_rental/features/auth/domain/entities/request_verify_phone_entity.dart';
-import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
 import '../../constants.dart';
@@ -39,8 +39,6 @@ class QuentAuthService {
         data: formData,
       );
 
-      print(response.data);
-
       return AuthResponseModel.fromJson(response.data);
     } on DioException catch (e) {
       throw ServerFailure.fromDiorError(e);
@@ -61,13 +59,11 @@ class QuentAuthService {
         data: formData,
       );
 
-      print(response.data);
-
       return AuthResponseModel.fromJson(response.data);
     } on DioException catch (e) {
-      throw e;
+      throw ServerFailure.fromDiorError(e);
     } catch (e) {
-      throw Exception("Unexpected error: ${e.toString()}");
+      throw ServerFailure("Unexpected error: ${e.toString()}");
     }
   }
 
@@ -125,8 +121,6 @@ class QuentAuthService {
         },
       );
 
-      print(response);
-
       return ResetPasswordEntity.fromJson(response.data);
     } on DioException catch (e) {
       throw ServerFailure.fromDiorError(e);
@@ -138,8 +132,6 @@ class QuentAuthService {
   Future<List<LocationEntity>> getLocations() async {
     try {
       final response = await dio.get("$kBaseUrl/api/public/register_locations");
-
-      print(response);
 
       final List<dynamic> data = response.data['data'];
 
@@ -168,8 +160,6 @@ class QuentAuthService {
         options: Options(headers: {"Authorization": "Bearer $accessToken"}),
       );
 
-      print(response.data);
-
       return RequestVeifyPhoneEntity.fromJson(response.data);
     } on DioException catch (e) {
       throw ServerFailure.fromDiorError(e);
@@ -192,6 +182,22 @@ class QuentAuthService {
       );
 
       return response.data['message'];
+    } on DioException catch (e) {
+      throw ServerFailure.fromDiorError(e);
+    } catch (e) {
+      throw ServerFailure("Unexpected error: ${e.toString()}");
+    }
+  }
+
+  Future<RefreshTokenModel> refreshToken({required String refreshToken}) async {
+    try {
+      final response = await dio.post(
+        "$kBaseUrl/api/auth/token/refresh/",
+
+        data: {"refresh": refreshToken},
+      );
+
+      return RefreshTokenModel.fromJson(response.data);
     } on DioException catch (e) {
       throw ServerFailure.fromDiorError(e);
     } catch (e) {

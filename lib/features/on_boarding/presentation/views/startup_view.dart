@@ -31,8 +31,6 @@ class _StartupViewState extends State<StartupView> {
       if (isOnBoardingViewSeen) {
         var token = Prefs.getString(kAccessToken);
         var isLoggedIn = token != null && token.isNotEmpty;
-        print("hello?" + token);
-
         if (isLoggedIn) {
           Navigator.pushReplacementNamed(context, HomeView.routeName);
         } else {

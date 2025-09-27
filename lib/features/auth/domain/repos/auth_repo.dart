@@ -1,3 +1,4 @@
+import 'package:car_rental/core/entites/refresh_entite.dart';
 import 'package:car_rental/features/auth/domain/entities/location_entity.dart';
 import 'package:car_rental/features/auth/domain/entities/request_verify_phone_entity.dart';
 import 'package:car_rental/features/auth/domain/entities/user_entity.dart';
@@ -45,5 +46,9 @@ abstract class AuthRepo {
     required String code,
     required String verifyToken,
     required String accessToken,
+  });
+
+  Future<Either<Failure, RefreshTokenEntity>> refreshToken({
+    required String refreshToken,
   });
 }

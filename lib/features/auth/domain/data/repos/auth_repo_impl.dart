@@ -1,5 +1,4 @@
-import 'dart:developer';
-
+import 'package:car_rental/core/entites/refresh_entite.dart';
 import 'package:car_rental/core/errors/failure.dart';
 import 'package:car_rental/features/auth/domain/entities/country_entity.dart';
 import 'package:car_rental/features/auth/domain/entities/location_entity.dart';
@@ -160,7 +159,22 @@ class AuthRepoImpl extends AuthRepo {
         verifyToken: verifyToken,
         accessToken: accessToken,
       );
-      print(result);
+      return Right(result);
+    } on ServerFailure catch (failure) {
+      return Left(failure);
+    } catch (e) {
+      return Left(ServerFailure("Unexpected error: ${e.toString()}"));
+    }
+  }
+
+  @override
+  Future<Either<Failure, RefreshTokenEntity>> refreshToken({
+    required String refreshToken,
+  }) async {
+    try {
+      final result = await quentAuthService.refreshToken(
+        refreshToken: refreshToken,
+      );
       return Right(result);
     } on ServerFailure catch (failure) {
       return Left(failure);

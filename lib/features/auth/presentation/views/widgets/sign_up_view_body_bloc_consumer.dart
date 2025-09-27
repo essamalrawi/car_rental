@@ -20,7 +20,7 @@ class SignUpViewBodyBlocConsumer extends StatelessWidget {
       listener: (context, state) {
         if (state is SignUpSuccess) {
           Prefs.setString(kAccessToken, state.userEntity.tokens.access);
-
+          Prefs.setString(kRefreshToken, state.userEntity.tokens.refresh);
           Navigator.pushReplacementNamed(
             context,
             VerifyYourPhoneNumberView.routeName,
