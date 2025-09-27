@@ -30,7 +30,7 @@ class VerifyPhoneNumberCubit extends Cubit<VerifyPhoneNumberState> {
         emit(VerifyPhoneNumberRequestFailure(errorMessage: failure.message));
       },
       (success) {
-        Prefs.setString(kAuthAccessToken, success.verifyToken);
+        Prefs.setString(kAuthverifyToken, success.verifyToken);
         emit(VerifyPhoneNumberRequestSuccess(requestVeifyPhoneEntity: success));
       },
     );

@@ -1,4 +1,6 @@
 import 'package:another_flushbar/flushbar.dart';
+import 'package:car_rental/constants.dart';
+import 'package:car_rental/core/services/shared_preferences_singleton.dart';
 import 'package:car_rental/features/auth/presentation/views/widgets/sign_in_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,6 +16,7 @@ class SignInViewBodyBlocConsumer extends StatelessWidget {
     return BlocConsumer<SignInCubit, SignInState>(
       listener: (context, state) {
         if (state is SignInSuccess) {
+          Prefs.setString(kAccessToken, state.userEntity.tokens.access);
           Navigator.pushReplacementNamed(context, HomeView.routeName);
         } else if (state is SignInFailure) {
           Flushbar(

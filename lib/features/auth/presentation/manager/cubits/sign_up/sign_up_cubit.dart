@@ -1,6 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:car_rental/constants.dart';
-import 'package:car_rental/core/services/shared_preferences_singleton.dart';
 import 'package:car_rental/features/auth/domain/entities/user_entity.dart';
 import 'package:car_rental/features/auth/domain/repos/auth_repo.dart';
 import 'package:meta/meta.dart';
@@ -38,8 +36,6 @@ class SignUpCubit extends Cubit<SignUpState> {
         emit(SignUpFailure(errorMessage: failure.message));
       },
       (userEntity) {
-        Prefs.setString(kAccessToken, userEntity.tokens.access);
-
         emit(SignUpSuccess(userEntity: userEntity));
       },
     );

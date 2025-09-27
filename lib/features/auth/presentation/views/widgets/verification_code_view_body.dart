@@ -59,7 +59,7 @@ class VerificationCodeViewBody extends StatelessWidget {
 
                     context.read<VerifyPhoneNumberCubit>().verifyPhoneNumber(
                       code: code,
-                      verifyCode: Prefs.getString(kAuthAccessToken),
+                      verifyCode: Prefs.getString(kAuthverifyToken),
                       accessToken: Prefs.getString(kAccessToken),
                     );
                   },

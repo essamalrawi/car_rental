@@ -2,6 +2,7 @@ import 'package:car_rental/features/auth/presentation/manager/cubits/reset_passw
 import 'package:car_rental/features/auth/presentation/manager/cubits/verify_phone_number/verify_phone_number_cubit.dart';
 import 'package:car_rental/features/auth/presentation/views/new_passwrod_view.dart';
 import 'package:car_rental/features/auth/presentation/views/verify_reset_password_code_view.dart';
+import 'package:car_rental/features/on_boarding/presentation/views/startup_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/auth/presentation/views/reset_your_password_view.dart';
@@ -14,6 +15,8 @@ import '../../features/on_boarding/presentation/views/on_boarding_view.dart';
 
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
+    case StartupView.routeName:
+      return MaterialPageRoute(builder: (context) => const StartupView());
     case OnBoardingView.routeName:
       return MaterialPageRoute(builder: (context) => const OnBoardingView());
     case SignInView.routeName:

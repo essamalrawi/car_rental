@@ -1,3 +1,5 @@
+import 'package:car_rental/constants.dart';
+import 'package:car_rental/core/services/shared_preferences_singleton.dart';
 import 'package:car_rental/features/auth/presentation/views/sign_in_view.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
@@ -81,6 +83,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
                 child: CustomButton(
                   text: "Get Started",
                   onPressed: () {
+                    Prefs.setBool(kIsOnBoardingViewSeen, true);
                     Navigator.pushReplacementNamed(
                       context,
                       SignInView.routeName,

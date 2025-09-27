@@ -1,4 +1,6 @@
 import 'package:another_flushbar/flushbar.dart';
+import 'package:car_rental/constants.dart';
+import 'package:car_rental/core/services/shared_preferences_singleton.dart';
 import 'package:car_rental/features/auth/presentation/manager/cubits/get_locations/get_locations_cubit.dart';
 import 'package:car_rental/features/auth/presentation/manager/cubits/sign_up/sign_up_cubit.dart';
 import 'package:car_rental/features/auth/presentation/views/verify_your_phone_number_view.dart';
@@ -17,6 +19,8 @@ class SignUpViewBodyBlocConsumer extends StatelessWidget {
     return BlocConsumer<SignUpCubit, SignUpState>(
       listener: (context, state) {
         if (state is SignUpSuccess) {
+          Prefs.setString(kAccessToken, state.userEntity.tokens.access);
+
           Navigator.pushReplacementNamed(
             context,
             VerifyYourPhoneNumberView.routeName,
