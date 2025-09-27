@@ -16,8 +16,11 @@ class SignInViewBodyBlocConsumer extends StatelessWidget {
     return BlocConsumer<SignInCubit, SignInState>(
       listener: (context, state) {
         if (state is SignInSuccess) {
-          Prefs.setString(kAccessToken, state.userEntity.tokens.access);
-          Prefs.setString(kRefreshToken, state.userEntity.tokens.refresh);
+          if (Prefs.getBool(kRememberMe)) {
+            Prefs.setString(kAccessToken, state.userEntity.tokens.access);
+            Prefs.setString(kRefreshToken, state.userEntity.tokens.refresh);
+          }
+
           Navigator.pushReplacementNamed(context, HomeView.routeName);
         } else if (state is SignInFailure) {
           Flushbar(
