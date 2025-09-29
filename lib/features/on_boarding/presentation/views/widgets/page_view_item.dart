@@ -1,8 +1,8 @@
+import 'package:car_rental/constants/assets.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/app_text_styles.dart';
 import '../../../../../core/widgets/custom_button.dart';
-import '../../../../../generated/assets.dart';
 
 class PageViewItem extends StatelessWidget {
   const PageViewItem({
@@ -29,7 +29,7 @@ class PageViewItem extends StatelessWidget {
       ),
       child: SafeArea(
         child: Padding(
-          padding: EdgeInsetsGeometry.symmetric(horizontal: 24),
+          padding: const EdgeInsetsGeometry.symmetric(horizontal: 24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -51,7 +51,7 @@ class PageViewItem extends StatelessWidget {
                             fit: BoxFit.cover,
                           ),
                         ),
-                        SizedBox(height: 48),
+                        const SizedBox(height: 48),
                       ],
                     ),
                   ),

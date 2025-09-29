@@ -1,3 +1,4 @@
+import 'package:car_rental/constants/assets.dart';
 import 'package:car_rental/features/auth/presentation/manager/cubits/reset_password/reset_password_cubit.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +7,6 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../../core/utils/app_text_styles.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
-import '../../../../../generated/assets.dart';
 import '../sign_up_view.dart';
 
 class ResetYourPasswordViewBody extends StatefulWidget {

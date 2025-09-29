@@ -1,4 +1,4 @@
-import 'package:car_rental/generated/assets.dart';
+import 'package:car_rental/constants/assets.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

@@ -1,3 +1,4 @@
+import 'package:car_rental/constants/assets.dart';
 import 'package:car_rental/core/widgets/custom_text_form_field.dart';
 import 'package:car_rental/core/widgets/password_field.dart';
 import 'package:car_rental/features/auth/presentation/manager/cubits/sign_up/sign_up_cubit.dart';
@@ -11,7 +12,6 @@ import '../../../../../core/utils/app_text_styles.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/or_divider.dart';
 import '../../../../../core/widgets/social_login_button.dart';
-import '../../../../../generated/assets.dart';
 import 'have_an_account.dart';
 
 class SignUpViewBody extends StatefulWidget {

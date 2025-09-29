@@ -1,11 +1,11 @@
 import 'package:car_rental/constants.dart';
+import 'package:car_rental/constants/assets.dart';
 import 'package:car_rental/core/services/shared_preferences_singleton.dart';
 import 'package:car_rental/features/auth/presentation/views/sign_in_view.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/widgets/custom_button.dart';
-import '../../../../../generated/assets.dart';
 import 'on_boarding_page_view.dart';
 
 class OnBoardingViewBody extends StatefulWidget {

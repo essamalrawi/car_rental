@@ -1,10 +1,10 @@
 import 'dart:developer';
 
+import 'package:car_rental/constants/assets.dart';
 import 'package:car_rental/core/utils/app_text_styles.dart';
 import 'package:car_rental/core/widgets/custom_button.dart';
 import 'package:car_rental/core/widgets/password_field.dart';
 import 'package:car_rental/features/auth/presentation/manager/cubits/reset_password/reset_password_cubit.dart';
-import 'package:car_rental/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';

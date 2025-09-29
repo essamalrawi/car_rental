@@ -1,4 +1,11 @@
+import 'package:car_rental/constants/assets.dart';
+import 'package:car_rental/features/home/presentation/views/widgets/brands_section.dart';
+import 'package:car_rental/features/home/presentation/views/widgets/custom_search_bar_button.dart';
+import 'package:car_rental/features/home/presentation/views/widgets/filter_search_widget.dart';
+import 'package:car_rental/features/home/presentation/views/widgets/notifications_widget.dart';
+import 'package:car_rental/features/home/presentation/views/widgets/profile_pic.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -10,41 +17,29 @@ class HomeViewBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            "Welcome to Rental App",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 16),
-
-          // Search bar
-          TextField(
-            decoration: InputDecoration(
-              hintText: "Search rentals...",
-              prefixIcon: const Icon(Icons.search),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-            ),
+          const SizedBox(height: 22),
+          Row(
+            children: [
+              SvgPicture.asset(Assets.imagesAuthViewLogo),
+              const Spacer(),
+              const NotificationsWidget(),
+              const SizedBox(width: 15),
+              const ProfilePic(),
+            ],
           ),
           const SizedBox(height: 20),
-
-          // Simple list of items
-          Expanded(
-            child: ListView.builder(
-              itemCount: 5, // mock items
-              itemBuilder: (context, index) {
-                return Card(
-                  margin: const EdgeInsets.only(bottom: 12),
-                  child: ListTile(
-                    leading: const Icon(Icons.directions_car),
-                    title: Text("Car Model ${index + 1}"),
-                    subtitle: const Text("\$40/day"),
-                    trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-                  ),
-                );
-              },
-            ),
+          const Divider(color: Color(0xffD7D7D7)),
+          const SizedBox(height: 20),
+          const Row(
+            children: [
+              Expanded(child: CustomSearchBarButton()),
+              SizedBox(width: 26),
+              FilterSearchWidget(),
+            ],
           ),
+
+          const SizedBox(height: 28),
+          const BrandsSection(),
         ],
       ),
     );

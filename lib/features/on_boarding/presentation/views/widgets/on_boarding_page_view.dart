@@ -1,7 +1,6 @@
+import 'package:car_rental/constants/assets.dart';
 import 'package:car_rental/features/on_boarding/presentation/views/widgets/page_view_item.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../../generated/assets.dart';
 
 class OnBoardingPageView extends StatelessWidget {
   const OnBoardingPageView({
@@ -18,11 +17,11 @@ class OnBoardingPageView extends StatelessWidget {
     return PageView(
       controller: pageController,
       children: [
-        PageViewItem(
+        const PageViewItem(
           backgroundImage: Assets.imagesOnBoardingPageOne,
           title: 'Welcome to\nQent',
         ),
-        PageViewItem(
+        const PageViewItem(
           backgroundImage: Assets.imagesOnBoardingPageTwo,
           title: 'Lets Start\nA New Experience\nWith Car rental.',
           subtitle:

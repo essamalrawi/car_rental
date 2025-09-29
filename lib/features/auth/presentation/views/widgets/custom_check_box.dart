@@ -1,7 +1,6 @@
+import 'package:car_rental/constants/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
-import '../../../../../generated/assets.dart';
 
 class CustomCheckBox extends StatelessWidget {
   const CustomCheckBox({

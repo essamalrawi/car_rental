@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:car_rental/constants.dart';
+import 'package:car_rental/constants/assets.dart';
 import 'package:car_rental/core/services/shared_preferences_singleton.dart';
 import 'package:car_rental/core/widgets/custom_button.dart';
 import 'package:car_rental/core/widgets/custom_text_form_field.dart';
@@ -11,7 +12,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../../core/utils/app_text_styles.dart';
-import '../../../../../generated/assets.dart';
 
 class VerifyYourPhoneNumberViewBody extends StatefulWidget {
   const VerifyYourPhoneNumberViewBody({super.key});
