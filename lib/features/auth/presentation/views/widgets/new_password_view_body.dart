@@ -35,7 +35,7 @@ class _NewPasswordViewBodyState extends State<NewPasswordViewBody> {
                   const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: [SvgPicture.asset(Assets.imagesAuthViewLogo)],
+                    children: [SvgPicture.asset(Assets.imagesIconAuthViewLogo)],
                   ),
                   const Spacer(),
                   Text(

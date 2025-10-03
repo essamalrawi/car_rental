@@ -2,7 +2,7 @@ import 'package:another_flushbar/flushbar.dart';
 import 'package:car_rental/features/auth/presentation/manager/cubits/otp_cubit/otp_cubit.dart';
 import 'package:car_rental/features/auth/presentation/manager/cubits/verify_phone_number/verify_phone_number_cubit.dart';
 import 'package:car_rental/features/auth/presentation/views/widgets/verification_code_view_body.dart';
-import 'package:car_rental/features/home/presentation/views/home_view.dart';
+import 'package:car_rental/features/on_boarding/presentation/views/main_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,10 +14,10 @@ class VerificationCodeViewBodyBlocConsumer extends StatelessWidget {
     return BlocConsumer<VerifyPhoneNumberCubit, VerifyPhoneNumberState>(
       listener: (context, state) {
         if (state is VerifyPhoneNumberSuccess) {
-          Navigator.pushReplacementNamed(context, HomeView.routeName);
+          Navigator.pushReplacementNamed(context, MainView.routeName);
         }
         if (state is VerifyPhoneNumberRequestSuccess) {
-          Navigator.pushReplacementNamed(context, HomeView.routeName);
+          Navigator.pushReplacementNamed(context, MainView.routeName);
         }
         if (state is VerifyPhoneNumberRequestFailure) {
           Flushbar(

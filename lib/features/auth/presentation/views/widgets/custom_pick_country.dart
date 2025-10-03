@@ -42,7 +42,7 @@ class _CustomPickCountryState extends State<CustomPickCountry> {
         suffixIcon: SizedBox(
           width: 20,
           height: 20,
-          child: Center(child: SvgPicture.asset(Assets.imagesSwitcherIcon)),
+          child: Center(child: SvgPicture.asset(Assets.imagesIconSwitcherIcon)),
         ),
 
         hintStyle: TextStyles.regular16.copyWith(

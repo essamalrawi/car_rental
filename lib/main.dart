@@ -23,7 +23,7 @@ class CarRental extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         //  fontFamily: 'Tajawal',
-        scaffoldBackgroundColor: Colors.white,
+        scaffoldBackgroundColor: const Color(0xffF8F8F8),
       ),
       debugShowCheckedModeBanner: false,
       initialRoute: StartupView.routeName,

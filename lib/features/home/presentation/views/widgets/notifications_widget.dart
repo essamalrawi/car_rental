@@ -21,7 +21,9 @@ class NotificationsWidget extends StatelessWidget {
               side: BorderSide(width: 1, color: Color(0xFFD7D7D7)),
             ),
           ),
-          child: Center(child: SvgPicture.asset(Assets.imagesNotifications)),
+          child: Center(
+            child: SvgPicture.asset(Assets.imagesIconNotifications),
+          ),
         ),
 
         Positioned(

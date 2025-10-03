@@ -2,10 +2,10 @@ import 'package:another_flushbar/flushbar.dart';
 import 'package:car_rental/constants.dart';
 import 'package:car_rental/core/services/shared_preferences_singleton.dart';
 import 'package:car_rental/features/auth/presentation/views/widgets/sign_in_view_body.dart';
+import 'package:car_rental/features/on_boarding/presentation/views/main_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import '../../../../home/presentation/views/home_view.dart';
 import '../../manager/cubits/sign_in/sign_in_cubit.dart';
 
 class SignInViewBodyBlocConsumer extends StatelessWidget {
@@ -21,7 +21,7 @@ class SignInViewBodyBlocConsumer extends StatelessWidget {
             Prefs.setString(kRefreshToken, state.userEntity.tokens.refresh);
           }
 
-          Navigator.pushReplacementNamed(context, HomeView.routeName);
+          Navigator.pushReplacementNamed(context, MainView.routeName);
         } else if (state is SignInFailure) {
           Flushbar(
             title: "Error",

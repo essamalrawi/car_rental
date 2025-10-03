@@ -15,7 +15,7 @@ class FilterSearchWidget extends StatelessWidget {
         color: Color.fromARGB(255, 255, 255, 255),
         shape: OvalBorder(side: BorderSide(width: 1, color: Color(0xFFD7D7D7))),
       ),
-      child: Center(child: SvgPicture.asset(Assets.imagesFilterIcon)),
+      child: Center(child: SvgPicture.asset(Assets.imagesIconFilterIcon)),
     );
   }
 }

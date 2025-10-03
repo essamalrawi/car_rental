@@ -34,7 +34,7 @@ class _ResetYourPasswordViewBodyState extends State<ResetYourPasswordViewBody> {
 
               children: [
                 const SizedBox(height: 20),
-                SvgPicture.asset(Assets.imagesAuthViewLogo),
+                SvgPicture.asset(Assets.imagesIconAuthViewLogo),
               ],
             ),
           ),

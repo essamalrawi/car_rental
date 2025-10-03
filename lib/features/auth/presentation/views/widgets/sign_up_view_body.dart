@@ -42,7 +42,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 20),
-                  SvgPicture.asset(Assets.imagesAuthViewLogo),
+                  SvgPicture.asset(Assets.imagesIconAuthViewLogo),
                   const SizedBox(height: 50),
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -153,12 +153,12 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                   const SizedBox(height: 28),
                   const SocialLoginButton(
                     text: "Apple pay",
-                    imagePath: Assets.imagesAppleLogo,
+                    imagePath: Assets.imagesIconAppleLogo,
                   ),
                   const SizedBox(height: 18),
                   const SocialLoginButton(
                     text: "Google pay",
-                    imagePath: Assets.imagesGoogleLogo,
+                    imagePath: Assets.imagesIconGoogleLogo,
                   ),
                   const SizedBox(height: 57),
                   const HaveAnAccount(),

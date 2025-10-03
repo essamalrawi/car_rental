@@ -39,7 +39,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 20),
-                  SvgPicture.asset(Assets.imagesAuthViewLogo),
+                  SvgPicture.asset(Assets.imagesIconAuthViewLogo),
                   const SizedBox(height: 50),
                   const Text(
                     'Welcome Back\nReady to hit the road.',
@@ -94,12 +94,12 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                   const SizedBox(height: 28),
                   const SocialLoginButton(
                     text: "Apple pay",
-                    imagePath: Assets.imagesAppleLogo,
+                    imagePath: Assets.imagesIconAppleLogo,
                   ),
                   const SizedBox(height: 18),
                   const SocialLoginButton(
                     text: "Google pay",
-                    imagePath: Assets.imagesGoogleLogo,
+                    imagePath: Assets.imagesIconGoogleLogo,
                   ),
                   const SizedBox(height: 57),
                   const DontHaveAccount(),

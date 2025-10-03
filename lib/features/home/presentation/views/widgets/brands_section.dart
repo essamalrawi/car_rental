@@ -1,5 +1,6 @@
+import 'package:car_rental/constants/assets.dart';
 import 'package:car_rental/core/utils/app_text_styles.dart';
-import 'package:car_rental/features/home/presentation/views/widgets/bran_widget.dart';
+import 'package:car_rental/features/home/presentation/views/widgets/brand_widget.dart';
 import 'package:flutter/material.dart';
 
 class BrandsSection extends StatelessWidget {
@@ -7,6 +8,14 @@ class BrandsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<String> meow = ["Tesla", "Lamborghini", "BMW", "Ferrari"];
+    List<String> meow1 = [
+      Assets.imagesTestTesla,
+      Assets.imagesTestLamborghini,
+      Assets.imagesTestBmw,
+      Assets.imagesTestFerrari,
+    ];
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -15,7 +24,7 @@ class BrandsSection extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: List.generate(4, (index) {
-            return const BranWidget();
+            return BrandWidget(brandName: meow[index], image: meow1[index]);
           }),
         ),
       ],

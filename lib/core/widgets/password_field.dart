@@ -32,7 +32,7 @@ class _PasswordFieldState extends State<PasswordField> {
                 width: 20,
                 height: 20,
                 child: Center(
-                  child: SvgPicture.asset(Assets.imagesShowPasswordIcon),
+                  child: SvgPicture.asset(Assets.imagesIconShowPasswordIcon),
                 ),
               )
             : const Icon(Icons.visibility_off, color: Color(0xffC9CECF)),

@@ -2,6 +2,7 @@ import 'package:car_rental/features/auth/presentation/manager/cubits/reset_passw
 import 'package:car_rental/features/auth/presentation/manager/cubits/verify_phone_number/verify_phone_number_cubit.dart';
 import 'package:car_rental/features/auth/presentation/views/new_passwrod_view.dart';
 import 'package:car_rental/features/auth/presentation/views/verify_reset_password_code_view.dart';
+import 'package:car_rental/features/on_boarding/presentation/views/main_view.dart';
 import 'package:car_rental/features/on_boarding/presentation/views/startup_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,7 +11,6 @@ import '../../features/auth/presentation/views/sign_in_view.dart';
 import '../../features/auth/presentation/views/sign_up_view.dart';
 import '../../features/auth/presentation/views/verification_code_view.dart';
 import '../../features/auth/presentation/views/verify_your_phone_number_view.dart';
-import '../../features/home/presentation/views/home_view.dart';
 import '../../features/on_boarding/presentation/views/on_boarding_view.dart';
 
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -35,8 +35,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
           child: const VerificationCodeView(),
         ),
       );
-    case HomeView.routeName:
-      return MaterialPageRoute(builder: (context) => const HomeView());
+    case MainView.routeName:
+      return MaterialPageRoute(builder: (context) => const MainView());
     case ResetYourPasswordView.routeName:
       return MaterialPageRoute(builder: (_) => const ResetYourPasswordView());
     case VerifyResetPasswordCodeView.routeName:

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:car_rental/constants.dart';
 import 'package:car_rental/constants/assets.dart';
 import 'package:car_rental/core/services/shared_preferences_singleton.dart';
@@ -7,7 +5,7 @@ import 'package:car_rental/core/widgets/custom_button.dart';
 import 'package:car_rental/core/widgets/custom_text_form_field.dart';
 import 'package:car_rental/features/auth/presentation/manager/cubits/verify_phone_number/verify_phone_number_cubit.dart';
 import 'package:car_rental/features/auth/presentation/views/widgets/country_search_bar_suggestions.dart';
-import 'package:car_rental/features/home/presentation/views/home_view.dart';
+import 'package:car_rental/features/on_boarding/presentation/views/main_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -40,14 +38,14 @@ class _VerifyYourPhoneNumberViewBodyState
                 const SizedBox(height: 20),
                 Row(
                   children: [
-                    SvgPicture.asset(Assets.imagesAuthViewLogo),
+                    SvgPicture.asset(Assets.imagesIconAuthViewLogo),
                     const Spacer(),
 
                     GestureDetector(
                       onTap: () {
                         Navigator.pushReplacementNamed(
                           context,
-                          HomeView.routeName,
+                          MainView.routeName,
                         );
                       },
 

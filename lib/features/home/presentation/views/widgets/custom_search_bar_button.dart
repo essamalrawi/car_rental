@@ -19,7 +19,7 @@ class CustomSearchBarButton extends StatelessWidget {
             child: SizedBox(
               width: 20,
               height: 20,
-              child: Center(child: SvgPicture.asset(Assets.imagesSearch)),
+              child: Center(child: SvgPicture.asset(Assets.imagesIconSearch)),
             ),
           ),
           border: outlineInputBorder(),
