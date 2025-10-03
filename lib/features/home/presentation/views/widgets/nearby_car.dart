@@ -20,11 +20,14 @@ class NearbyCar extends StatelessWidget {
             color: const Color(0xffF0F0F0),
             borderRadius: BorderRadius.circular(15),
           ),
-          child: Padding(
-            padding: EdgeInsets.only(
-              left: MediaQuery.sizeOf(context).width * .1,
+          child: SizedBox(
+            height: 121,
+            child: Padding(
+              padding: EdgeInsets.only(
+                left: MediaQuery.sizeOf(context).width * .1,
+              ),
+              child: Image.asset(Assets.imagesTestcar),
             ),
-            child: Image.asset(Assets.imagesTestcar),
           ),
         ),
       ],

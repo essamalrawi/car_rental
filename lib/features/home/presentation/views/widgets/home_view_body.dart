@@ -9,7 +9,6 @@ import 'package:car_rental/features/home/presentation/views/widgets/nearby_car.d
 import 'package:car_rental/features/home/presentation/views/widgets/notifications_widget.dart';
 import 'package:car_rental/features/home/presentation/views/widgets/profile_pic.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -18,6 +17,7 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
+      physics: const BouncingScrollPhysics(),
       slivers: [
         SliverToBoxAdapter(
           child: Padding(

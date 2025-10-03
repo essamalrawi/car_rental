@@ -1,7 +1,6 @@
 import 'package:car_rental/constants.dart';
 import 'package:car_rental/core/services/shared_preferences_singleton.dart';
 import 'package:car_rental/features/auth/presentation/views/sign_in_view.dart';
-import 'package:car_rental/features/home/presentation/views/home_view.dart';
 import 'package:car_rental/features/on_boarding/presentation/views/main_view.dart';
 import 'package:car_rental/features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:flutter/material.dart';

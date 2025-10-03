@@ -10,7 +10,7 @@ class MainViewBody extends StatelessWidget {
     return IndexedStack(
       index: currentViewIndex,
       children: [
-        HomeView(),
+        const HomeView(),
         Container(width: 200, height: 200, color: Colors.red),
       ],
     );
