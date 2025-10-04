@@ -1,3 +1,4 @@
+import 'package:car_rental/core/config/api_config.dart';
 import 'package:car_rental/core/errors/failure.dart';
 import 'package:car_rental/core/models/auth_response_model.dart';
 import 'package:car_rental/core/models/refresh_model.dart';
@@ -6,8 +7,6 @@ import 'package:car_rental/features/auth/domain/entities/location_entity.dart';
 import 'package:car_rental/features/auth/domain/entities/request_password_reset_code_entity.dart';
 import 'package:car_rental/features/auth/domain/entities/request_verify_phone_entity.dart';
 import 'package:dio/dio.dart';
-
-import '../../constants.dart';
 import '../../features/auth/domain/entities/reset_password_entity.dart';
 
 class QuentAuthService {

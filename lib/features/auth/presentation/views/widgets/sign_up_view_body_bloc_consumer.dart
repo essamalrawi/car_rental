@@ -1,5 +1,5 @@
 import 'package:another_flushbar/flushbar.dart';
-import 'package:car_rental/constants.dart';
+import 'package:car_rental/core/config/auth_keys.dart';
 import 'package:car_rental/core/services/shared_preferences_singleton.dart';
 import 'package:car_rental/features/auth/presentation/manager/cubits/get_locations/get_locations_cubit.dart';
 import 'package:car_rental/features/auth/presentation/manager/cubits/sign_up/sign_up_cubit.dart';
