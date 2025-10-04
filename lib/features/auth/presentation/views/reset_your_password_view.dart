@@ -2,8 +2,9 @@ import 'package:car_rental/features/auth/presentation/manager/cubits/reset_passw
 import 'package:car_rental/features/auth/presentation/views/widgets/reset_your_password_bloc_view_body_bloc_consumer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/services/get_it_service.dart';
-import '../../domain/repos/auth_repo.dart';
+import 'package:car_rental/core/services/get_it_service.dart';
+import 'package:car_rental/features/auth/domain/repos/auth_repo.dart';
+
 
 class ResetYourPasswordView extends StatelessWidget {
   const ResetYourPasswordView({super.key});
