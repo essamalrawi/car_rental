@@ -1,9 +1,12 @@
-import 'package:car_rental/core/config/api_config.dart';
+import 'package:car_rental/core/constants/api_constants.dart';
 import 'package:car_rental/core/errors/failure.dart';
-import 'package:car_rental/core/models/auth_response_model.dart';
+import 'package:car_rental/features/auth/domain/data/models/user_model/user_model.dart';
 import 'package:car_rental/core/models/refresh_model.dart';
-import 'package:car_rental/features/auth/domain/entities/country_entity.dart';
-import 'package:car_rental/features/auth/domain/entities/location_entity.dart';
+import 'package:car_rental/features/auth/domain/data/models/country_model/country_model.dart';
+import 'package:car_rental/features/auth/domain/data/models/location_model/location_model.dart';
+import 'package:car_rental/features/auth/domain/data/models/request_password_reset_code_mode/request_password_reset_code_mode.dart';
+import 'package:car_rental/features/auth/domain/data/models/request_verify_phone_model/request_verify_phone_model.dart';
+import 'package:car_rental/features/auth/domain/data/models/reset_password_model/reset_password_model.dart';
 import 'package:car_rental/features/auth/domain/entities/request_password_reset_code_entity.dart';
 import 'package:car_rental/features/auth/domain/entities/request_verify_phone_entity.dart';
 import 'package:dio/dio.dart';
@@ -14,7 +17,7 @@ class QuentAuthService {
 
   QuentAuthService(this.dio);
 
-  Future<AuthResponseModel> signUp({
+  Future<UserModel> signUp({
     required String fullName,
     required String email,
     required String password,
@@ -38,7 +41,7 @@ class QuentAuthService {
         data: formData,
       );
 
-      return AuthResponseModel.fromJson(response.data);
+      return UserModel.fromJson(response.data);
     } on DioException catch (e) {
       throw ServerFailure.fromDiorError(e);
     } catch (e) {
@@ -46,7 +49,7 @@ class QuentAuthService {
     }
   }
 
-  Future<AuthResponseModel> signIn({
+  Future<UserModel> signIn({
     required String email,
     required String password,
   }) async {
@@ -58,7 +61,7 @@ class QuentAuthService {
         data: formData,
       );
 
-      return AuthResponseModel.fromJson(response.data);
+      return UserModel.fromJson(response.data);
     } on DioException catch (e) {
       throw ServerFailure.fromDiorError(e);
     } catch (e) {
@@ -66,7 +69,7 @@ class QuentAuthService {
     }
   }
 
-  Future<List<CountryEntity>> getCountries() async {
+  Future<List<CountryModel>> getCountries() async {
     try {
       final response = await dio.get(
         "$kBaseUrl/api/public/countries/?page_size=245",
@@ -75,7 +78,7 @@ class QuentAuthService {
 
       // final countries = data.map((e) => CountryEntity.fromJson(e)).toList();
       final countries = data
-          .map((e) => CountryEntity.fromJson(e as Map<String, dynamic>))
+          .map((e) => CountryModel.fromJson(e as Map<String, dynamic>))
           .toList();
 
       return countries;
@@ -86,7 +89,7 @@ class QuentAuthService {
     }
   }
 
-  Future<RequestPasswordResetCodeEntity> requestPasswordResetCode({
+  Future<RequestPasswordResetCodeModel> requestPasswordResetCode({
     required String email,
   }) async {
     try {
@@ -95,7 +98,7 @@ class QuentAuthService {
         data: {"email": email},
       );
 
-      return RequestPasswordResetCodeEntity.fromJson(response.data);
+      return RequestPasswordResetCodeModel.fromJson(response.data);
     } on DioException catch (e) {
       throw ServerFailure.fromDiorError(e);
     } catch (e) {
@@ -103,7 +106,7 @@ class QuentAuthService {
     }
   }
 
-  Future<ResetPasswordEntity> resetPassword({
+  Future<ResetPasswordModel> resetPassword({
     required String resetToken,
     required String code,
     required String password,
@@ -120,7 +123,7 @@ class QuentAuthService {
         },
       );
 
-      return ResetPasswordEntity.fromJson(response.data);
+      return ResetPasswordModel.fromJson(response.data);
     } on DioException catch (e) {
       throw ServerFailure.fromDiorError(e);
     } catch (e) {
@@ -128,14 +131,14 @@ class QuentAuthService {
     }
   }
 
-  Future<List<LocationEntity>> getLocations() async {
+  Future<List<LocationModel>> getLocations() async {
     try {
       final response = await dio.get("$kBaseUrl/api/public/register_locations");
 
       final List<dynamic> data = response.data['data'];
 
       final locations = data
-          .map((e) => LocationEntity.fromJson(e as Map<String, dynamic>))
+          .map((e) => LocationModel.fromJson(e as Map<String, dynamic>))
           .toList();
 
       return locations;
@@ -146,7 +149,7 @@ class QuentAuthService {
     }
   }
 
-  Future<RequestVeifyPhoneEntity> requestVeifyCode({
+  Future<RequestVerifyPhoneModel> requestVeifyCode({
     required String phoneNumber,
     required String accessToken,
   }) async {
@@ -159,7 +162,7 @@ class QuentAuthService {
         options: Options(headers: {"Authorization": "Bearer $accessToken"}),
       );
 
-      return RequestVeifyPhoneEntity.fromJson(response.data);
+      return RequestVerifyPhoneModel.fromJson(response.data);
     } on DioException catch (e) {
       throw ServerFailure.fromDiorError(e);
     } catch (e) {

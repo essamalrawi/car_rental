@@ -1,18 +1,14 @@
-import '../../features/auth/domain/entities/user_entity.dart';
+import '../../../entities/user_entity.dart';
 
-class AuthResponseModel {
+class UserModel {
   final User user;
   final String? message;
   final Tokens tokens;
 
-  AuthResponseModel({
-    required this.user,
-    required this.message,
-    required this.tokens,
-  });
+  UserModel({required this.user, required this.message, required this.tokens});
 
-  factory AuthResponseModel.fromJson(Map<String, dynamic> json) {
-    return AuthResponseModel(
+  factory UserModel.fromJson(Map<String, dynamic> json) {
+    return UserModel(
       user: User.fromJson(json['user']),
       message: json['message'],
       tokens: Tokens.fromJson(json['tokens']),

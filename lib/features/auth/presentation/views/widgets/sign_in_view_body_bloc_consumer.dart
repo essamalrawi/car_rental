@@ -1,6 +1,6 @@
 import 'package:another_flushbar/flushbar.dart';
-import 'package:car_rental/core/config/auth_keys.dart';
-import 'package:car_rental/core/config/preferences_keys.dart';
+import 'package:car_rental/core/constants/auth_keys.dart';
+import 'package:car_rental/core/constants/preferences_keys.dart';
 import 'package:car_rental/core/services/shared_preferences_singleton.dart';
 import 'package:car_rental/features/auth/presentation/views/widgets/sign_in_view_body.dart';
 import 'package:car_rental/features/on_boarding/presentation/views/main_view.dart';

@@ -6,12 +6,4 @@ class RequestPasswordResetCodeEntity {
     required this.code,
     required this.verifyToken,
   });
-
-  factory RequestPasswordResetCodeEntity.fromJson(Map<String, dynamic> json) {
-    return RequestPasswordResetCodeEntity(
-      message: json['message'],
-      code: json['code'],
-      verifyToken: json['reset_token'],
-    );
-  }
 }

@@ -10,13 +10,4 @@ class LocationEntity {
     required this.lat,
     required this.lng,
   });
-
-  factory LocationEntity.fromJson(Map<String, dynamic> json) {
-    return LocationEntity(
-      id: json['id'] as int,
-      name: json['name'] as String,
-      lat: (json['lat'] as num).toDouble(),
-      lng: (json['lng'] as num).toDouble(),
-    );
-  }
 }
