@@ -2,10 +2,13 @@ import 'package:car_rental/features/auth/presentation/manager/cubits/reset_passw
 import 'package:car_rental/features/auth/presentation/manager/cubits/verify_phone_number/verify_phone_number_cubit.dart';
 import 'package:car_rental/features/auth/presentation/views/new_passwrod_view.dart';
 import 'package:car_rental/features/auth/presentation/views/verify_reset_password_code_view.dart';
+import 'package:car_rental/features/home/presentation/views/car_details.dart';
 import 'package:car_rental/features/on_boarding/presentation/views/main_view.dart';
 import 'package:car_rental/features/on_boarding/presentation/views/startup_view.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:page_transition/page_transition.dart';
 import '../../features/auth/presentation/views/reset_your_password_view.dart';
 import '../../features/auth/presentation/views/sign_in_view.dart';
 import '../../features/auth/presentation/views/sign_up_view.dart';
@@ -55,6 +58,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
             BlocProvider.value(value: cubit, child: const NewPasswordView()),
       );
 
+    case CarDetails.routeName:
+      return CupertinoPageRoute(builder: (context) => const CarDetails());
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }

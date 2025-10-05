@@ -26,6 +26,10 @@ class Assets {
   /// assets/images/icon/apple_logo.svg
   static const String imagesIconAppleLogo = "assets/images/icon/apple_logo.svg";
 
+  /// Assets for imagesIconArrow
+  /// assets/images/icon/arrow.svg
+  static const String imagesIconArrow = "assets/images/icon/arrow.svg";
+
   /// Assets for imagesIconAuthViewLogo
   /// assets/images/icon/auth_view_logo.svg
   static const String imagesIconAuthViewLogo = "assets/images/icon/auth_view_logo.svg";
@@ -37,6 +41,10 @@ class Assets {
   /// Assets for imagesIconCurrency
   /// assets/images/icon/currency.svg
   static const String imagesIconCurrency = "assets/images/icon/currency.svg";
+
+  /// Assets for imagesIconDots
+  /// assets/images/icon/dots.svg
+  static const String imagesIconDots = "assets/images/icon/dots.svg";
 
   /// Assets for imagesIconFillHeart
   /// assets/images/icon/fill_heart.svg
@@ -137,6 +145,10 @@ class Assets {
   /// Assets for imagesTestBmw
   /// assets/images/test_bmw.png
   static const String imagesTestBmw = "assets/images/test_bmw.png";
+
+  /// Assets for imagesTestCar
+  /// assets/images/test_car.png
+  static const String imagesTestCar = "assets/images/test_car.png";
 
   /// Assets for imagesTestFerrari
   /// assets/images/test_ferrari.png

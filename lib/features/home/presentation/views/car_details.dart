@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 class CarDetails extends StatelessWidget {
   const CarDetails({super.key});
-
+  static const routeName = "car-details";
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: CarDetailsViewBody());
+    return const Scaffold(body: SafeArea(child: CarDetailsViewBody()));
   }
 }

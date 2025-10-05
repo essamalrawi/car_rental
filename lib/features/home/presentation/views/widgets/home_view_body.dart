@@ -1,4 +1,5 @@
 import 'package:car_rental/constants/assets.dart';
+import 'package:car_rental/features/home/presentation/views/car_details.dart';
 import 'package:car_rental/features/home/presentation/views/widgets/best_car_item.dart';
 import 'package:car_rental/features/home/presentation/views/widgets/best_cars_section.dart';
 import 'package:car_rental/features/home/presentation/views/widgets/brands_section.dart';
@@ -54,7 +55,7 @@ class HomeViewBody extends StatelessWidget {
           ),
         ),
         SliverToBoxAdapter(
-          child: CarSelectionContainer(
+          child: CarInfoContainer(
             widget: Padding(
               padding: const EdgeInsets.all(20),
 
@@ -68,9 +69,18 @@ class HomeViewBody extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       itemCount: 2,
                       itemBuilder: (context, index) {
-                        return const Padding(
-                          padding: EdgeInsets.only(right: 18.0),
-                          child: BestCarItem(),
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 18.0),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                context,
+                                CarDetails.routeName,
+                              );
+                            },
+
+                            child: const BestCarItem(),
+                          ),
                         );
                       },
                     ),
@@ -82,7 +92,7 @@ class HomeViewBody extends StatelessWidget {
         ),
 
         const SliverToBoxAdapter(
-          child: CarSelectionContainer(
+          child: CarInfoContainer(
             widget: Padding(padding: EdgeInsets.all(20), child: NearbyCar()),
           ),
         ),

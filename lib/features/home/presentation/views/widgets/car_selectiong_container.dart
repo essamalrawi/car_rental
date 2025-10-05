@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CarSelectionContainer extends StatelessWidget {
-  const CarSelectionContainer({super.key, required this.widget});
+class CarInfoContainer extends StatelessWidget {
+  const CarInfoContainer({super.key, required this.widget});
 
   final Widget widget;
 
