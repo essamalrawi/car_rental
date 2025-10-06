@@ -34,6 +34,10 @@ class Assets {
   /// assets/images/icon/auth_view_logo.svg
   static const String imagesIconAuthViewLogo = "assets/images/icon/auth_view_logo.svg";
 
+  /// Assets for imagesIconChair
+  /// assets/images/icon/chair.svg
+  static const String imagesIconChair = "assets/images/icon/chair.svg";
+
   /// Assets for imagesIconCheck
   /// assets/images/icon/check.svg
   static const String imagesIconCheck = "assets/images/icon/check.svg";
@@ -90,13 +94,25 @@ class Assets {
   /// assets/images/icon/location.svg
   static const String imagesIconLocation = "assets/images/icon/location.svg";
 
+  /// Assets for imagesIconMessage
+  /// assets/images/icon/message.svg
+  static const String imagesIconMessage = "assets/images/icon/message.svg";
+
   /// Assets for imagesIconNotifications
   /// assets/images/icon/notifications.svg
   static const String imagesIconNotifications = "assets/images/icon/notifications.svg";
 
+  /// Assets for imagesIconPhone
+  /// assets/images/icon/phone.svg
+  static const String imagesIconPhone = "assets/images/icon/phone.svg";
+
   /// Assets for imagesIconRemoveEye
   /// assets/images/icon/remove_eye.svg
   static const String imagesIconRemoveEye = "assets/images/icon/remove_eye.svg";
+
+  /// Assets for imagesIconRightArrow
+  /// assets/images/icon/right_arrow.svg
+  static const String imagesIconRightArrow = "assets/images/icon/right_arrow.svg";
 
   /// Assets for imagesIconSearch
   /// assets/images/icon/search.svg
@@ -117,6 +133,10 @@ class Assets {
   /// Assets for imagesIconSwitcherIcon
   /// assets/images/icon/switcher_icon.svg
   static const String imagesIconSwitcherIcon = "assets/images/icon/switcher_icon.svg";
+
+  /// Assets for imagesIconVerifited
+  /// assets/images/icon/verifited.svg
+  static const String imagesIconVerifited = "assets/images/icon/verifited.svg";
 
   /// Assets for imagesLogo
   /// assets/images/logo.png
@@ -149,6 +169,10 @@ class Assets {
   /// Assets for imagesTestCar
   /// assets/images/test_car.png
   static const String imagesTestCar = "assets/images/test_car.png";
+
+  /// Assets for imagesTestCow
+  /// assets/images/testCow.jpg
+  static const String imagesTestCow = "assets/images/testCow.jpg";
 
   /// Assets for imagesTestFerrari
   /// assets/images/test_ferrari.png
