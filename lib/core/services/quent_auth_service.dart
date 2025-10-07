@@ -7,10 +7,8 @@ import 'package:car_rental/features/auth/domain/data/models/location_model/locat
 import 'package:car_rental/features/auth/domain/data/models/request_password_reset_code_mode/request_password_reset_code_mode.dart';
 import 'package:car_rental/features/auth/domain/data/models/request_verify_phone_model/request_verify_phone_model.dart';
 import 'package:car_rental/features/auth/domain/data/models/reset_password_model/reset_password_model.dart';
-import 'package:car_rental/features/auth/domain/entities/request_password_reset_code_entity.dart';
-import 'package:car_rental/features/auth/domain/entities/request_verify_phone_entity.dart';
+import 'package:car_rental/features/home/domain/data/models/brand/brand_model.dart';
 import 'package:dio/dio.dart';
-import '../../features/auth/domain/entities/reset_password_entity.dart';
 
 class QuentAuthService {
   final Dio dio;
@@ -200,6 +198,25 @@ class QuentAuthService {
       );
 
       return RefreshTokenModel.fromJson(response.data);
+    } on DioException catch (e) {
+      throw ServerFailure.fromDiorError(e);
+    } catch (e) {
+      throw ServerFailure("Unexpected error: ${e.toString()}");
+    }
+  }
+
+  Future<List<BrandModel>> getBrands() async {
+    try {
+      final response = await dio.get("$kBaseUrl/api/brands");
+
+      final List<dynamic> data = response.data['data'];
+
+      final brands = data
+          .map((e) => BrandModel.fromJson(e as Map<String, dynamic>))
+          .toList();
+
+      print(brands.length);
+      return brands;
     } on DioException catch (e) {
       throw ServerFailure.fromDiorError(e);
     } catch (e) {
