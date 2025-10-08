@@ -132,7 +132,7 @@ class _BestCarItemState extends State<BestCarItem> {
                             SvgPicture.asset(Assets.imagesIconSeet),
                             const SizedBox(width: 5),
                             Text(
-                              "${widget.car.seatingCapacity}",
+                              "${widget.car.seatingCapacity} Seats",
                               style: TextStyles.semibold30.copyWith(
                                 fontSize: 12,
                                 color: const Color(0xff7F7F7F),
