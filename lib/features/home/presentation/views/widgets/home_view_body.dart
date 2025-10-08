@@ -1,8 +1,10 @@
 import 'package:car_rental/constants/assets.dart';
+import 'package:car_rental/features/home/presentation/manager/home_data/home_data_cubit.dart';
 import 'package:car_rental/features/home/presentation/views/car_details.dart';
 import 'package:car_rental/features/home/presentation/views/widgets/best_car_item.dart';
 import 'package:car_rental/features/home/presentation/views/widgets/best_cars_section.dart';
 import 'package:car_rental/features/home/presentation/views/widgets/brands_section.dart';
+
 import 'package:car_rental/features/home/presentation/views/widgets/car_selectiong_container.dart';
 import 'package:car_rental/features/home/presentation/views/widgets/custom_search_bar_button.dart';
 import 'package:car_rental/features/home/presentation/views/widgets/filter_search_widget.dart';
@@ -10,6 +12,7 @@ import 'package:car_rental/features/home/presentation/views/widgets/nearby_car.d
 import 'package:car_rental/features/home/presentation/views/widgets/notifications_widget.dart';
 import 'package:car_rental/features/home/presentation/views/widgets/profile_pic.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -48,7 +51,8 @@ class HomeViewBody extends StatelessWidget {
                 ),
 
                 const SizedBox(height: 28),
-                const BrandsSection(),
+
+                BrandsSection(brands: context.read<HomeDataCubit>().brands),
                 const SizedBox(height: 28),
               ],
             ),
@@ -67,7 +71,7 @@ class HomeViewBody extends StatelessWidget {
                     height: 269,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: 2,
+                      itemCount: context.read<HomeDataCubit>().bestCars.length,
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.only(right: 18.0),
@@ -79,7 +83,11 @@ class HomeViewBody extends StatelessWidget {
                               );
                             },
 
-                            child: const BestCarItem(),
+                            child: BestCarItem(
+                              car: context
+                                  .read<HomeDataCubit>()
+                                  .bestCars[index],
+                            ),
                           ),
                         );
                       },

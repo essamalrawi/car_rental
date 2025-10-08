@@ -1,52 +1,31 @@
-class CarModel {
-  final int id;
-  final String name;
-  final String description;
-  final String firstImage;
-  final List<CarImage> images;
-  final String carType;
-  final Brand brand;
-  final ColorInfo color;
-  final List<CarFeature> carFeatures;
-  final String seatingCapacity;
-  final LocationInfo location;
-  final double averageRate;
-  final bool isForRent;
-  final String dailyRent;
-  final String weeklyRent;
-  final String monthlyRent;
-  final String yearlyRent;
-  final bool isForPay;
-  final double? price;
-  final bool availableToBook;
-  final List<dynamic> reviews;
-  final int reviewsCount;
-  final double reviewsAvg;
+import 'package:car_rental/features/home/domain/entities/brand_entity.dart';
+import 'package:car_rental/features/home/domain/entities/car_entity.dart';
 
+class CarModel extends CarEntity {
   CarModel({
-    required this.id,
-    required this.name,
-    required this.description,
-    required this.firstImage,
-    required this.images,
-    required this.carType,
-    required this.brand,
-    required this.color,
-    required this.carFeatures,
-    required this.seatingCapacity,
-    required this.location,
-    required this.averageRate,
-    required this.isForRent,
-    required this.dailyRent,
-    required this.weeklyRent,
-    required this.monthlyRent,
-    required this.yearlyRent,
-    required this.isForPay,
-    required this.price,
-    required this.availableToBook,
-    required this.reviews,
-    required this.reviewsCount,
-    required this.reviewsAvg,
+    required super.id,
+    required super.name,
+    required super.description,
+    required super.firstImage,
+    required super.images,
+    required super.carType,
+    required super.brand,
+    required super.color,
+    required super.carFeatures,
+    required super.seatingCapacity,
+    required super.location,
+    required super.averageRate,
+    required super.isForRent,
+    required super.dailyRent,
+    required super.weeklyRent,
+    required super.monthlyRent,
+    required super.yearlyRent,
+    required super.isForPay,
+    required super.price,
+    required super.availableToBook,
+    required super.reviews,
+    required super.reviewsCount,
+    required super.reviewsAvg,
   });
 
   factory CarModel.fromJson(Map<String, dynamic> json) {
@@ -56,7 +35,7 @@ class CarModel {
       description: json['description'],
       firstImage: json['first_image'],
       images: (json['images'] as List)
-          .map((e) => CarImage.fromJson(e))
+          .map((e) => CarImageModel.fromJson(e))
           .toList(),
       carType: json['car_type'],
       brand: Brand.fromJson(json['brand']),
@@ -73,7 +52,9 @@ class CarModel {
       monthlyRent: json['monthly_rent'],
       yearlyRent: json['yearly_rent'],
       isForPay: json['is_for_pay'],
-      price: json['price'] != null ? (json['price'] as num).toDouble() : null,
+      price: json['price'] != null
+          ? double.tryParse(json['price'].toString())
+          : null,
       availableToBook: json['available_to_book'],
       reviews: json['reviews'] ?? [],
       reviewsCount: json['reviews_count'],
@@ -87,13 +68,15 @@ class CarModel {
       'name': name,
       'description': description,
       'first_image': firstImage,
-      'images': images.map((e) => e.toJson()).toList(),
+      'images': images.map((e) => (e as CarImageModel).toJson()).toList(),
       'car_type': carType,
-      'brand': brand.toJson(),
-      'color': color.toJson(),
-      'car_features': carFeatures.map((e) => e.toJson()).toList(),
+      'brand': (brand as Brand).toJson(),
+      'color': (color as ColorInfo).toJson(),
+      'car_features': carFeatures
+          .map((e) => (e as CarFeature).toJson())
+          .toList(),
       'seating_capacity': seatingCapacity,
-      'location': location.toJson(),
+      'location': (location as LocationInfo).toJson(),
       'average_rate': averageRate,
       'is_for_rent': isForRent,
       'daily_rent': dailyRent,
@@ -110,25 +93,18 @@ class CarModel {
   }
 }
 
-class CarImage {
-  final int id;
-  final String image;
+class CarImageModel extends CarImageEntity {
+  CarImageModel({required super.id, required super.image});
 
-  CarImage({required this.id, required this.image});
-
-  factory CarImage.fromJson(Map<String, dynamic> json) {
-    return CarImage(id: json['id'], image: json['image']);
+  factory CarImageModel.fromJson(Map<String, dynamic> json) {
+    return CarImageModel(id: json['id'], image: json['image']);
   }
 
   Map<String, dynamic> toJson() => {'id': id, 'image': image};
 }
 
-class Brand {
-  final int id;
-  final String name;
-  final String image;
-
-  Brand({required this.id, required this.name, required this.image});
+class Brand extends BrandEntity {
+  Brand({required super.id, required super.name, required super.image});
 
   factory Brand.fromJson(Map<String, dynamic> json) {
     return Brand(id: json['id'], name: json['name'], image: json['image']);
@@ -137,13 +113,8 @@ class Brand {
   Map<String, dynamic> toJson() => {'id': id, 'name': name, 'image': image};
 }
 
-class ColorInfo {
-  final int id;
-  final String name;
-  final String hexValue;
-
-  ColorInfo({required this.id, required this.name, required this.hexValue});
-
+class ColorInfo extends ColorInfoEntity {
+  ColorInfo({required super.id, required super.name, required super.hexValue});
   factory ColorInfo.fromJson(Map<String, dynamic> json) {
     return ColorInfo(
       id: json['id'],
@@ -159,19 +130,13 @@ class ColorInfo {
   };
 }
 
-class CarFeature {
-  final int id;
-  final String name;
-  final String value;
-  final String image;
-
+class CarFeature extends CarFeatureEntity {
   CarFeature({
-    required this.id,
-    required this.name,
-    required this.value,
-    required this.image,
+    required super.id,
+    required super.name,
+    required super.value,
+    required super.image,
   });
-
   factory CarFeature.fromJson(Map<String, dynamic> json) {
     return CarFeature(
       id: json['id'],
@@ -189,17 +154,12 @@ class CarFeature {
   };
 }
 
-class LocationInfo {
-  final int id;
-  final String name;
-  final double lat;
-  final double lng;
-
+class LocationInfo extends LocationInfoEntity {
   LocationInfo({
-    required this.id,
-    required this.name,
-    required this.lat,
-    required this.lng,
+    required super.id,
+    required super.name,
+    required super.lat,
+    required super.lng,
   });
 
   factory LocationInfo.fromJson(Map<String, dynamic> json) {

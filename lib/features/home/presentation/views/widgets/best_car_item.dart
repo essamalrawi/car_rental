@@ -1,11 +1,13 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:car_rental/constants/assets.dart';
 import 'package:car_rental/core/utils/app_text_styles.dart';
+import 'package:car_rental/features/home/domain/entities/car_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class BestCarItem extends StatefulWidget {
-  const BestCarItem({super.key});
-
+  const BestCarItem({super.key, required this.car});
+  final CarEntity car;
   @override
   State<BestCarItem> createState() => _BestCarItemState();
 }
@@ -29,12 +31,15 @@ class _BestCarItemState extends State<BestCarItem> {
           children: [
             Stack(
               children: [
-                Container(
+                SizedBox(
                   height: 124,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(Assets.imagesTestWhiteFerrariFfCar),
-                    ),
+
+                  child: CachedNetworkImage(
+                    imageUrl: widget.car.images.first.image,
+                    placeholder: (context, url) =>
+                        const Center(child: CircularProgressIndicator()),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
                   ),
                 ),
 
@@ -86,13 +91,13 @@ class _BestCarItemState extends State<BestCarItem> {
 
                   children: [
                     Text(
-                      "Dummy model-FF",
+                      widget.car.name,
                       style: TextStyles.semibold30.copyWith(fontSize: 14),
                     ),
                     const SizedBox(height: 10),
                     Row(
                       children: [
-                        const Text("5.0"),
+                        Text("${widget.car.averageRate}"),
                         const SizedBox(width: 5),
                         SvgPicture.asset(
                           width: 12,
@@ -112,7 +117,7 @@ class _BestCarItemState extends State<BestCarItem> {
                         ),
                         const SizedBox(width: 5),
                         Text(
-                          "Washington DC",
+                          widget.car.location.name,
                           style: TextStyles.regular14.copyWith(fontSize: 12),
                         ),
                       ],
@@ -127,7 +132,7 @@ class _BestCarItemState extends State<BestCarItem> {
                             SvgPicture.asset(Assets.imagesIconSeet),
                             const SizedBox(width: 5),
                             Text(
-                              "4 seats",
+                              "${widget.car.seatingCapacity}",
                               style: TextStyles.semibold30.copyWith(
                                 fontSize: 12,
                                 color: const Color(0xff7F7F7F),
@@ -143,7 +148,9 @@ class _BestCarItemState extends State<BestCarItem> {
                                 SvgPicture.asset(Assets.imagesIconCurrency),
                                 const SizedBox(width: 5),
                                 Text(
-                                  "\$200/Day",
+                                  maxLines: 1,
+                                  "\$${widget.car.price?.toDouble().toStringAsFixed(1) ?? '0.0'}/Day",
+                                  overflow: TextOverflow.ellipsis,
                                   style: TextStyles.semibold30.copyWith(
                                     fontSize: 12,
                                     color: Colors.black,

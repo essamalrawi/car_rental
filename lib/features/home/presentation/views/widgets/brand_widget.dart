@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class BrandWidget extends StatelessWidget {
@@ -8,12 +9,14 @@ class BrandWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
+        SizedBox(
           height: 60,
           width: 60,
 
-          decoration: BoxDecoration(
-            image: DecorationImage(image: AssetImage(image)),
+          child: CachedNetworkImage(
+            imageUrl: image,
+            placeholder: (context, url) => const CircularProgressIndicator(),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
           ),
         ),
         const SizedBox(height: 16),

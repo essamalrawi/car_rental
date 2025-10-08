@@ -1,9 +1,7 @@
-class BrandModel {
-  final int id;
-  final String name;
-  final String image;
+import 'package:car_rental/features/home/domain/entities/brand_entity.dart';
 
-  BrandModel({required this.id, required this.name, required this.image});
+class BrandModel extends BrandEntity {
+  BrandModel({required super.id, required super.name, required super.image});
 
   factory BrandModel.fromJson(Map<String, dynamic> json) {
     return BrandModel(id: json['id'], name: json['name'], image: json['image']);
