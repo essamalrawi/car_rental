@@ -18,7 +18,7 @@ class _BestCarItemState extends State<BestCarItem> {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 186 / 269,
+      aspectRatio: 200 / 269,
       child: Container(
         decoration: BoxDecoration(
           color: const Color(0xffF0F0F0),
@@ -143,20 +143,16 @@ class _BestCarItemState extends State<BestCarItem> {
 
                         Row(
                           children: [
-                            Row(
-                              children: [
-                                SvgPicture.asset(Assets.imagesIconCurrency),
-                                const SizedBox(width: 5),
-                                Text(
-                                  maxLines: 1,
-                                  "\$${widget.car.price?.toDouble().toStringAsFixed(1) ?? '0.0'}/Day",
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyles.semibold30.copyWith(
-                                    fontSize: 12,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ],
+                            SvgPicture.asset(Assets.imagesIconCurrency),
+                            const SizedBox(width: 5),
+                            Text(
+                              "\$${widget.car.price?.toString().substring(0, 3) ?? '0.00'}/Day",
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                              style: TextStyles.semibold30.copyWith(
+                                fontSize: 12,
+                                color: Colors.black,
+                              ),
                             ),
                           ],
                         ),

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:car_rental/core/constants/api_constants.dart';
 import 'package:car_rental/core/errors/failure.dart';
 import 'package:car_rental/features/auth/domain/data/models/user_model/user_model.dart';
@@ -235,6 +237,18 @@ class QuentAuthService {
           .toList();
 
       return cars;
+    } on DioException catch (e) {
+      throw ServerFailure.fromDiorError(e);
+    } catch (e) {
+      throw ServerFailure("Unexpected error: ${e.toString()}");
+    }
+  }
+
+  Future<CarModel> getOneCar({required int id}) async {
+    try {
+      final response = await dio.get("$kBaseUrl/api/cars/$id");
+
+      return CarModel.fromJson(response.data);
     } on DioException catch (e) {
       throw ServerFailure.fromDiorError(e);
     } catch (e) {

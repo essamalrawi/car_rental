@@ -1,3 +1,5 @@
+import 'package:car_rental/features/auth/domain/entities/country_entity.dart';
+import 'package:car_rental/features/auth/domain/entities/location_entity.dart';
 import 'package:car_rental/features/home/domain/entities/brand_entity.dart';
 
 class CarEntity {
@@ -24,7 +26,7 @@ class CarEntity {
   final List<dynamic> reviews;
   final int reviewsCount;
   final double reviewsAvg;
-
+  final CarOwnerEntity owner;
   CarEntity({
     required this.id,
     required this.name,
@@ -49,6 +51,27 @@ class CarEntity {
     required this.reviews,
     required this.reviewsCount,
     required this.reviewsAvg,
+    required this.owner,
+  });
+}
+
+class CarOwnerEntity {
+  final int id;
+  final String fullName;
+  final String email;
+  final String phone;
+  final bool isPhoneVerified;
+  final CountryEntity country;
+  final LocationEntity location;
+
+  CarOwnerEntity({
+    required this.id,
+    required this.fullName,
+    required this.email,
+    required this.phone,
+    required this.isPhoneVerified,
+    required this.country,
+    required this.location,
   });
 }
 

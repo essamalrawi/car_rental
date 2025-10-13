@@ -1,3 +1,5 @@
+import 'package:car_rental/features/auth/domain/data/models/country_model/country_model.dart';
+import 'package:car_rental/features/auth/domain/data/models/location_model/location_model.dart';
 import 'package:car_rental/features/home/domain/entities/brand_entity.dart';
 import 'package:car_rental/features/home/domain/entities/car_entity.dart';
 
@@ -26,6 +28,7 @@ class CarModel extends CarEntity {
     required super.reviews,
     required super.reviewsCount,
     required super.reviewsAvg,
+    required super.owner,
   });
 
   factory CarModel.fromJson(Map<String, dynamic> json) {
@@ -59,6 +62,7 @@ class CarModel extends CarEntity {
       reviews: json['reviews'] ?? [],
       reviewsCount: json['reviews_count'],
       reviewsAvg: (json['reviews_avg'] as num).toDouble(),
+      owner: CarOwnerModel.fromJson(json['owner']),
     );
   }
 
@@ -90,6 +94,49 @@ class CarModel extends CarEntity {
       'reviews_count': reviewsCount,
       'reviews_avg': reviewsAvg,
     };
+  }
+}
+
+class CarOwnerModel extends CarOwnerEntity {
+  CarOwnerModel({
+    required super.id,
+    required super.fullName,
+    required super.email,
+    required super.phone,
+    required super.isPhoneVerified,
+    required super.country,
+    required super.location,
+  });
+
+  factory CarOwnerModel.fromJson(dynamic json) {
+    if (json is int) {
+      return CarOwnerModel(
+        id: json,
+        fullName: '',
+        email: '',
+        phone: '',
+        isPhoneVerified: false,
+        country: CountryModel(id: 0, country: '', abbreviation: ''),
+        location: LocationModel(id: 0, name: '', lat: 0.0, lng: 0.0),
+      );
+    } else if (json is Map<String, dynamic>) {
+      // Full object
+      return CarOwnerModel(
+        id: json['id'],
+        fullName: json['full_name'] ?? '',
+        email: json['email'] ?? '',
+        phone: json['phone'] ?? '',
+        isPhoneVerified: json['phone_is_verified'] ?? false,
+        country: json['country'] != null
+            ? CountryModel.fromJson(json['country'])
+            : CountryModel(id: 0, country: '', abbreviation: ''),
+        location: json['location'] != null
+            ? LocationModel.fromJson(json['location'])
+            : LocationModel(id: 0, name: '', lat: 0.0, lng: 0.0),
+      );
+    } else {
+      throw Exception('Invalid owner format');
+    }
   }
 }
 

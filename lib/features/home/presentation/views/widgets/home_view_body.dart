@@ -1,10 +1,13 @@
+import 'dart:developer';
+
 import 'package:car_rental/constants/assets.dart';
-import 'package:car_rental/features/home/presentation/manager/home_data/home_data_cubit.dart';
+import 'package:car_rental/features/home/presentation/manager/best_cars/best_cars_cubit.dart';
+import 'package:car_rental/features/home/presentation/manager/brands/brands_cubit.dart';
 import 'package:car_rental/features/home/presentation/views/car_details.dart';
 import 'package:car_rental/features/home/presentation/views/widgets/best_car_item.dart';
+import 'package:car_rental/features/home/presentation/views/widgets/best_cars_list_view.dart';
 import 'package:car_rental/features/home/presentation/views/widgets/best_cars_section.dart';
 import 'package:car_rental/features/home/presentation/views/widgets/brands_section.dart';
-
 import 'package:car_rental/features/home/presentation/views/widgets/car_selectiong_container.dart';
 import 'package:car_rental/features/home/presentation/views/widgets/custom_search_bar_button.dart';
 import 'package:car_rental/features/home/presentation/views/widgets/filter_search_widget.dart';
@@ -52,47 +55,30 @@ class HomeViewBody extends StatelessWidget {
 
                 const SizedBox(height: 28),
 
-                BrandsSection(brands: context.read<HomeDataCubit>().brands),
+                BlocBuilder<BrandsCubit, BrandsState>(
+                  builder: (context, state) {
+                    if (state is BrandsSuccess) {
+                      return BrandsSection(brands: state.brands);
+                    } else {
+                      return const Text("Still loading");
+                    }
+                  },
+                ),
                 const SizedBox(height: 28),
               ],
             ),
           ),
         ),
-        SliverToBoxAdapter(
+        const SliverToBoxAdapter(
           child: CarInfoContainer(
             widget: Padding(
-              padding: const EdgeInsets.all(20),
+              padding: EdgeInsets.all(20),
 
               child: Column(
                 children: [
-                  const BestCarsSection(),
-                  const SizedBox(height: 50),
-                  SizedBox(
-                    height: 269,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: context.read<HomeDataCubit>().bestCars.length,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.only(right: 18.0),
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.pushNamed(
-                                context,
-                                CarDetails.routeName,
-                              );
-                            },
-
-                            child: BestCarItem(
-                              car: context
-                                  .read<HomeDataCubit>()
-                                  .bestCars[index],
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
+                  BestCarsSection(),
+                  SizedBox(height: 50),
+                  BestCarsListView(),
                 ],
               ),
             ),

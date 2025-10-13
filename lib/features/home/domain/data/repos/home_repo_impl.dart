@@ -35,4 +35,16 @@ class HomeRepoImpl implements HomeRepo {
       return Left(ServerFailure("Unexpected error: ${e.toString()}"));
     }
   }
+
+  @override
+  Future<Either<Failure, CarEntity>> getOneCar({required int id}) async {
+    try {
+      var result = await quentAuthService.getOneCar(id: id);
+      return Right(result);
+    } on DioException catch (e) {
+      return Left(ServerFailure.fromDiorError(e));
+    } catch (e) {
+      return Left(ServerFailure("Unexpected error: ${e.toString()}"));
+    }
+  }
 }

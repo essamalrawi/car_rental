@@ -6,4 +6,5 @@ import 'package:dartz/dartz.dart';
 abstract class HomeRepo {
   Future<Either<Failure, List<BrandEntity>>> getBrands();
   Future<Either<Failure, List<CarEntity>>> getBestCars();
+  Future<Either<Failure, CarEntity>> getOneCar({required int id});
 }
