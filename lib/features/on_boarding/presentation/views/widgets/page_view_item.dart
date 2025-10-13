@@ -62,7 +62,7 @@ class PageViewItem extends StatelessWidget {
                   ),
                 ],
               ),
-              Spacer(),
+              const Spacer(),
 
               subtitle != null && subtitle!.isNotEmpty
                   ? Text(
@@ -71,10 +71,10 @@ class PageViewItem extends StatelessWidget {
                     )
                   : const SizedBox(),
 
-              SizedBox(height: 55),
+              const SizedBox(height: 55),
 
-              SizedBox(height: 40),
-              Visibility(
+              const SizedBox(height: 40),
+              const Visibility(
                 visible: false,
                 maintainSize: true,
                 maintainAnimation: true,

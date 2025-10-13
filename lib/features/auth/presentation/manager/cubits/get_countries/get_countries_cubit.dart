@@ -20,7 +20,6 @@ class GetCountriesCubit extends Cubit<GetCountriesState> {
         emit(GetCountriesFailure(errorMessage: failure.message));
       },
       (countries) {
-        ;
         emit(GetCountriesSuccess(countries: countries));
       },
     );

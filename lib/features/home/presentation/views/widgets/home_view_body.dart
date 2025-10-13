@@ -1,10 +1,6 @@
-import 'dart:developer';
 
 import 'package:car_rental/constants/assets.dart';
-import 'package:car_rental/features/home/presentation/manager/best_cars/best_cars_cubit.dart';
 import 'package:car_rental/features/home/presentation/manager/brands/brands_cubit.dart';
-import 'package:car_rental/features/home/presentation/views/car_details.dart';
-import 'package:car_rental/features/home/presentation/views/widgets/best_car_item.dart';
 import 'package:car_rental/features/home/presentation/views/widgets/best_cars_list_view.dart';
 import 'package:car_rental/features/home/presentation/views/widgets/best_cars_section.dart';
 import 'package:car_rental/features/home/presentation/views/widgets/brands_section.dart';

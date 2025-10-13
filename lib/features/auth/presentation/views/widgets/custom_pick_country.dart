@@ -24,6 +24,7 @@ class _CustomPickCountryState extends State<CustomPickCountry> {
         if (countryName == "Country" || countryName.isEmpty) {
           return 'This field is required';
         }
+        return null;
       },
       onTap: () {
         showCountryPicker(

@@ -1,6 +1,5 @@
 import 'package:car_rental/constants/assets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class NotificationsWidget extends StatelessWidget {

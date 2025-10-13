@@ -22,7 +22,7 @@ class YesNoChoice extends StatefulWidget {
   final Color disabledColor;
 
   const YesNoChoice({
-    Key? key,
+    super.key,
     this.question = "Available to create a car?",
     this.yesLabel = "Yes",
     this.noLabel = "No",
@@ -39,7 +39,7 @@ class YesNoChoice extends StatefulWidget {
     this.selectedTextColor = Colors.white,
     this.unselectedTextColor = Colors.black87,
     this.disabledColor = Colors.grey,
-  }) : super(key: key);
+  });
 
   @override
   State<YesNoChoice> createState() => _YesNoChoiceState();

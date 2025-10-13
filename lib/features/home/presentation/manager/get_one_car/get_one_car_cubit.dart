@@ -7,9 +7,9 @@ part 'get_one_car_state.dart';
 
 class GetOneCarCubit extends Cubit<GetOneCarState> {
   GetOneCarCubit(this.homeRepo) : super(GetOneCarInitial());
-
+  late CarEntity car;
   final HomeRepo homeRepo;
-  Future<void> getBrands({required int id}) async {
+  Future<void> getOneCar({required int id}) async {
     emit(GetOneCarLoading());
     final result = await homeRepo.getOneCar(id: id);
     result.fold(
@@ -17,8 +17,9 @@ class GetOneCarCubit extends Cubit<GetOneCarState> {
         print("Failed to load brands: ${failure.message}");
         emit(GetOneCarFailure(errorMessage: failure.message));
       },
-      (car) {
-        emit(GetOneCarSuccess(car: car));
+      (carEntity) {
+        car = carEntity;
+        emit(GetOneCarSuccess());
       },
     );
   }

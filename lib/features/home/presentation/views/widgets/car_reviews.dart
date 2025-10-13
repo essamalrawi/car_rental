@@ -1,5 +1,4 @@
 import 'package:car_rental/core/utils/app_text_styles.dart';
-import 'package:car_rental/features/home/presentation/views/widgets/custom_car_details_button.dart';
 import 'package:car_rental/features/home/presentation/views/widgets/review_card.dart';
 import 'package:flutter/material.dart';
 
@@ -44,9 +43,6 @@ class CarReviews extends StatelessWidget {
             },
           ),
         ),
-        const SizedBox(height: 28),
-        const CustomCarDetailsButton(),
-        const SizedBox(height: 28),
       ],
     );
   }

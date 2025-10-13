@@ -4,8 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CarTitleWithRating extends StatelessWidget {
-  const CarTitleWithRating({super.key});
-
+  const CarTitleWithRating({
+    super.key,
+    required this.name,
+    required this.description,
+    required this.rate,
+    required this.reviewsCount,
+  });
+  final String name, description;
+  final double rate;
+  final int reviewsCount;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -14,14 +22,11 @@ class CarTitleWithRating extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Tesla Model S",
-                style: TextStyles.semibold30.copyWith(fontSize: 16),
-              ),
+              Text(name, style: TextStyles.semibold30.copyWith(fontSize: 16)),
               const SizedBox(height: 18),
 
               Text(
-                "A car with high specs that are rented ot an affordable price.",
+                description,
                 style: TextStyles.regular14.copyWith(
                   color: const Color(0xFF7F7F7F),
                 ),
@@ -35,7 +40,7 @@ class CarTitleWithRating extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  "5.0",
+                  rate.toString(),
                   style: TextStyles.bold18.copyWith(
                     color: Colors.black,
                     fontSize: 14,
@@ -51,7 +56,7 @@ class CarTitleWithRating extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 5.0),
               child: Text(
-                '(100+Reviews)',
+                '($reviewsCount+Reviews)',
                 style: TextStyles.regular14.copyWith(
                   color: const Color(0xFF7F7F7F),
                   fontSize: 12,

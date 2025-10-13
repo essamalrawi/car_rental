@@ -8,7 +8,6 @@ import 'package:car_rental/features/on_boarding/presentation/views/startup_view.
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:page_transition/page_transition.dart';
 import '../../features/auth/presentation/views/reset_your_password_view.dart';
 import '../../features/auth/presentation/views/sign_in_view.dart';
 import '../../features/auth/presentation/views/sign_up_view.dart';
@@ -59,7 +58,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       );
 
     case CarDetails.routeName:
-      return CupertinoPageRoute(builder: (context) => const CarDetails());
+      final carId = settings.arguments as int;
+      return CupertinoPageRoute(builder: (context) => CarDetails(carId: carId));
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }

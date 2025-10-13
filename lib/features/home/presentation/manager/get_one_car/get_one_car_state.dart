@@ -14,7 +14,5 @@ final class GetOneCarFailure extends GetOneCarState {
 }
 
 final class GetOneCarSuccess extends GetOneCarState {
-  final CarEntity car;
-
-  GetOneCarSuccess({required this.car});
+  GetOneCarSuccess();
 }

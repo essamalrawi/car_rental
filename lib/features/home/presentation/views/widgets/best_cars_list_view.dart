@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BestCarsListView extends StatelessWidget {
   const BestCarsListView({super.key});
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<BestCarsCubit, BestCarsState>(
@@ -22,7 +21,11 @@ class BestCarsListView extends StatelessWidget {
                   padding: const EdgeInsets.only(right: 18.0),
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, CarDetails.routeName);
+                      Navigator.pushNamed(
+                        context,
+                        CarDetails.routeName,
+                        arguments: state.cars[index].id,
+                      );
                     },
                     child: BestCarItem(car: state.cars[index]),
                   ),

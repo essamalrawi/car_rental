@@ -1,3 +1,5 @@
+import 'package:car_rental/features/home/domain/entities/car_entity.dart';
+import 'package:car_rental/features/home/presentation/manager/get_one_car/get_one_car_cubit.dart';
 import 'package:car_rental/features/home/presentation/views/widgets/car_details_slider.dart';
 import 'package:car_rental/features/home/presentation/views/widgets/car_features.dart';
 import 'package:car_rental/features/home/presentation/views/widgets/car_reviews.dart';
@@ -5,43 +7,68 @@ import 'package:car_rental/features/home/presentation/views/widgets/car_selectio
 import 'package:car_rental/features/home/presentation/views/widgets/car_title_with_rating.dart';
 import 'package:car_rental/features/home/presentation/views/widgets/contact_car_row.dart';
 import 'package:car_rental/features/home/presentation/views/widgets/custom_app_bar.dart';
+import 'package:car_rental/features/home/presentation/views/widgets/custom_car_details_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CarDetailsViewBody extends StatelessWidget {
+class CarDetailsViewBody extends StatefulWidget {
   const CarDetailsViewBody({super.key});
+
+  @override
+  State<CarDetailsViewBody> createState() => _CarDetailsViewBodyState();
+}
+
+class _CarDetailsViewBodyState extends State<CarDetailsViewBody> {
+  late CarEntity car;
+
+  @override
+  void initState() {
+    car = context.read<GetOneCarCubit>().car;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        const SliverToBoxAdapter(
+        SliverToBoxAdapter(
           child: Column(
             children: [
-              Padding(
+              const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: CustomAppBar(),
               ),
-              SizedBox(height: 20),
-              Divider(color: Color(0xFFD9D9D9)),
-              SizedBox(height: 20),
-              CarDetailsSlider(),
-              SizedBox(height: 28),
+              const SizedBox(height: 20),
+              const Divider(color: Color(0xFFD9D9D9)),
+              const SizedBox(height: 20),
+              CarDetailsSlider(
+                images: context.read<GetOneCarCubit>().car.images,
+              ),
+              const SizedBox(height: 28),
               CarInfoContainer(
                 widget: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      SizedBox(height: 20),
-                      CarTitleWithRating(),
-                      SizedBox(height: 28),
-                      Divider(color: Color(0xFFD9D9D9)),
-                      SizedBox(height: 28),
-                      ContactCardRow(),
-                      SizedBox(height: 28),
-                      Carfeatures(),
-                      SizedBox(height: 28),
-                      CarReviews(),
+                      const SizedBox(height: 20),
+                      CarTitleWithRating(
+                        rate: car.averageRate,
+                        name: car.name,
+                        description: car.description,
+                        reviewsCount: car.reviewsCount,
+                      ),
+                      const SizedBox(height: 28),
+                      const Divider(color: Color(0xFFD9D9D9)),
+                      const SizedBox(height: 28),
+                      const ContactCardRow(),
+                      const SizedBox(height: 28),
+                      Carfeatures(features: car.carFeatures),
+                      const SizedBox(height: 28),
+                      const CarReviews(),
+                      const SizedBox(height: 28),
+                      const CustomCarDetailsButton(),
+                      const SizedBox(height: 28),
                     ],
                   ),
                 ),

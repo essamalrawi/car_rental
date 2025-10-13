@@ -1,11 +1,11 @@
-import 'package:car_rental/constants/assets.dart';
 import 'package:car_rental/core/utils/app_text_styles.dart';
+import 'package:car_rental/features/home/domain/entities/car_entity.dart';
 import 'package:car_rental/features/home/presentation/views/widgets/feature_container.dart';
 import 'package:flutter/material.dart';
 
 class Carfeatures extends StatelessWidget {
-  const Carfeatures({super.key});
-
+  const Carfeatures({super.key, required this.features});
+  final List<CarFeatureEntity> features;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -28,11 +28,11 @@ class Carfeatures extends StatelessWidget {
           crossAxisSpacing: 10,
           mainAxisSpacing: 10,
           childAspectRatio: 100 / 100,
-          children: List.generate(6, (index) {
-            return const FeatureContainer(
-              iconAsset: Assets.imagesIconChair,
-              title: "Capacity",
-              value: "5 Seats",
+          children: List.generate(features.length, (index) {
+            return FeatureContainer(
+              iconAsset: features[index].image,
+              title: features[index].name,
+              value: features[index].value,
             );
           }),
         ),
