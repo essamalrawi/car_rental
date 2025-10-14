@@ -1,11 +1,13 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:car_rental/constants/assets.dart';
 import 'package:car_rental/core/utils/app_text_styles.dart';
+import 'package:car_rental/features/auth/domain/entities/reviews_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ReviewCard extends StatelessWidget {
-  const ReviewCard({super.key});
-
+  const ReviewCard({super.key, required this.review});
+  final ReviewsEntity review;
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
@@ -38,15 +40,18 @@ class ReviewCard extends StatelessWidget {
                               ),
                             ),
                           ),
-                          child: Image.asset(
-                            Assets.imagesTestCow,
-                            fit: BoxFit.cover,
+                          child: CachedNetworkImage(
+                            imageUrl: review.userImage,
+                            placeholder: (context, url) =>
+                                const CircularProgressIndicator(),
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.error),
                           ),
                         ),
                       ),
                       const SizedBox(width: 5),
                       Text(
-                        'Mr. MooNour',
+                        review.username,
                         style: TextStyles.regular14.copyWith(
                           color: Colors.black,
                           fontWeight: FontWeight.w600,
@@ -58,7 +63,7 @@ class ReviewCard extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        "5.0",
+                        review.rate.toString(),
                         style: TextStyles.bold18.copyWith(
                           color: Colors.black,
                           fontSize: 14,
@@ -79,7 +84,7 @@ class ReviewCard extends StatelessWidget {
                 textAlign: TextAlign.left,
                 maxLines: 2, // limit lines to fit card
                 overflow: TextOverflow.ellipsis,
-                'Moo! My stuffs are soooo good… pay now, maybe you get them! 🐄💸',
+                review.review,
                 style: TextStyles.regular14.copyWith(
                   color: const Color(0xFF7F7F7F),
                   fontSize: 12,

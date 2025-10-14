@@ -1,10 +1,16 @@
 import 'package:car_rental/core/utils/app_text_styles.dart';
+import 'package:car_rental/features/auth/domain/entities/reviews_entity.dart';
 import 'package:car_rental/features/home/presentation/views/widgets/review_card.dart';
 import 'package:flutter/material.dart';
 
 class CarReviews extends StatelessWidget {
-  const CarReviews({super.key});
-
+  const CarReviews({
+    super.key,
+    required this.reviewsCount,
+    required this.reviews,
+  });
+  final int reviewsCount;
+  final List<ReviewsEntity> reviews;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -13,7 +19,7 @@ class CarReviews extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Review (125)',
+              'Review ($reviewsCount)',
               style: TextStyles.regular16.copyWith(
                 color: Colors.black,
                 fontWeight: FontWeight.w600,
@@ -34,11 +40,12 @@ class CarReviews extends StatelessWidget {
           height: 100,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: 2,
+            itemCount: reviews.length,
+
             itemBuilder: (context, index) {
-              return const Padding(
-                padding: EdgeInsets.only(right: 18.0),
-                child: ReviewCard(),
+              return Padding(
+                padding: const EdgeInsets.only(right: 18.0),
+                child: ReviewCard(review: reviews[index]),
               );
             },
           ),

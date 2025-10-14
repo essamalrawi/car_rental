@@ -1,9 +1,11 @@
-import 'package:car_rental/constants/assets.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:car_rental/features/home/domain/entities/car_entity.dart';
+import 'package:car_rental/features/home/presentation/views/car_details.dart';
 import 'package:flutter/material.dart';
 
 class NearbyCar extends StatelessWidget {
-  const NearbyCar({super.key});
-
+  const NearbyCar({super.key, required this.car});
+  final CarEntity car;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -26,7 +28,21 @@ class NearbyCar extends StatelessWidget {
               padding: EdgeInsets.only(
                 left: MediaQuery.sizeOf(context).width * .1,
               ),
-              child: Image.asset(Assets.imagesTestcar),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    CarDetails.routeName,
+                    arguments: car.id,
+                  );
+                },
+                child: CachedNetworkImage(
+                  imageUrl: car.images[1].image,
+                  placeholder: (context, url) =>
+                      const Center(child: CircularProgressIndicator()),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                ),
+              ),
             ),
           ),
         ),

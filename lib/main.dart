@@ -1,5 +1,9 @@
+import 'package:car_rental/core/constants/auth_keys.dart';
+import 'package:car_rental/core/services/quent_auth_service.dart';
 import 'package:car_rental/core/services/shared_preferences_singleton.dart';
+import 'package:car_rental/features/auth/domain/entities/reviews_entity.dart';
 import 'package:car_rental/features/on_boarding/presentation/views/startup_view.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,6 +16,12 @@ void main() async {
   Bloc.observer = CustomBlocObserver();
   await Prefs.init();
   setupGetIt();
+
+  QuentAuthService q = QuentAuthService(Dio());
+  final results = await q.getNearbyCars(
+    accessToken: Prefs.getString(kAccessToken),
+  );
+  print(results.length);
 
   //Setting SystmeUIMode
   SystemChrome.setEnabledSystemUIMode(

@@ -1,6 +1,6 @@
-
 import 'package:car_rental/core/constants/api_constants.dart';
 import 'package:car_rental/core/errors/failure.dart';
+import 'package:car_rental/features/auth/domain/data/models/review_model/review_model.dart';
 import 'package:car_rental/features/auth/domain/data/models/user_model/user_model.dart';
 import 'package:car_rental/core/models/refresh_model.dart';
 import 'package:car_rental/features/auth/domain/data/models/country_model/country_model.dart';
@@ -8,6 +8,7 @@ import 'package:car_rental/features/auth/domain/data/models/location_model/locat
 import 'package:car_rental/features/auth/domain/data/models/request_password_reset_code_mode/request_password_reset_code_mode.dart';
 import 'package:car_rental/features/auth/domain/data/models/request_verify_phone_model/request_verify_phone_model.dart';
 import 'package:car_rental/features/auth/domain/data/models/reset_password_model/reset_password_model.dart';
+import 'package:car_rental/features/auth/domain/entities/reviews_entity.dart';
 import 'package:car_rental/features/home/domain/data/models/best_car_model/car_car_model.dart';
 import 'package:car_rental/features/home/domain/data/models/brand/brand_model.dart';
 import 'package:dio/dio.dart';
@@ -251,6 +252,47 @@ class QuentAuthService {
     } on DioException catch (e) {
       throw ServerFailure.fromDiorError(e);
     } catch (e) {
+      throw ServerFailure("Unexpected error: ${e.toString()}");
+    }
+  }
+
+  Future<List<ReviewsEntity>> getCarReview({required int id}) async {
+    try {
+      final response = await dio.get("$kBaseUrl/api/cars/$id/reviews");
+
+      final reviews = (response.data['data'] as List)
+          .map((e) => CarReviewsModel.fromJson(e as Map<String, dynamic>))
+          .toList();
+
+      return reviews;
+    } on DioException catch (e) {
+      throw ServerFailure.fromDiorError(e);
+    } catch (e, stacktrace) {
+      print("⚠️ Unexpected error in getCarReview: $e");
+      print(stacktrace);
+      throw ServerFailure("Unexpected error: ${e.toString()}");
+    }
+  }
+
+  Future<List<CarModel>> getNearbyCars({required accessToken}) async {
+    try {
+      final response = await dio.get(
+        "$kBaseUrl/api/cars/nearest",
+        options: Options(headers: {"Authorization": "Bearer $accessToken"}),
+      );
+
+      final List<dynamic> data = response.data['data'];
+
+      final cars = data
+          .map((e) => CarModel.fromJson(e as Map<String, dynamic>))
+          .toList();
+
+      return cars;
+    } on DioException catch (e) {
+      throw ServerFailure.fromDiorError(e);
+    } catch (e, stacktrace) {
+      print("⚠️ Unexpected error in getCarReview: $e");
+      print(stacktrace);
       throw ServerFailure("Unexpected error: ${e.toString()}");
     }
   }

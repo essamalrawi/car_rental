@@ -1,0 +1,44 @@
+# Diff Summary
+
+Date : 2025-10-14 05:09:29
+
+Directory /home/essam/dev/car_rental/lib
+
+Total : 15 files,  139 codes, 0 comments, 21 blanks, all 160 lines
+
+[Summary](results.md) / [Details](details.md) / Diff Summary / [Diff Details](diff-details.md)
+
+## Languages
+| language | files | code | comment | blank | total |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| Dart | 15 | 139 | 0 | 21 | 160 |
+
+## Directories
+| path | files | code | comment | blank | total |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| . | 15 | 139 | 0 | 21 | 160 |
+| . (Files) | 1 | 3 | 0 | 0 | 3 |
+| core | 1 | 17 | 0 | 2 | 19 |
+| core/services | 1 | 17 | 0 | 2 | 19 |
+| features | 13 | 119 | 0 | 19 | 138 |
+| features/auth | 2 | 40 | 0 | 5 | 45 |
+| features/auth/domain | 2 | 40 | 0 | 5 | 45 |
+| features/auth/domain/data | 1 | 26 | 0 | 3 | 29 |
+| features/auth/domain/data/models | 1 | 26 | 0 | 3 | 29 |
+| features/auth/domain/data/models/review_model | 1 | 26 | 0 | 3 | 29 |
+| features/auth/domain/entities | 1 | 14 | 0 | 2 | 16 |
+| features/home | 11 | 79 | 0 | 14 | 93 |
+| features/home/domain | 4 | 20 | 0 | 2 | 22 |
+| features/home/domain/data | 2 | 17 | 0 | 2 | 19 |
+| features/home/domain/data/models | 1 | 2 | 0 | 1 | 3 |
+| features/home/domain/data/models/best_car_model | 1 | 2 | 0 | 1 | 3 |
+| features/home/domain/data/repos | 1 | 15 | 0 | 1 | 16 |
+| features/home/domain/entities | 1 | 1 | 0 | 0 | 1 |
+| features/home/domain/repos | 1 | 2 | 0 | 0 | 2 |
+| features/home/presentation | 7 | 59 | 0 | 12 | 71 |
+| features/home/presentation/manager | 2 | 35 | 0 | 15 | 50 |
+| features/home/presentation/manager/get_car_reviews | 2 | 35 | 0 | 15 | 50 |
+| features/home/presentation/views | 5 | 24 | 0 | -3 | 21 |
+| features/home/presentation/views/widgets | 5 | 24 | 0 | -3 | 21 |
+
+[Summary](results.md) / [Details](details.md) / Diff Summary / [Diff Details](diff-details.md)

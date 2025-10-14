@@ -1,5 +1,6 @@
 import 'package:car_rental/features/auth/domain/data/models/country_model/country_model.dart';
 import 'package:car_rental/features/auth/domain/data/models/location_model/location_model.dart';
+import 'package:car_rental/features/auth/domain/data/models/review_model/review_model.dart';
 import 'package:car_rental/features/home/domain/entities/brand_entity.dart';
 import 'package:car_rental/features/home/domain/entities/car_entity.dart';
 
@@ -25,10 +26,10 @@ class CarModel extends CarEntity {
     required super.isForPay,
     required super.price,
     required super.availableToBook,
-    required super.reviews,
     required super.reviewsCount,
     required super.reviewsAvg,
     required super.owner,
+    required super.review,
   });
 
   factory CarModel.fromJson(Map<String, dynamic> json) {
@@ -59,10 +60,13 @@ class CarModel extends CarEntity {
           ? double.tryParse(json['price'].toString())
           : null,
       availableToBook: json['available_to_book'],
-      reviews: json['reviews'] ?? [],
+
       reviewsCount: json['reviews_count'],
       reviewsAvg: (json['reviews_avg'] as num).toDouble(),
       owner: CarOwnerModel.fromJson(json['owner']),
+      review: (json['reviews'] as List)
+          .map((e) => CarReviewsModel.fromJson(e))
+          .toList(),
     );
   }
 
@@ -90,7 +94,6 @@ class CarModel extends CarEntity {
       'is_for_pay': isForPay,
       'price': price,
       'available_to_book': availableToBook,
-      'reviews': reviews,
       'reviews_count': reviewsCount,
       'reviews_avg': reviewsAvg,
     };

@@ -1,5 +1,6 @@
 import 'package:car_rental/features/auth/domain/entities/country_entity.dart';
 import 'package:car_rental/features/auth/domain/entities/location_entity.dart';
+import 'package:car_rental/features/auth/domain/entities/reviews_entity.dart';
 import 'package:car_rental/features/home/domain/entities/brand_entity.dart';
 
 class CarEntity {
@@ -23,10 +24,10 @@ class CarEntity {
   final bool isForPay;
   final double? price;
   final bool availableToBook;
-  final List<dynamic> reviews;
   final int reviewsCount;
   final double reviewsAvg;
   final CarOwnerEntity owner;
+  final List<ReviewsEntity> review;
   CarEntity({
     required this.id,
     required this.name,
@@ -48,10 +49,10 @@ class CarEntity {
     required this.isForPay,
     required this.price,
     required this.availableToBook,
-    required this.reviews,
     required this.reviewsCount,
     required this.reviewsAvg,
     required this.owner,
+    required this.review,
   });
 }
 

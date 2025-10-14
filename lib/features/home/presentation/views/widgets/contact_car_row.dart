@@ -1,11 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:car_rental/constants/assets.dart';
 import 'package:car_rental/core/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ContactCardRow extends StatelessWidget {
-  const ContactCardRow({super.key});
-
+  const ContactCardRow({super.key, required this.name, required this.image});
+  final String name, image;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -22,13 +23,19 @@ class ContactCardRow extends StatelessWidget {
                 child: SizedBox(
                   width: 54,
                   height: 54,
-                  child: Image.asset(Assets.imagesTestCow, fit: BoxFit.cover),
+                  child: CachedNetworkImage(
+                    imageUrl: image,
+                    placeholder: (context, url) =>
+                        const CircularProgressIndicator(),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
+                  ),
                 ),
               ),
             ),
             const SizedBox(width: 18),
             Text(
-              "MooNour",
+              name,
               style: TextStyles.regular14.copyWith(fontWeight: FontWeight.w600),
             ),
             const SizedBox(width: 10),
