@@ -22,6 +22,10 @@ class Assets {
   /// assets/images/icon/active_user.svg
   static const String imagesIconActiveUser = "assets/images/icon/active_user.svg";
 
+  /// Assets for imagesIconAllBrands
+  /// assets/images/icon/all_brands..png
+  static const String imagesIconAllBrands = "assets/images/icon/all_brands..png";
+
   /// Assets for imagesIconAppleLogo
   /// assets/images/icon/apple_logo.svg
   static const String imagesIconAppleLogo = "assets/images/icon/apple_logo.svg";
@@ -105,6 +109,10 @@ class Assets {
   /// Assets for imagesIconPhone
   /// assets/images/icon/phone.svg
   static const String imagesIconPhone = "assets/images/icon/phone.svg";
+
+  /// Assets for imagesIconPriceRange
+  /// assets/images/icon/price_range.svg
+  static const String imagesIconPriceRange = "assets/images/icon/price_range.svg";
 
   /// Assets for imagesIconRemoveEye
   /// assets/images/icon/remove_eye.svg

@@ -46,7 +46,7 @@ class HomeViewBody extends StatelessWidget {
                   children: [
                     Expanded(child: CustomSearchBarButton()),
                     SizedBox(width: 26),
-                    FilterSearchWidget(),
+                    IconHolder(iconImage: Assets.imagesIconFilterIcon),
                   ],
                 ),
 

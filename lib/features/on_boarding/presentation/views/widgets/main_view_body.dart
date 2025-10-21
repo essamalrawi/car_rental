@@ -1,4 +1,5 @@
 import 'package:car_rental/features/home/presentation/views/home_view.dart';
+import 'package:car_rental/features/home/presentation/views/search_view.dart';
 import 'package:flutter/material.dart';
 
 class MainViewBody extends StatelessWidget {
@@ -9,10 +10,7 @@ class MainViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return IndexedStack(
       index: currentViewIndex,
-      children: [
-        const HomeView(),
-        Container(width: 200, height: 200, color: Colors.red),
-      ],
+      children: [const HomeView(), const SearchView()],
     );
   }
 }

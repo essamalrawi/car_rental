@@ -3,6 +3,7 @@ import 'package:car_rental/features/auth/presentation/manager/cubits/verify_phon
 import 'package:car_rental/features/auth/presentation/views/new_passwrod_view.dart';
 import 'package:car_rental/features/auth/presentation/views/verify_reset_password_code_view.dart';
 import 'package:car_rental/features/home/presentation/views/car_details.dart';
+import 'package:car_rental/features/home/presentation/views/search_view.dart';
 import 'package:car_rental/features/on_boarding/presentation/views/main_view.dart';
 import 'package:car_rental/features/on_boarding/presentation/views/startup_view.dart';
 import 'package:flutter/cupertino.dart';
@@ -60,6 +61,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case CarDetails.routeName:
       final carId = settings.arguments as int;
       return CupertinoPageRoute(builder: (context) => CarDetails(carId: carId));
+    case SearchView.routeName:
+      return CupertinoPageRoute(builder: (context) => const SearchView());
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }

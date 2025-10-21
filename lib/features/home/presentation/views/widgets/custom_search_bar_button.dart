@@ -1,5 +1,6 @@
 import 'package:car_rental/constants/assets.dart';
 import 'package:car_rental/core/utils/app_text_styles.dart';
+import 'package:car_rental/features/home/presentation/views/search_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -13,6 +14,9 @@ class CustomSearchBarButton extends StatelessWidget {
 
       child: TextField(
         scrollPadding: EdgeInsets.zero,
+        onSubmitted: (data) {
+          Navigator.pushNamed(context, SearchView.routeName);
+        },
         decoration: InputDecoration(
           prefixIcon: Padding(
             padding: const EdgeInsets.only(left: 20, right: 12),

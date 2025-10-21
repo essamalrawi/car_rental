@@ -1,6 +1,5 @@
 import 'package:car_rental/core/errors/failure.dart';
 import 'package:car_rental/core/services/quent_auth_service.dart';
-import 'package:car_rental/features/auth/domain/data/models/review_model/review_model.dart';
 import 'package:car_rental/features/auth/domain/entities/reviews_entity.dart';
 import 'package:car_rental/features/home/domain/entities/brand_entity.dart';
 import 'package:car_rental/features/home/domain/entities/car_entity.dart';

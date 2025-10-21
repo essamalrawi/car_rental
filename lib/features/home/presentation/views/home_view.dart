@@ -6,7 +6,6 @@ import 'package:car_rental/features/home/presentation/manager/best_cars/best_car
 import 'package:car_rental/features/home/presentation/manager/brands/brands_cubit.dart';
 import 'package:car_rental/features/home/presentation/manager/nearby_cars/nearby_cars_cubit.dart';
 import 'package:car_rental/features/home/presentation/views/widgets/home_view_body.dart';
-import 'package:car_rental/features/home/presentation/views/widgets/nearby_car.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
