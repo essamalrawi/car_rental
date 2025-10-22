@@ -18,148 +18,124 @@ class SearchViewBody extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: CustomScrollView(
         slivers: [
-          const SliverToBoxAdapter(
+          SliverToBoxAdapter(
             child: Column(
               children: [
-                SizedBox(height: 24),
-                CustomSearchViewAppBar(),
+                const SizedBox(height: 24),
+                const CustomSearchViewAppBar(),
 
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
-                Divider(color: Color(0xffD7D7D7)),
-                SizedBox(height: 20),
+                const Divider(color: Color(0xffD7D7D7)),
+                const SizedBox(height: 20),
                 Row(
                   children: [
-                    Expanded(child: CustomSearchBarButton()),
-                    SizedBox(width: 26),
-                    IconHolder(iconImage: Assets.imagesIconFilterIcon),
+                    const Expanded(child: CustomSearchBarButton()),
+                    const SizedBox(width: 26),
+                    GestureDetector(
+                      onTap: () {
+                        showModalBottomSheet(
+                          context: context,
+                          isScrollControlled: true,
+                          backgroundColor:
+                              Colors.transparent, // for rounded corners effect
+                          builder: (BuildContext context) {
+                            return SafeArea(
+                              top:
+                                  false, // allow it to go to top if you want, set true to avoid
+                              child: Container(
+                                height:
+                                    MediaQuery.of(context).size.height *
+                                    0.95, // slightly smaller than full screen
+                                width: MediaQuery.of(context).size.width,
+                                decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(25.0),
+                                  ),
+                                ),
+                                child: const Column(
+                                  children: [
+                                    SizedBox(height: 20),
+                                    Text(
+                                      'Bottom Sheet without covering phone bars',
+                                      style: TextStyle(
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    // Your content goes here
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                      child: const IconHolder(
+                        iconImage: Assets.imagesIconFilterIcon,
+                      ),
+                    ),
                   ],
                 ),
-                SizedBox(height: 28),
+                const SizedBox(height: 28),
 
-                CarBrandSelector(),
-                SizedBox(height: 28),
-                SectionHeaderRow(text: "Recommend For You"),
-                SizedBox(height: 18),
+                const CarBrandSelector(),
+                const SizedBox(height: 28),
+                const SectionHeaderRow(text: "Recommend For You"),
+                const SizedBox(height: 18),
               ],
             ),
           ),
-          SliverGrid(
-            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 200.0,
-              mainAxisSpacing: 10.0,
-              crossAxisSpacing: 10.0,
-              childAspectRatio: 200 / 279,
-            ),
-            delegate: SliverChildBuilderDelegate((
-              BuildContext context,
-              int index,
-            ) {
-              return const RecommendCarCard();
-            }, childCount: 4),
-          ),
-          const SliverToBoxAdapter(child: SizedBox(height: 28)),
-          const SliverToBoxAdapter(
-            child: SectionHeaderRow(text: "Our Popular Cars"),
-          ),
 
-          const SliverToBoxAdapter(child: SizedBox(height: 18)),
+          // SliverGrid(
+          //   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+          //     maxCrossAxisExtent: 200.0,
+          //     mainAxisSpacing: 10.0,
+          //     crossAxisSpacing: 10.0,
+          //     childAspectRatio: 200 / 279,
+          //   ),
+          //   delegate: SliverChildBuilderDelegate((
+          //     BuildContext context,
+          //     int index,
+          //   ) {
+          //     return const RecommendCarCard();
+          //   }, childCount: 4),
+          // ),
+          // const SliverToBoxAdapter(child: SizedBox(height: 28)),
+          // const SliverToBoxAdapter(
+          //   child: SectionHeaderRow(text: "Our Popular Cars"),
+          // ),
 
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: 100,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 3,
-                itemBuilder: (context, index) {
-                  return const Padding(
-                    padding: EdgeInsets.only(right: 18.0),
-                    child: PopularCarContianer(),
-                  );
-                },
-              ),
-            ),
-          ),
+          // const SliverToBoxAdapter(child: SizedBox(height: 18)),
+
+          // SliverToBoxAdapter(
+          //   child: SizedBox(
+          //     height: 100,
+          //     child: ListView.builder(
+          //       scrollDirection: Axis.horizontal,
+          //       itemCount: 3,
+          //       itemBuilder: (context, index) {
+          //         return const Padding(
+          //           padding: EdgeInsets.only(right: 18.0),
+          //           child: PopularCarContianer(),
+          //         );
+          //       },
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );
   }
 }
 
-class PopularCarContianer extends StatelessWidget {
-  const PopularCarContianer({super.key});
+class Chart extends StatelessWidget {
+  const Chart({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 256 / 100,
-      child: Container(
-        decoration: ShapeDecoration(
-          color: const Color(0xFFEDEDED),
-          shape: RoundedRectangleBorder(
-            side: const BorderSide(width: 1, color: Color(0xFFD7D7D7)),
-            borderRadius: BorderRadius.circular(15),
-          ),
-        ),
-
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Row(
-            children: [
-              SizedBox(
-                width: 118,
-                child: AspectRatio(
-                  aspectRatio: 118 / 67,
-                  child: FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: Image.asset(Assets.imagesTestCar),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 10),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const SizedBox(height: 5),
-                    Text(
-                      'Ferrari LaFerrari',
-                      style: TextStyles.regular14.copyWith(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    Row(
-                      children: [
-                        Text(
-                          '5.0',
-                          style: TextStyles.semibold30.copyWith(
-                            color: const Color(0xFF7F7F7F),
-                            fontSize: 12,
-                            height: 1.17,
-                            letterSpacing: 0.12,
-                          ),
-                        ),
-                        const SizedBox(width: 5),
-                        SvgPicture.asset(Assets.imagesIconStar),
-                      ],
-                    ),
-                    const SizedBox(width: 5),
-                    Text(
-                      '\$100/Day',
-                      style: TextStyles.regular14.copyWith(
-                        color: Colors.black,
-                        fontSize: 12,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+    return const Placeholder();
   }
 }

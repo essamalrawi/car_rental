@@ -1,0 +1,43 @@
+Date : 2025-10-21 17:46:54
+Directory : c:\Dev\car_rental\lib
+Total : 9 files,  437 codes, 15 comments, 37 blanks, all 489 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| Dart     |          9 |        437 |         15 |         37 |        489 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                      | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                         |          9 |        437 |         15 |         37 |        489 |
+| constants                                                                                 |          1 |          2 |          4 |          2 |          8 |
+| features                                                                                  |          8 |        435 |         11 |         35 |        481 |
+| features\home                                                                             |          7 |        437 |         11 |         35 |        483 |
+| features\home\presentation                                                                |          7 |        437 |         11 |         35 |        483 |
+| features\home\presentation\views                                                          |          7 |        437 |         11 |         35 |        483 |
+| features\home\presentation\views\widgets                                                  |          7 |        437 |         11 |         35 |        483 |
+| features\on_boarding                                                                      |          1 |         -2 |          0 |          0 |         -2 |
+| features\on_boarding\presentation                                                         |          1 |         -2 |          0 |          0 |         -2 |
+| features\on_boarding\presentation\views                                                   |          1 |         -2 |          0 |          0 |         -2 |
+| features\on_boarding\presentation\views\widgets                                           |          1 |         -2 |          0 |          0 |         -2 |
++-------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                                  | language | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\Dev\car_rental\lib\constants\assets.dart                                               | Dart     |          2 |          4 |          2 |          8 |
+| c:\Dev\car_rental\lib\features\home\presentation\views\widgets\active_selector.dart       | Dart     |         39 |          0 |          4 |         43 |
+| c:\Dev\car_rental\lib\features\home\presentation\views\widgets\car_brand_selector.dart    | Dart     |         32 |          1 |          5 |         38 |
+| c:\Dev\car_rental\lib\features\home\presentation\views\widgets\recommend_car_card.dart    | Dart     |        154 |         10 |         15 |        179 |
+| c:\Dev\car_rental\lib\features\home\presentation\views\widgets\search_view_body.dart      | Dart     |        123 |          0 |          4 |        127 |
+| c:\Dev\car_rental\lib\features\home\presentation\views\widgets\section_header_row.dart    | Dart     |         31 |          0 |          2 |         33 |
+| c:\Dev\car_rental\lib\features\home\presentation\views\widgets\selector_switcher.dart     | Dart     |         19 |          0 |          2 |         21 |
+| c:\Dev\car_rental\lib\features\home\presentation\views\widgets\unactive_selector.dart     | Dart     |         39 |          0 |          3 |         42 |
+| c:\Dev\car_rental\lib\features\on_boarding\presentation\views\widgets\main_view_body.dart | Dart     |         -2 |          0 |          0 |         -2 |
+| Total                                                                                     |          |        437 |         15 |         37 |        489 |
++-------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
